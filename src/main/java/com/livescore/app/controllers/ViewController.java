@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class viewController {
+public class ViewController {
 
     @Autowired
     LeagueService service;
@@ -25,7 +25,7 @@ public class viewController {
     ) Integer id) {
 
 
-        return service.getLeague(id);
+        return service.getLeague(id,expand);
     }
 
 

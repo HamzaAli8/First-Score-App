@@ -12,6 +12,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class LeagueService {
@@ -30,14 +34,19 @@ public class LeagueService {
 
 
 
-    public Data getLeague(Integer id) {
+    public Data getLeague(Integer id, String expand) {
+
+        String url = leagueUrl + id + "?expand={expand}";
 
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(bearer);
 
-        ResponseEntity<Data> response = restTemplate.exchange(leagueUrl + id, HttpMethod.GET,request,Data.class);
+        Map<String, String> uriParams = new HashMap<>();
+        uriParams.put("expand", expand);
+
+        ResponseEntity<Data> response = restTemplate.exchange(url, HttpMethod.GET,request,Data.class,uriParams);
 
         return response.getBody();
 
