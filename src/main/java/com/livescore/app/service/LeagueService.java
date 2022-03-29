@@ -2,15 +2,16 @@ package com.livescore.app.service;
 
 
 
+import com.livescore.app.model.Data;
 import com.livescore.app.model.LeagueResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.client.support.BasicAuthenticationInterceptor;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @Service
 public class LeagueService {
@@ -21,18 +22,25 @@ public class LeagueService {
     @Value("${league_url}")
     private String leagueUrl;
 
+    @Value("${api_bearer}")
+    private String bearer;
+
     @Autowired
     RestTemplate restTemplate;
 
 
 
-    public LeagueResponse getLeague(Integer id) {
+    public Data getLeague(Integer id) {
 
 
-        HttpHeaders request = new HttpHeaders();
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(bearer);
 
-        request.setBearerAuth();
-        restTemplate.getForObject(leagueUrl + "/" + id, LeagueResponse.class);
+        ResponseEntity<Data> response = restTemplate.exchange(leagueUrl + id, HttpMethod.GET,request,Data.class);
+
+        return response.getBody();
+
 
     }
 }
