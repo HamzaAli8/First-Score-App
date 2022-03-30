@@ -20,5 +20,4 @@ public class Country {
     private String subregion;
     private String [] timezones;
     private Expand expand;
-
 }
