@@ -17,4 +17,5 @@ public class Seasons {
     private Double startDate;
     @JsonProperty("end")
     private Double endDate;
+    Expand expand;
 }
