@@ -20,7 +20,7 @@ public class Fixtures {
     private Integer idHome;
     private String homeName;
     private Integer idAway;
-    private Integer awayName;
+    private String awayName;
     private Integer idStage;
     private Integer idVenue;
     private String venueName;
@@ -42,10 +42,6 @@ public class Fixtures {
     private String eventsHash;
     private String lineupsHash;
     private String statsHash;
-
-
-
-
-
-
+    private String [] referees;
+    private Expand expand;
 }
