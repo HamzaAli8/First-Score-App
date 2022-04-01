@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Data {
+public class LeagueData {
 
     private List<LeagueResponse> data;
 }

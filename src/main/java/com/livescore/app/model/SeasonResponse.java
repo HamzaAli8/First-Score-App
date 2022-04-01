@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Seasons {
+public class SeasonResponse {
 
     private Integer id;
     private Integer idLeague;

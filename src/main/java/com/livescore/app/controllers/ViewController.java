@@ -1,12 +1,11 @@
 package com.livescore.app.controllers;
 
 
-import com.livescore.app.model.Data;
-import com.livescore.app.model.Expand;
-import com.livescore.app.model.LeagueResponse;
+import com.livescore.app.model.LeagueData;
+import com.livescore.app.model.StageData;
 import com.livescore.app.service.LeagueService;
+import com.livescore.app.service.StageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,15 +16,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class ViewController {
 
     @Autowired
-    LeagueService service;
+    LeagueService leagueService;
+
+    @Autowired
+    StageService stageService;
 
 
-    @GetMapping(value = "/{id}")
-    public Data home(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    @GetMapping(value = "/league/{id}")
+    public LeagueData League(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return service.getLeague(id,expand);
+        return leagueService.getLeague(id,expand);
+    }
+
+
+    @GetMapping(value = "/stage/{id}")
+    public StageData Stage(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return stageService.getStage(id);
     }
 
 
