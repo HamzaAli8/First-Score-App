@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Fixtures {
+public class FixturesResponse {
 
     private Integer id;
     private Integer idCountry;
@@ -42,6 +42,6 @@ public class Fixtures {
     private String eventsHash;
     private String lineupsHash;
     private String statsHash;
-    private String [] referees;
+    private Referee [] referees;
     private Expand expand;
 }

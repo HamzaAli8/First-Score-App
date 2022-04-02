@@ -16,10 +16,10 @@ public class Expand {
     @JsonProperty("current_season")
     private List<SeasonResponse> currentSeason;
     @JsonProperty("next_fixtures")
-    private List<Fixtures> nextFixtures;
+    private List<FixturesResponse> nextFixtures;
     @JsonProperty("season")
     private List<SeasonResponse> season;
     @JsonProperty("h2h")
-    private List<Fixtures> head2head;
-    
+    private List<FixturesResponse> head2head;
+
 }
