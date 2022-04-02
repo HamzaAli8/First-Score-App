@@ -19,6 +19,7 @@ public class Expand {
     private List<Fixtures> nextFixtures;
     @JsonProperty("season")
     private List<SeasonResponse> season;
-
-
+    @JsonProperty("h2h")
+    private List<Fixtures> head2head;
+    
 }
