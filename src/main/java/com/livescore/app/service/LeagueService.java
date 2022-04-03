@@ -3,6 +3,7 @@ package com.livescore.app.service;
 
 
 import com.livescore.app.model.LeagueData;
+import com.livescore.app.model.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -49,25 +50,23 @@ public class LeagueService {
     }
 
 
-    public String getToken() {
+    public Token getToken() {
 
         String url = "https://oauth2.elenasport.io/oauth2/token";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        headers.setBasicAuth(apikey);
+        headers.set("Authorization", apikey);
         HttpEntity<String> request = new HttpEntity<>(headers);
 
-        Map<String, String> uriParams = new HashMap<>();
-        uriParams.put("grant_type", "client_credentials");
+        Map<String, String> requestMap = new HashMap();
+        requestMap.put("grant_type", "client_credentials");
 
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class, uriParams);
 
-        System.out.println(getToken());
 
+        ResponseEntity<Token> response = restTemplate.exchange(url, HttpMethod.POST, request, Token.class,requestMap);
 
         return response.getBody();
-
 
     }
 

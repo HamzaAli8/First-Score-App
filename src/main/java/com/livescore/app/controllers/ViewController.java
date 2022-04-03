@@ -4,6 +4,7 @@ package com.livescore.app.controllers;
 import com.livescore.app.model.LeagueData;
 import com.livescore.app.model.SeasonData;
 import com.livescore.app.model.StageData;
+import com.livescore.app.model.Token;
 import com.livescore.app.service.LeagueService;
 import com.livescore.app.service.SeasonService;
 import com.livescore.app.service.StageService;
@@ -42,7 +43,7 @@ public class ViewController {
     }
 
     @PostMapping(value = "/token")
-    public String getToken() {
+    public Token getToken() {
 
 
         return leagueService.getToken();
