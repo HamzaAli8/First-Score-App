@@ -1,6 +1,6 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.StageData;
+import com.livescore.app.model.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -10,42 +10,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Service
-public class StageService {
+public class AuthService {
+
 
     @Value("${api_key}")
     private String apikey;
 
-    @Value("${stage_url}")
-    private String stageUrl;
-
-
-    private String bearer;
-
     @Autowired
     RestTemplate restTemplate;
 
-    public StageData getStage(Integer id) {
 
-        String url = stageUrl + id;
+    public Token refreshToken() {
 
-//        + "?expand={expand}"
-
+        String url = "https://oauth2.elenasport.io/oauth2/token?grant_type=client_credentials";
 
         HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", apikey);
+        headers.set("Content-Type", "application/x-www-form-urlencoded");
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(bearer);
 
-//        Map<String, String> uriParams = new HashMap<>();
-//        uriParams.put("expand", expand);
-
-        ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET,request, StageData.class);
+        ResponseEntity<Token> response = restTemplate.exchange(url, HttpMethod.POST, request, Token.class);
 
         return response.getBody();
-
 
     }
 }

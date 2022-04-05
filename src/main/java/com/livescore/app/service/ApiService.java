@@ -1,6 +1,7 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.StageData;
+import com.livescore.app.model.LeagueData;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -13,39 +14,41 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
-public class StageService {
+public class ApiService {
 
-    @Value("${api_key}")
-    private String apikey;
-
-    @Value("${stage_url}")
-    private String stageUrl;
-
-
-    private String bearer;
+    @Value("${league_url}")
+    private String leagueUrl;
 
     @Autowired
     RestTemplate restTemplate;
 
-    public StageData getStage(Integer id) {
+    final private String token;
 
-        String url = stageUrl + id;
+    public ApiService(String token) {
+        this.token = token;
+    }
 
-//        + "?expand={expand}"
+    public LeagueData getLeague(Integer id, String expand) {
+
+        String url = leagueUrl + id + "?expand={expand}";
+
 
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(bearer);
+        headers.setBearerAuth(token);
 
-//        Map<String, String> uriParams = new HashMap<>();
-//        uriParams.put("expand", expand);
+        Map<String, String> uriParams = new HashMap<>();
+        if(expand != null){
 
-        ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET,request, StageData.class);
+            uriParams.put("expand", expand);
+        }
+
+        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class, uriParams);
 
         return response.getBody();
 
 
     }
+
 }

@@ -22,7 +22,7 @@ public class SeasonService {
     @Value("${league_url}")
     private String seasonUrl;
 
-    @Value("${api_bearer}")
+
     private String bearer;
 
     @Autowired
