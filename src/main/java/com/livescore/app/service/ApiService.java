@@ -1,8 +1,6 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.LeagueData;
-import com.livescore.app.model.SeasonData;
-import com.livescore.app.model.StageData;
+import com.livescore.app.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -24,6 +22,9 @@ public class ApiService {
 
     @Value("${stage_url}")
     private String stageUrl;
+
+    @Value("${player_url}")
+    private String playerUrl;
 
     @Autowired
     RestTemplate restTemplate;
@@ -88,6 +89,43 @@ public class ApiService {
         uriParams.put("expand", expand);
 
         ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET,request, StageData.class,uriParams);
+
+        return response.getBody();
+
+
+    }
+
+    public TopScorerData getTopScorerBySeasonId(Integer id, String expand){
+
+
+        String url = playerUrl + id + "/topscorers";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<TopScorerData> response = restTemplate.exchange(url, HttpMethod.GET,request, TopScorerData.class);
+
+        return response.getBody();
+
+
+    }
+
+
+    public PlayerData getTopAppearancesBySeasonId(Integer id, String expand){
+
+
+        String url = playerUrl + id + "/topappearances";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<PlayerData> response = restTemplate.exchange(url, HttpMethod.GET,request, PlayerData.class);
 
         return response.getBody();
 

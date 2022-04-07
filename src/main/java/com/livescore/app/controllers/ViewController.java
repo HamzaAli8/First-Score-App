@@ -1,14 +1,8 @@
 package com.livescore.app.controllers;
 
 
-import com.livescore.app.model.LeagueData;
-import com.livescore.app.model.SeasonData;
-import com.livescore.app.model.StageData;
-import com.livescore.app.model.Token;
-import com.livescore.app.service.AuthService;
-import com.livescore.app.service.LeagueService;
-import com.livescore.app.service.SeasonService;
-import com.livescore.app.service.StageService;
+import com.livescore.app.model.*;
+import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +26,9 @@ public class ViewController {
     @Autowired
     AuthService authService;
 
+    @Autowired
+    PlayerService playerService;
+
 
     @GetMapping(value = "/league/{id}")
     public LeagueData League(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
@@ -47,7 +44,7 @@ public class ViewController {
     ) Integer id) {
 
 
-        return stageService.getStage(id);
+        return stageService.getStageBySeasonId(id,expand);
     }
 
     @PostMapping(value = "/token")
@@ -65,6 +62,25 @@ public class ViewController {
 
         return seasonService.getSeasonByLeagueId(id,expand);
     }
+
+
+    @GetMapping(value = "/topscorer/{id}")
+    public TopScorerData getTopScorer(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return playerService.getTopScorer(id,expand);
+    }
+
+
+    @GetMapping(value = "/appearances/{id}")
+    public PlayerData getTopApps(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return playerService.getTopApps(id,expand);
+    }
+
 
 
 
