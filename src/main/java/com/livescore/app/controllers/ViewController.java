@@ -29,6 +29,9 @@ public class ViewController {
     @Autowired
     PlayerService playerService;
 
+    @Autowired
+    EventService eventService;
+
 
     @GetMapping(value = "/league/{id}")
     public LeagueData League(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
@@ -80,6 +83,17 @@ public class ViewController {
 
         return playerService.getTopApps(id,expand);
     }
+
+
+
+    @GetMapping(value = "/event/{id}")
+    public EventData getEvents(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return eventService.getEvents(id,expand);
+    }
+
 
 
 

@@ -26,6 +26,9 @@ public class ApiService {
     @Value("${player_url}")
     private String playerUrl;
 
+    @Value("${fixtures_url}")
+    private String fixtureUrl;
+
     @Autowired
     RestTemplate restTemplate;
 
@@ -131,5 +134,23 @@ public class ApiService {
 
 
     }
+
+    public EventData getEventByFixtureId(Integer id, String expand){
+
+        String url = fixtureUrl + id + "/events";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<EventData> response = restTemplate.exchange(url, HttpMethod.GET,request, EventData.class);
+
+        return response.getBody();
+
+    }
+
+
 }
 
