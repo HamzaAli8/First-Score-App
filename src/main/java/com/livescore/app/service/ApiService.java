@@ -152,5 +152,22 @@ public class ApiService {
     }
 
 
+    public StatData getStatByFixtureId(Integer id, String expand){
+
+        String url = fixtureUrl + id + "/stats";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET,request, StatData.class);
+
+        return response.getBody();
+
+    }
+
+
 }
 

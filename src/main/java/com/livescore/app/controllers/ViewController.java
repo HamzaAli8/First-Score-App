@@ -32,6 +32,9 @@ public class ViewController {
     @Autowired
     EventService eventService;
 
+    @Autowired
+    StatService statService;
+
 
     @GetMapping(value = "/league/{id}")
     public LeagueData League(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
@@ -93,6 +96,16 @@ public class ViewController {
 
         return eventService.getEvents(id,expand);
     }
+
+
+    @GetMapping(value = "/stat/{id}")
+    public StatData getStats(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return statService.getStats(id,expand);
+    }
+
 
 
 
