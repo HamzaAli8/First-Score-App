@@ -4,11 +4,8 @@ package com.livescore.app.controllers;
 import com.livescore.app.model.*;
 import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 
 
 @RestController
@@ -34,6 +31,9 @@ public class ViewController {
 
     @Autowired
     StatService statService;
+
+    @Autowired
+    LineUpService lineUpService;
 
 
     @GetMapping(value = "/league/{id}")
@@ -98,7 +98,7 @@ public class ViewController {
     }
 
 
-    @GetMapping(value = "/stat/{id}")
+    @GetMapping(value = "/stats/{id}")
     public StatData getStats(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
@@ -107,6 +107,13 @@ public class ViewController {
     }
 
 
+    @GetMapping(value = "/lineup/{id}")
+    public LineUpData getLineups(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return lineUpService.getLineUpByFixtureId(id, expand);
+    }
 
 
 

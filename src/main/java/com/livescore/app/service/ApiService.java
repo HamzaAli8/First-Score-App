@@ -168,6 +168,23 @@ public class ApiService {
 
     }
 
+    public LineUpData getLineUpByFixtureId(Integer id, String expand){
+
+        String url = fixtureUrl + id + "/lineups";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<LineUpData> response = restTemplate.exchange(url, HttpMethod.GET,request, LineUpData.class);
+
+        return response.getBody();
+
+    }
+
+
 
 }
 
