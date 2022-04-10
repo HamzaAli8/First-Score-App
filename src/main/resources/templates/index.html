@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/index.css" th:href="@{/css/index.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="comp-select"></div>
+    <div class="comp-title"><img src="https://cdn.britannica.com/44/344-004-494CC2E8/Flag-England.jpg" class="comp-flag"><h1 class="comp-name"></h1></div>
+    <div class="comp-table-container">
+        <table class="comp-table" >
+            <thead>
+            <tr class="comp-table-header" th:each="team: ${teams.data}">
+                <th class="rank" th:text="${team.ranking}">#</th>
+                <th class="team" th:text="${team.teamName}">Team</th>
+                <th class="played" th:text="${team.gamesPlayed}">P</th>
+                <th class="won" th:text="${team.gamesWon}">W</th>
+                <th class="drawn" th:text="${team.gamesDrawn}">D</th>
+                <th class="lost" th:text="${team.gamesLost}">L</th>
+                <th class="for" th:text="${team.goalsFor}">+</th>
+                <th class="against" th:text="${team.goalsAgainst}">-</th>
+                <th class="difference" th:text="${team.goalDifference}">+/-</th>
+                <th class="points" th:text="${team.points}">P</th>
+            </tr>
+            </thead>
+            <tbody class="comp-table-body"></tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

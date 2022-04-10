@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-public class ViewController {
+public class TestController {
 
     @Autowired
     LeagueService leagueService;

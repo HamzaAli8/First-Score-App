@@ -32,6 +32,11 @@ public class ApiService {
     @Value("${venue_url}")
     private String venueUrl;
 
+    @Value("${team_url}")
+    private String teamUrl;
+
+
+
 
 
 
@@ -241,10 +246,23 @@ public class ApiService {
         ResponseEntity<VenueData> response = restTemplate.exchange(url, HttpMethod.GET,request, VenueData.class);
 
         return response.getBody();
-
-
     }
 
+    public TeamData getTeamById(Integer id, String expand){
+
+        String url =  teamUrl + id;
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+
+        ResponseEntity<TeamData> response = restTemplate.exchange(url, HttpMethod.GET,request, TeamData.class);
+
+        return response.getBody();
+    }
 
 
 

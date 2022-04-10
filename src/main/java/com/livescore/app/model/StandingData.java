@@ -11,6 +11,6 @@ import java.util.List;
 @ToString
 public class StandingData {
 
-    List<StandingResponse> data;
+    private List<StandingResponse> data;
 
 }
