@@ -1,18 +1,16 @@
 package com.livescore.app.model;
 
-
 import lombok.*;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
-public class TeamData {
+public class VenueData {
 
-    private List<TeamResponse> data;
-
+    private List<VenueResponse> data;
 
 }

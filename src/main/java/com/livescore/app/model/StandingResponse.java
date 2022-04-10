@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Standing {
+public class StandingResponse {
 
     private Integer idStage;
     private Integer idTeam;

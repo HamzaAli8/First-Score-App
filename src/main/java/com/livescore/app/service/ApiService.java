@@ -29,6 +29,13 @@ public class ApiService {
     @Value("${fixtures_url}")
     private String fixtureUrl;
 
+    @Value("${venue_url}")
+    private String venueUrl;
+
+
+
+
+
     @Autowired
     RestTemplate restTemplate;
 
@@ -168,6 +175,7 @@ public class ApiService {
 
     }
 
+
     public LineUpData getLineUpByFixtureId(Integer id, String expand){
 
         String url = fixtureUrl + id + "/lineups";
@@ -183,6 +191,62 @@ public class ApiService {
         return response.getBody();
 
     }
+
+
+    public PlayerDetailData getPlayerDetailBySeasonId(Integer id, String expand) {
+
+        String url = seasonUrl + id + "/players";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<PlayerDetailData> response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerDetailData.class);
+
+        return response.getBody();
+    }
+
+
+    public StandingData getStandingByStageId(Integer id, String expand){
+
+        String url = stageUrl + id + "/standing";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+
+        ResponseEntity<StandingData> response = restTemplate.exchange(url, HttpMethod.GET,request, StandingData.class);
+
+        return response.getBody();
+
+
+    }
+
+    public VenueData getVenueById(Integer id, String expand){
+
+        String url =  venueUrl + id;
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+
+        ResponseEntity<VenueData> response = restTemplate.exchange(url, HttpMethod.GET,request, VenueData.class);
+
+        return response.getBody();
+
+
+    }
+
+
+
 
 
 

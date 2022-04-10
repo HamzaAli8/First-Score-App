@@ -1,20 +1,22 @@
 package com.livescore.app.service;
 
-
-import com.livescore.app.model.StandingData;
+import com.livescore.app.model.VenueData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StandingService {
+public class VenueService {
 
     @Autowired
     ApiService apiService;
 
 
-    public StandingData getStandingByStageId(Integer id, String expand){
+    public VenueData getVenueById(Integer id, String expand){
 
 
-        return apiService.getStandingByStageId(id, expand);
+        return apiService.getVenueById(id, expand);
+
     }
+
+
 }

@@ -35,6 +35,12 @@ public class ViewController {
     @Autowired
     LineUpService lineUpService;
 
+    @Autowired
+    StandingService standingService;
+
+    @Autowired
+    VenueService venueService;
+
 
     @GetMapping(value = "/league/{id}")
     public LeagueData League(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
@@ -52,6 +58,16 @@ public class ViewController {
 
         return stageService.getStageBySeasonId(id,expand);
     }
+
+
+    @GetMapping(value = "/standing/{id}")
+    public StandingData getStanding(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+    return standingService.getStandingByStageId(id, expand);
+    }
+
 
     @PostMapping(value = "/token")
     public Token getToken() {
@@ -114,6 +130,16 @@ public class ViewController {
 
         return lineUpService.getLineUpByFixtureId(id, expand);
     }
+
+    @GetMapping(value = "/venue/{id}")
+    public VenueData getVenue(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return venueService.getVenueById(id, expand);
+    }
+
+
 
 
 
