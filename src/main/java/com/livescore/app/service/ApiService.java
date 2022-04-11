@@ -52,8 +52,9 @@ public class ApiService {
 
     public LeagueData getLeagueById(Integer id, String expand) {
 
-        String url = leagueUrl + id + "?expand={expand}";
+        String url = leagueUrl + id;
 
+        String url2 = leagueUrl + id + "?expand={expand}";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -61,13 +62,16 @@ public class ApiService {
         headers.setBearerAuth(token);
 
         Map<String, String> uriParams = new HashMap<>();
-        if(expand != null){
+        uriParams.put("expand", expand);
 
-            uriParams.put("expand", expand);
+        ResponseEntity<LeagueData> response;
+        if(expand == null){
+
+            response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+        }else {
+
+            response = restTemplate.exchange(url2, HttpMethod.GET, request, LeagueData.class, uriParams);
         }
-
-        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class, uriParams);
-
         return response.getBody();
 
     }
@@ -216,7 +220,9 @@ public class ApiService {
 
     public StandingData getStandingByStageId(Integer id, String expand){
 
+
         String url = stageUrl + id + "/standing";
+        String url2 = stageUrl + id + "/standing" + "?expand={expand}";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -224,11 +230,18 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
+        Map<String, String> uriParams = new HashMap<>();
+        uriParams.put("expand", expand);
 
-        ResponseEntity<StandingData> response = restTemplate.exchange(url, HttpMethod.GET,request, StandingData.class);
+        ResponseEntity<StandingData> response;
+        if(expand == null){
 
+            response = restTemplate.exchange(url, HttpMethod.GET, request, StandingData.class);
+        }else {
+
+            response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class, uriParams);
+        }
         return response.getBody();
-
 
     }
 

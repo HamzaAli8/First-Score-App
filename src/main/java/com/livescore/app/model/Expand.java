@@ -12,7 +12,7 @@ import java.util.List;
 @ToString
 public class Expand {
 
-    private List<Country> country;
+    private List<CountryResponse> country;
     @JsonProperty("current_season")
     private List<SeasonResponse> currentSeason;
     @JsonProperty("next_fixtures")
@@ -21,5 +21,6 @@ public class Expand {
     private List<SeasonResponse> season;
     @JsonProperty("h2h")
     private List<FixturesResponse> head2head;
+    private List<TeamResponse> team;
 
 }

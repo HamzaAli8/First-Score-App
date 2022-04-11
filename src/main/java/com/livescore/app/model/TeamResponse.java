@@ -17,7 +17,7 @@ public class TeamResponse {
     private String country;
     private String founded;
     private String officialPage;
-    @JsonProperty("badgeurl")
+    @JsonProperty("badgeURL")
     private String badgeUrl;
 
 }

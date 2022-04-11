@@ -65,6 +65,7 @@ public class StandingResponse {
     private Integer ranking;
     @JsonProperty("note")
     private String notes;
+    private Expand expand;
 
 
 

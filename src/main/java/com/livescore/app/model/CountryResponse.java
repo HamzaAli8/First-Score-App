@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Country {
+public class CountryResponse {
 
     private Integer id;
     private String name;
@@ -18,6 +18,5 @@ public class Country {
     private String flag;
     private String region;
     private String subregion;
-    private String [] timezones;
-    private Expand expand;
+    private String[] timezones;
 }
