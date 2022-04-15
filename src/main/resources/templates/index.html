@@ -11,22 +11,36 @@
     <div class="comp-select"></div>
     <div class="comp-title"><img src="https://cdn.britannica.com/44/344-004-494CC2E8/Flag-England.jpg" class="comp-flag"><h1 class="comp-name"></h1></div>
     <div class="comp-table-container">
-        <table class="comp-table" >
+        <table class="comp-table">
             <thead>
-            <tr class="comp-table-header" th:each="team: ${teams.data}">
-                <th class="rank" th:text="${team.ranking}">#</th>
-                <th class="team" th:text="${team.teamName}">Team</th>
-                <th class="played" th:text="${team.gamesPlayed}">P</th>
-                <th class="won" th:text="${team.gamesWon}">W</th>
-                <th class="drawn" th:text="${team.gamesDrawn}">D</th>
-                <th class="lost" th:text="${team.gamesLost}">L</th>
-                <th class="for" th:text="${team.goalsFor}">+</th>
-                <th class="against" th:text="${team.goalsAgainst}">-</th>
-                <th class="difference" th:text="${team.goalDifference}">+/-</th>
-                <th class="points" th:text="${team.points}">P</th>
+            <tr class="comp-table-header">
+                <th class="rank">#</th>
+                <th class="team">Team</th>
+                <th class="played">P</th>
+                <th class="won">W</th>
+                <th class="drawn">D</th>
+                <th class="lost">L</th>
+                <th class="for">+</th>
+                <th class="against">-</th>
+                <th class="difference">+/-</th>
+                <th class="points">P</th>
             </tr>
             </thead>
-            <tbody class="comp-table-body"></tbody>
+            <tbody class="comp-table-body">
+            <tr th:each="team: ${teams.data}">
+            <td class="rank" th:text="${team.ranking}"></td>
+                <td class="team" th:text="${team.teamName}"></td>
+                <td class="team" ><img th:src="@{${team.expand.team[0].badgeUrl}}"/> </td>
+                <td class="played" th:text="${team.gamesPlayed}"></td>
+            <td class="won" th:text="${team.gamesWon}"></td>
+            <td class="drawn" th:text="${team.gamesDrawn}"></td>
+            <td class="lost" th:text="${team.gamesLost}"></td>
+            <td class="for" th:text="${team.goalsFor}"></td>
+            <td class="against" th:text="${team.goalsAgainst}"></td>
+            <td class="difference" th:text="${team.goalDifference}"></td>
+                <td class="points" th:text="${team.points}"></td>
+            </tr>
+            </tbody>
         </table>
     </div>
 </div>

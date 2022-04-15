@@ -4,8 +4,10 @@ package com.livescore.app.controllers;
 import com.livescore.app.model.*;
 import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 
 
 @RestController
@@ -40,6 +42,9 @@ public class TestController {
 
     @Autowired
     VenueService venueService;
+
+    @Autowired
+    FixtureService fixtureService;
 
 
     @GetMapping(value = "/league/{id}")
@@ -138,6 +143,20 @@ public class TestController {
 
         return venueService.getVenueById(id, expand);
     }
+
+    @GetMapping(value = "/fixtures/{id}")
+    public FixtureData getFixtures(@RequestParam(value = "from", required = false) @DateTimeFormat(pattern="yyyy-MM-dd")  String date, @PathVariable(name = "id"
+    ) Integer id) {
+
+
+        return fixtureService.getFixtureBySeasonId(id,date);
+    }
+
+
+
+
+
+
 
 
 

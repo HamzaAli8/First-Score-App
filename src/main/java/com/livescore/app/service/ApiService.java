@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ public class ApiService {
     @Value("${league_url}")
     private String leagueUrl;
 
-    @Value("${league_url}")
+    @Value("${season_url}")
     private String seasonUrl;
 
     @Value("${stage_url}")
@@ -275,6 +276,34 @@ public class ApiService {
         ResponseEntity<TeamData> response = restTemplate.exchange(url, HttpMethod.GET,request, TeamData.class);
 
         return response.getBody();
+    }
+
+
+    public FixtureData getFixturesBySeasonId(Integer id, String date){
+
+
+        String url = seasonUrl + id + "/fixtures";
+        String url2 = seasonUrl + id + "/fixtures" + "?from={date}";
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        Map<String, String> uriParams = new HashMap<>();
+        uriParams.put("date", date);
+
+        ResponseEntity<FixtureData> response;
+        if(date == null){
+
+            response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        }else {
+
+            response = restTemplate.exchange(url2, HttpMethod.GET, request, FixtureData.class, uriParams);
+        }return response.getBody();
+
+
+
     }
 
 

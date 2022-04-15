@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,8 @@ public class MvcController {
 
 
     @GetMapping("/index/{id}")
-    public String home(Model model, @PathVariable Integer id, String expand){
+    public String home(Model model, @RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
+    ) Integer id){
 
         StandingData standings = standingService.getStandingByStageId(id, expand);
         model.addAttribute("teams",standings);
@@ -40,4 +42,15 @@ public class MvcController {
 
         return "index";
     }
+
+
+    @GetMapping("/fixtures")
+    public String fixtures(){
+
+
+        return "fixtures";
+    }
+
+
+
 }

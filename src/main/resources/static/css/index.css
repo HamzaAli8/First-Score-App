@@ -123,6 +123,7 @@ body {
 .comp-table-body td.team img {
   width: 1.5em;
   height: 1.5em;
+  float: left;
   object-fit: contain;
 }
 
