@@ -1,14 +1,13 @@
 package com.livescore.app.controllers;
 
 
-import com.livescore.app.model.StandingData;
-import com.livescore.app.model.StandingResponse;
-import com.livescore.app.model.TeamData;
-import com.livescore.app.model.TeamResponse;
+import com.livescore.app.model.*;
+import com.livescore.app.service.FixtureService;
 import com.livescore.app.service.StandingService;
 import com.livescore.app.service.TeamService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -27,6 +27,9 @@ public class MvcController {
 
     @Autowired
     TeamService teamService;
+
+    @Autowired
+    FixtureService fixtureService;
 
 
     @GetMapping("/index/{id}")
@@ -44,11 +47,14 @@ public class MvcController {
     }
 
 
-    @GetMapping("/fixtures")
-    public String fixtures(){
+    @GetMapping("/fixtures/{id}")
+    public String getFixturesBySeasonId(Model model,@RequestParam(value = "from", required = false) @DateTimeFormat(pattern="yyyy-MM-dd")  String date, @PathVariable(name = "id"
+    ) Integer id){
 
+        FixtureData fixtures = fixtureService.getFixtureBySeasonId(id, date);
+        model.addAttribute("fixtures",fixtures);
 
-        return "fixtures";
+       return "fixtures";
     }
 
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
@@ -144,9 +146,14 @@ public class TestController {
         return venueService.getVenueById(id, expand);
     }
 
-    @GetMapping(value = "/fixtures/{id}")
+    @GetMapping(value = "/fixture/{id}")
     public FixtureData getFixtures(@RequestParam(value = "from", required = false) @DateTimeFormat(pattern="yyyy-MM-dd")  String date, @PathVariable(name = "id"
     ) Integer id) {
+
+
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        localDate.format(formatter);
 
 
         return fixtureService.getFixtureBySeasonId(id,date);

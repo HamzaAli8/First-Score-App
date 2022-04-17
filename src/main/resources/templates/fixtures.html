@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 
     
 
-    <div class="container container-fluid g-0 border border-primary mt-4 md-6">
+    <div class="container container-fluid g-0 border border-primary mt-4 md-6" >
        <div class="row justify-content-center">
         <div class="dropdown d-flex flex-row p-0 ms-5">
             <span style="font-weight:bold">Choose league:</span>  
@@ -32,72 +32,27 @@
             </ul>
           </div>
         </div>
-        <span class= "ms-2" style="font-weight:bold" >Thursday 22 April </span>
 
     
   <div class="row">
       <div class="col">
-        <table class="table table-hover table-borderless table-light" >
+        <table class="table table-hover table-borderless table-light"  >
           <tbody>
-              <th class="border border-1 border border-primary" colspan="4">
-                  <span class="rounded-pill text-primary" > Europa league</span> 
+              <th class="border border-1 border border-primary" colspan="5">
+                     <span class="rounded-pill text-primary" th:text="${fixtures.data[0].leagueName}" > Europa league</span>
               </th>
-            <tr>
-              <td>Arsenal</td>
+            <tr th:each="fixture: ${fixtures.data}">
+              <td th:text="${fixture.homeName}">Arsenal</td>
               <td>v</td>
-              <td>Benfica</td>
-              <td>19:45</td>
-            </tr>
-            <tr>
-              <td>Arsenal</td>
-              <td>v</td>
-              <td>Benfica</td>
-              <td>19:45</td>
-            </tr>
-            <tr>
-              <td>Arsenal</td>
-              <td>v</td>
-              <td>Benfica</td>
-              <td>19:45</td>
+              <td th:text="${fixture.awayName}">Benfica</td>
+              <td th:text="${#strings.substring(fixture.date,11,16)}">19:45</td>
+                <td th:text="${#strings.substring(fixture.date,0,10)}">01-01-2022</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-
-    <span  style="font-weight:bold" class="ms-2">Thursday 22 April </span>
-
-      <div class="row">
-        <div class="col">
-          <table class="table table-hover table-borderless table-light" >
-            <tbody>
-                <th class="border border-1 border border-primary" colspan="4">
-                    <span class="rounded-pill text-primary" > Europa league</span> 
-                </th>
-              <tr>
-                <td>Arsenal</td>
-                <td>v</td>
-                <td>Benfica</td>
-                <td>19:45</td>
-              </tr>
-              <tr>
-                <td>Arsenal</td>
-                <td>v</td>
-                <td>Benfica</td>
-                <td>19:45</td>
-              </tr>
-              <tr>
-                <td>Arsenal</td>
-                <td>v</td>
-                <td>Benfica</td>
-                <td>19:45</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
