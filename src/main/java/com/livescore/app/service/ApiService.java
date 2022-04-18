@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,11 +38,6 @@ public class ApiService {
     private String teamUrl;
 
 
-
-
-
-
-
     @Autowired
     RestTemplate restTemplate;
 
@@ -66,10 +62,10 @@ public class ApiService {
         uriParams.put("expand", expand);
 
         ResponseEntity<LeagueData> response;
-        if(expand == null){
+        if (expand == null) {
 
             response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
-        }else {
+        } else {
 
             response = restTemplate.exchange(url2, HttpMethod.GET, request, LeagueData.class, uriParams);
         }
@@ -95,8 +91,7 @@ public class ApiService {
     }
 
 
-
-    public StageData getStageBySeasonId(Integer id,String expand) {
+    public StageData getStageBySeasonId(Integer id, String expand) {
 
         String url = stageUrl + id + "?expand={expand}";
 
@@ -108,14 +103,14 @@ public class ApiService {
         Map<String, String> uriParams = new HashMap<>();
         uriParams.put("expand", expand);
 
-        ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET,request, StageData.class,uriParams);
+        ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET, request, StageData.class, uriParams);
 
         return response.getBody();
 
 
     }
 
-    public TopScorerData getTopScorerBySeasonId(Integer id, String expand){
+    public TopScorerData getTopScorerBySeasonId(Integer id, String expand) {
 
 
         String url = playerUrl + id + "/topscorers";
@@ -126,7 +121,7 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
-        ResponseEntity<TopScorerData> response = restTemplate.exchange(url, HttpMethod.GET,request, TopScorerData.class);
+        ResponseEntity<TopScorerData> response = restTemplate.exchange(url, HttpMethod.GET, request, TopScorerData.class);
 
         return response.getBody();
 
@@ -134,7 +129,7 @@ public class ApiService {
     }
 
 
-    public PlayerData getTopAppearancesBySeasonId(Integer id, String expand){
+    public PlayerData getTopAppearancesBySeasonId(Integer id, String expand) {
 
 
         String url = playerUrl + id + "/topappearances";
@@ -145,14 +140,14 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
-        ResponseEntity<PlayerData> response = restTemplate.exchange(url, HttpMethod.GET,request, PlayerData.class);
+        ResponseEntity<PlayerData> response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerData.class);
 
         return response.getBody();
 
 
     }
 
-    public EventData getEventByFixtureId(Integer id, String expand){
+    public EventData getEventByFixtureId(Integer id, String expand) {
 
         String url = fixtureUrl + id + "/events";
 
@@ -162,14 +157,14 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
-        ResponseEntity<EventData> response = restTemplate.exchange(url, HttpMethod.GET,request, EventData.class);
+        ResponseEntity<EventData> response = restTemplate.exchange(url, HttpMethod.GET, request, EventData.class);
 
         return response.getBody();
 
     }
 
 
-    public StatData getStatByFixtureId(Integer id, String expand){
+    public StatData getStatByFixtureId(Integer id, String expand) {
 
         String url = fixtureUrl + id + "/stats";
 
@@ -179,14 +174,14 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
-        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET,request, StatData.class);
+        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
 
         return response.getBody();
 
     }
 
 
-    public LineUpData getLineUpByFixtureId(Integer id, String expand){
+    public LineUpData getLineUpByFixtureId(Integer id, String expand) {
 
         String url = fixtureUrl + id + "/lineups";
 
@@ -196,7 +191,7 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
-        ResponseEntity<LineUpData> response = restTemplate.exchange(url, HttpMethod.GET,request, LineUpData.class);
+        ResponseEntity<LineUpData> response = restTemplate.exchange(url, HttpMethod.GET, request, LineUpData.class);
 
         return response.getBody();
 
@@ -219,7 +214,7 @@ public class ApiService {
     }
 
 
-    public StandingData getStandingByStageId(Integer id, String expand){
+    public StandingData getStandingByStageId(Integer id, String expand) {
 
 
         String url = stageUrl + id + "/standing";
@@ -235,10 +230,10 @@ public class ApiService {
         uriParams.put("expand", expand);
 
         ResponseEntity<StandingData> response;
-        if(expand == null){
+        if (expand == null) {
 
             response = restTemplate.exchange(url, HttpMethod.GET, request, StandingData.class);
-        }else {
+        } else {
 
             response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class, uriParams);
         }
@@ -246,9 +241,9 @@ public class ApiService {
 
     }
 
-    public VenueData getVenueById(Integer id, String expand){
+    public VenueData getVenueById(Integer id, String expand) {
 
-        String url =  venueUrl + id;
+        String url = venueUrl + id;
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -256,15 +251,14 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
-
-        ResponseEntity<VenueData> response = restTemplate.exchange(url, HttpMethod.GET,request, VenueData.class);
+        ResponseEntity<VenueData> response = restTemplate.exchange(url, HttpMethod.GET, request, VenueData.class);
 
         return response.getBody();
     }
 
-    public TeamData getTeamById(Integer id, String expand){
+    public TeamData getTeamById(Integer id, String expand) {
 
-        String url =  teamUrl + id;
+        String url = teamUrl + id;
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -272,42 +266,44 @@ public class ApiService {
         headers.setBearerAuth(token);
 
 
-
-        ResponseEntity<TeamData> response = restTemplate.exchange(url, HttpMethod.GET,request, TeamData.class);
+        ResponseEntity<TeamData> response = restTemplate.exchange(url, HttpMethod.GET, request, TeamData.class);
 
         return response.getBody();
     }
 
 
-    public FixtureData getFixturesBySeasonId(Integer id, String date){
+    public FixtureData getFixturesBySeasonId(Integer id, String date) {
 
 
-        String url = seasonUrl + id + "/fixtures";
-        String url2 = seasonUrl + id + "/fixtures" + "?from={date}";
+        Date date1 = new Date();
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNow = sdf.format(date1);
+
+
+//        String url = seasonUrl + id + "/fixtures";
+        String url2 = seasonUrl + id + "/fixtures" + "?from=" + dateNow;
+
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
 
-        Map<String, String> uriParams = new HashMap<>();
-        uriParams.put("date", date);
+//        Map<String, String> uriParams = new HashMap<>();
+//        uriParams.put("date", date);
 
         ResponseEntity<FixtureData> response;
-        if(date == null){
+//        if(date == null){
+//
+//            response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+//        }else {
 
-            response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
-        }else {
-
-            response = restTemplate.exchange(url2, HttpMethod.GET, request, FixtureData.class, uriParams);
-        }return response.getBody();
-
-
+        response = restTemplate.exchange(url2, HttpMethod.GET, request, FixtureData.class);
+        return response.getBody();
 
     }
-
-
-
 
 
 }

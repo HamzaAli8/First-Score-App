@@ -31,6 +31,15 @@ body {
   margin-bottom: 1em;
 }
 
+.navbar-brand {
+  width: 170px;
+  font-size: 50px;
+}
+.navbar-brand img {
+  height: 100px;
+  /* put value of image height as your need */
+  margin-right: 7px;
+
 .comp-select .comp input {
   display: none;
 }
@@ -114,15 +123,6 @@ body {
 .comp-table-body td {
   font-weight: 500;
 }
-
-.navbar-brand {
-  width: 170px;
-  font-size: 50px;
-}
-.navbar-brand img {
-  height: 100px;
-  /* put value of image height as your need */
-  margin-right: 7px;
 
 .comp-table-body td.team {
   display: flex;
