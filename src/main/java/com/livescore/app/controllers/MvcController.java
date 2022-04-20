@@ -47,7 +47,7 @@ public class MvcController {
     }
 
 
-    @GetMapping("/fixtures/{id}")
+    @GetMapping("/fixtures/season/{id}")
     public String getFixturesBySeasonId(Model model,@RequestParam(value = "from", required = false) @DateTimeFormat(pattern="yyyy-MM-dd")  String date, @PathVariable(name = "id"
     ) Integer id){
 
@@ -56,6 +56,19 @@ public class MvcController {
 
        return "fixtures";
     }
+
+    @GetMapping("/fixtures/{id}")
+    public String getFixturesById(Model model, @PathVariable(name = "id"
+    ) Integer id){
+
+        FixturesResponse fixture = fixtureService.getFixtureById(id);
+        model.addAttribute("fixture",fixture);
+
+        return "fixture-details";
+    }
+
+
+
 
 
 

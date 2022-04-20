@@ -82,12 +82,22 @@
               <th class="border border-1 border border-primary" colspan="5">
                      <span class="rounded-pill text-primary" th:text="${fixtures.data[0].leagueName}" > Europa league</span>
               </th>
+
             <tr th:each="fixture: ${fixtures.data}">
-              <td th:text="${fixture.homeName}">Arsenal</td>
+
+
+              <td class="p-0" th:text="${fixture.homeName}">
+
+                  <div class="p-3 position-relative">
+                  <a class="stretched-link" th:href="@{'/fixtures/'+${fixture.id}}"></a>
+              </div>
+
+              </td>
               <td>v</td>
               <td th:text="${fixture.awayName}">Benfica</td>
               <td th:text="${#strings.substring(fixture.date,11,16)}">19:45</td>
                 <td th:text="${#strings.substring(fixture.date,0,10)}">01-01-2022</td>
+
             </tr>
           </tbody>
         </table>
