@@ -67,9 +67,9 @@
               All fixtures
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="http://localhost:8080/fixtures/4210">Premier League</a></li>
-              <li><a class="dropdown-item" href="http://localhost:8080/fixtures/4249">La Liga</a></li>
-              <li><a class="dropdown-item" href="http://localhost:8080/fixtures/4243">Bundesliga</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8080/fixtures/season/4210">Premier League</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8080/fixtures/season/4249">La Liga</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8080/fixtures/season/4243">Bundesliga</a></li>
             </ul>
           </div>
         </div>
@@ -86,11 +86,9 @@
             <tr th:each="fixture: ${fixtures.data}">
 
 
-              <td class="p-0" th:text="${fixture.homeName}">
+              <td th:text="${fixture.homeName}">
 
-                  <div class="p-3 position-relative">
-                  <a class="stretched-link" th:href="@{'/fixtures/'+${fixture.id}}"></a>
-              </div>
+<!--                  <a class="stretched-link" th:href="@{'/fixtures/'+${fixture.id}}"></a>-->
 
               </td>
               <td>v</td>

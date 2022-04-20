@@ -68,6 +68,17 @@ body {
   border-radius: 0.25em;
 }
 
+.logo-img{
+
+  width: 1.5em;
+  height: 1.5em;
+  float: left;
+  object-fit: contain;
+
+
+
+}
+
 .comp-loading {
   display: none;
 }
