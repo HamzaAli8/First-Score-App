@@ -306,5 +306,22 @@ public class ApiService {
     }
 
 
+    public FixtureData getFixtureStatsById(Integer id) {
+
+        String url = fixtureUrl + id +  "?expand=stats";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+
+        return response.getBody();
+
+    }
+
+
 }
 

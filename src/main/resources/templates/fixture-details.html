@@ -1,10 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</body>
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" media="all"
+            href="../static/css/fixture-details.css" th:href="@{/css/fixture-details.css}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container">
+        <!-- code here -->
+        <div class="match">
+            <div class="match-header">
+               
+                <div class="match-tournament border border-light">English Premier League</div>
+                <div class="match-actions">
+                    <a class="border  py-1"><span class>stats</span></a>
+                    <a class="border  py-1"><span class>h2h</span></a>
+                    <a class="border py-1"><span class>stats</span></a>
+                    
+                   
+                </div>
+            </div>
+            <div class="match-content">
+                <div class="column page-hero d-flex align-items-center justify-content-center">
+                    <div class="team team--home mt-5">
+                        <div class="team-logo">
+                            
+                            <img src="https://assets.codepen.io/285131/chelsea.svg" />
+                        </div>
+                        <h2 class="team-name" th:text="${stats.data[0].homeName}">Chelsea</h2>
+                        <div>
+                            <ul style="list-style-type:none;">
+                                <li>Ziyech</li>
+                                <li>Werner</li>
+                                <li>Havertz</li>
+                              </ul>  
+                            
+                            </div>
+            
+                    </div>
+                </div>
+                <div class="column page-hero d-flex align-items-center justify-content-center">
+                    <div class="match-details">
+                        <div class="match-date">
+                            <stron>3 May</strong>  <strong>17:30</strong>
+                        </div>
+                        <div class="match-score">
+                            <span class="match-score-number match-score-number--leading">3</span>
+                            <span class="match-score-divider">:</span>
+                            <span class="match-score-number">1</span>
+                        </div>
+                        <div class="match-time-lapsed">
+                            FT
+                        </div>
+                        <div class="match-referee">
+                            Referee: <strong>Mike dean</strong>
+                        </div>
+      
+                       
+                    </div>
+                </div>
+                <div class="column page-hero d-flex align-items-center justify-content-center">
+                    <div class="team team--away">
+                        <div class="team-logo">
+                    
+                            <img src="https://resources.premierleague.com/premierleague/badges/t1.svg" />
+                        </div>
+                        <h2 class="team-name"> Man Utd</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
 </html>

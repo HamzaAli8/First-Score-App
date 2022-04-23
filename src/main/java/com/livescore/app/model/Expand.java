@@ -22,5 +22,6 @@ public class Expand {
     @JsonProperty("h2h")
     private List<FixturesResponse> head2head;
     private List<TeamResponse> team;
+    private List<StatResponse> stats;
 
 }

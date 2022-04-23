@@ -20,10 +20,9 @@ public class FixtureService {
 
 
 
-    public FixturesResponse getFixtureById(Integer id) {
+    public FixtureData getFixtureStatsById(Integer id) {
 
-
-            return new FixturesResponse();
+        return apiService.getFixtureStatsById(id);
 
     }
 }

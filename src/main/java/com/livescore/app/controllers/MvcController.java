@@ -61,8 +61,8 @@ public class MvcController {
     public String getFixturesById(Model model, @PathVariable(name = "id"
     ) Integer id){
 
-        FixturesResponse fixture = fixtureService.getFixtureById(id);
-        model.addAttribute("fixture",fixture);
+        FixtureData stats = fixtureService.getFixtureStatsById(id);
+        model.addAttribute("stats",stats);
 
         return "fixture-details";
     }

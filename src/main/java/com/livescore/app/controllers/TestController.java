@@ -48,6 +48,9 @@ public class TestController {
     @Autowired
     FixtureService fixtureService;
 
+    @Autowired
+    ApiService apiService;
+
 
     @GetMapping(value = "/league/{id}")
     public LeagueData League(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
@@ -146,7 +149,7 @@ public class TestController {
         return venueService.getVenueById(id, expand);
     }
 
-    @GetMapping(value = "/fixture/{id}")
+    @GetMapping(value = "/season/fixture/{id}")
     public FixtureData getFixtures(@RequestParam(value = "from", required = false) @DateTimeFormat(pattern="yyyy-MM-dd")  String date, @PathVariable(name = "id"
     ) Integer id) {
 
@@ -157,6 +160,15 @@ public class TestController {
 
 
         return fixtureService.getFixtureBySeasonId(id,date);
+    }
+
+
+    @GetMapping(value = "/fixture/{id}")
+    public FixtureData getFixturesById(@PathVariable(name = "id"
+    ) Integer id){
+
+
+        return fixtureService.getFixtureStatsById(id);
     }
 
 
