@@ -21,44 +21,35 @@
                
                 <div class="match-tournament border border-light">English Premier League</div>
                 <div class="match-actions">
-                    <a class="border  py-1"><span class>stats</span></a>
-                    <a class="border  py-1"><span class>h2h</span></a>
-                    <a class="border py-1"><span class>stats</span></a>
-                    
-                   
+                    <span class="border  py-1"><a class>stats</a></span>
+                    <span class="border  py-1"><a class>h2h</a></span>
+                    <span class="border py-1"><a class>stats</a></span>
                 </div>
             </div>
             <div class="match-content">
                 <div class="column page-hero d-flex align-items-center justify-content-center">
-                    <div class="team team--home mt-5">
+                    <div class="team team--home">
                         <div class="team-logo">
                             
                             <img src="https://assets.codepen.io/285131/chelsea.svg" />
                         </div>
                         <h2 class="team-name" th:text="${stats.data[0].homeName}">Chelsea</h2>
-                        <div>
-                            <ul style="list-style-type:none;">
-                                <li>Ziyech</li>
-                                <li>Werner</li>
-                                <li>Havertz</li>
-                              </ul>  
-                            
-                            </div>
-            
+
                     </div>
                 </div>
                 <div class="column page-hero d-flex align-items-center justify-content-center">
                     <div class="match-details">
                         <div class="match-date">
-                            <stron>3 May</strong>  <strong>17:30</strong>
+                            <strong>3 May</strong>  <strong>17:30</strong>
                         </div>
                         <div class="match-score">
-                            <span class="match-score-number match-score-number--leading">3</span>
+                            <span class="match-score-number match-score-number--leading" th:text="${stats.data[0].homeTeamGoals}">3</span>
                             <span class="match-score-divider">:</span>
-                            <span class="match-score-number">1</span>
+                            <span class="match-score-number" th:text="${stats.data[0].awayTeamGoals}">1</span>
                         </div>
                         <div class="match-time-lapsed">
-                            FT
+                            <span th:if="${stats.data[0].status == 'finished'}"> FT </span>
+                            <span th:unless="${stats.data[0].status == 'finished'}"> TBD </span>
                         </div>
                         <div class="match-referee">
                             Referee: <strong>Mike dean</strong>
@@ -73,7 +64,7 @@
                     
                             <img src="https://resources.premierleague.com/premierleague/badges/t1.svg" />
                         </div>
-                        <h2 class="team-name"> Man Utd</h2>
+                        <h2 class="team-name" th:text="${stats.data[0].awayName}"> Man Utd</h2>
                     </div>
                 </div>
             </div>

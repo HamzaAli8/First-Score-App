@@ -1,6 +1,7 @@
 package com.livescore.app.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -28,8 +29,10 @@ public class FixturesResponse {
     private String status;
     private Integer round;
     private Integer attendance;
-    private Integer team_home_90min_goals;
-    private Integer team_away_90min_goals;
+    @JsonProperty("team_home_90min_goals")
+    private Integer homeTeamGoals;
+    @JsonProperty("team_away_90min_goals")
+    private Integer awayTeamGoals;
     private Integer team_home_ET_goals;
     private Integer team_away_ET_goals;
     private Integer team_home_PEN_goals;
