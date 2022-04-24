@@ -23,5 +23,11 @@ public class Expand {
     private List<FixturesResponse> head2head;
     private List<TeamResponse> team;
     private List<StatResponse> stats;
+    @JsonProperty("home_team")
+    private List<TeamResponse> homeTeam;
+    @JsonProperty("away_team")
+    private List<TeamResponse> awayTeam;
+    private List<LeagueResponse> league;
+
 
 }

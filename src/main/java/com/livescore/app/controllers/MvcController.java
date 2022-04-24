@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 @Controller
 public class MvcController {
@@ -61,8 +62,19 @@ public class MvcController {
     public String getFixturesById(Model model, @PathVariable(name = "id"
     ) Integer id){
 
-        FixtureData stats = fixtureService.getFixtureStatsById(id);
-        model.addAttribute("stats",stats);
+        FixtureData fixture = fixtureService.getFixtureById(id);
+        FixtureData home = fixtureService.getFixtureHomeTeamById(id);
+        FixtureData away = fixtureService.getFixtureAwayTeamById(id);
+        FixtureData league = fixtureService.getFixtureLeagueById(id);
+
+
+
+        model.addAttribute("fixture",fixture);
+        model.addAttribute("home",home);
+        model.addAttribute("away",away);
+
+
+
 
         return "fixture-details";
     }

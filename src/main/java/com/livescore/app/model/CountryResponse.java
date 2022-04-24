@@ -19,4 +19,5 @@ public class CountryResponse {
     private String region;
     private String subregion;
     private String[] timezones;
+    private Expand expand;
 }

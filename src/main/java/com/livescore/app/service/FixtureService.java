@@ -20,9 +20,31 @@ public class FixtureService {
 
 
 
-    public FixtureData getFixtureStatsById(Integer id) {
+    public FixtureData getFixtureById(Integer id) {
 
-        return apiService.getFixtureStatsById(id);
+        return apiService.getFixtureById(id);
+    }
 
+
+
+    public FixtureData getFixtureHomeTeamById(Integer id) {
+
+        return apiService.getFixtureHomeTeamById(id);
+
+    }
+
+
+
+
+    public FixtureData getFixtureAwayTeamById(Integer id) {
+
+        return apiService.getFixtureAwayTeamById(id);
+
+    }
+
+    public FixtureData getFixtureLeagueById(Integer id) {
+
+
+        return apiService.getFixtureLeagueById(id);
     }
 }

@@ -21,56 +21,68 @@
                
                 <div class="match-tournament border border-light">English Premier League</div>
                 <div class="match-actions">
-                    <span class="border  py-1"><a class>stats</a></span>
-                    <span class="border  py-1"><a class>h2h</a></span>
-                    <span class="border py-1"><a class>stats</a></span>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Stats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">H2H</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Summary</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="match-content">
                 <div class="column page-hero d-flex align-items-center justify-content-center">
                     <div class="team team--home">
                         <div class="team-logo">
-                            
-                            <img src="https://assets.codepen.io/285131/chelsea.svg" />
+
+                            <img class="logo-img" th:src="@{${home.data[0].expand.homeTeam[0].badgeUrl}}"/>
                         </div>
-                        <h2 class="team-name" th:text="${stats.data[0].homeName}">Chelsea</h2>
+                        <h2 class="team-name" th:text="${fixture.data[0].homeName}">Chelsea</h2>
 
                     </div>
                 </div>
                 <div class="column page-hero d-flex align-items-center justify-content-center">
                     <div class="match-details">
                         <div class="match-date">
-                            <strong>3 May</strong>  <strong>17:30</strong>
+                            <strong  class="border border-primary" th:text="${#strings.substring(fixture.data[0].date,0,10)}" > 3 May</strong>
+
+
+                            <strong class="border border-primary" th:text="${#strings.substring(fixture.data[0].date,11,16)}">17:30</strong>
+
+
                         </div>
                         <div class="match-score">
-                            <span class="match-score-number match-score-number--leading" th:text="${stats.data[0].homeTeamGoals}">3</span>
+                            <span class="match-score-number match-score-number--leading" th:text="${fixture.data[0].homeTeamGoals}">3</span>
                             <span class="match-score-divider">:</span>
-                            <span class="match-score-number" th:text="${stats.data[0].awayTeamGoals}">1</span>
+                            <span class="match-score-number" th:text="${fixture.data[0].awayTeamGoals}">1</span>
                         </div>
                         <div class="match-time-lapsed">
-                            <span th:if="${stats.data[0].status == 'finished'}"> FT </span>
-                            <span th:unless="${stats.data[0].status == 'finished'}"> TBD </span>
+                            <span th:if="${fixture.data[0].status == 'finished'}"> FT </span>
+                            <span th:unless="${fixture.data[0].status == 'finished'}"> TBD </span>
                         </div>
-                        <div class="match-referee">
-                            Referee: <strong>Mike dean</strong>
-                        </div>
-      
-                       
                     </div>
                 </div>
                 <div class="column page-hero d-flex align-items-center justify-content-center">
                     <div class="team team--away">
                         <div class="team-logo">
-                    
-                            <img src="https://resources.premierleague.com/premierleague/badges/t1.svg" />
+
+                            <img class="logo-img" th:src="@{${away.data[0].expand.awayTeam[0].badgeUrl}}"/>
                         </div>
-                        <h2 class="team-name" th:text="${stats.data[0].awayName}"> Man Utd</h2>
+                        <h2 class="team-name" th:text="${fixture.data[0].awayName}"> Man Utd</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+
 
   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -306,9 +306,41 @@ public class ApiService {
     }
 
 
-    public FixtureData getFixtureStatsById(Integer id) {
+    public FixtureData getFixtureById(Integer id) {
 
-        String url = fixtureUrl + id +  "?expand=stats";
+        String url = fixtureUrl + id;
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+
+        return response.getBody();
+
+    }
+
+    public FixtureData getFixtureHomeTeamById(Integer id) {
+
+        String url = fixtureUrl + id +  "?expand=home_team";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+
+        return response.getBody();
+
+    }
+
+    public FixtureData getFixtureAwayTeamById(Integer id) {
+
+        String url = fixtureUrl + id +  "?expand=away_team";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -323,5 +355,24 @@ public class ApiService {
     }
 
 
+    public FixtureData getFixtureLeagueById(Integer id) {
+
+        String url = fixtureUrl + id +  "?expand=league.country";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+
+        return response.getBody();
+
+
+
+
+
+    }
 }
 

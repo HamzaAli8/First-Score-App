@@ -168,7 +168,7 @@ public class TestController {
     ) Integer id){
 
 
-        return fixtureService.getFixtureStatsById(id);
+        return fixtureService.getFixtureById(id);
     }
 
 
