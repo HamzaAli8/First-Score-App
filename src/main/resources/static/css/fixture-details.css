@@ -46,6 +46,19 @@ span {
     display: inline-block; /* change the display type           */
 }
 
+.country-img{
+
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  object-fit: contain;
+  margin-left: 10px;
+  margin-top: 7px;
+
+
+
+}
+
 
 .match {
 	background-color: var(--color-bg-primary);

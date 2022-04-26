@@ -70,6 +70,7 @@ public class MvcController {
 
 
         model.addAttribute("fixture",fixture);
+        model.addAttribute("league",league);
         model.addAttribute("home",home);
         model.addAttribute("away",away);
 

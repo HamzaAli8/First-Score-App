@@ -19,7 +19,8 @@
         <div class="match">
             <div class="match-header">
                
-                <div class="match-tournament border border-light">English Premier League</div>
+                <div class="match-tournament border border-light me-2" th:text="${league.data[0].expand.league[0].name}">English Premier League </div>
+                <img class="country-img" th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"/>
                 <div class="match-actions">
                     <ul class="nav justify-content-end">
                         <li class="nav-item">
