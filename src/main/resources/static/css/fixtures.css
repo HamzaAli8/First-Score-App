@@ -31,14 +31,7 @@ body {
   margin-bottom: 1em;
 }
 
-.navbar-brand {
-  width: 170px;
-  font-size: 50px;
-}
-.navbar-brand img {
-  height: 100px;
-  /* put value of image height as your need */
-  margin-right: 7px;
+
 
 .comp-select .comp input {
   display: none;
@@ -170,4 +163,29 @@ cursor: pointer;
   .comp-table .lost {
     display: none;
   }
+}
+
+
+.top-navbar a {
+    font-weight: 600;
+    color: #111;
+    font-size: 16px;
+    padding-left: 70px !important;
+    display: inline-block !important;
+}
+
+    .top-navbar a.active {
+        color: #f28300 !important;
+    }
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+
+
+@media(max-width:991px) {
+    .top-navbar a {
+        padding-left: 0px !important;
+    }
 }

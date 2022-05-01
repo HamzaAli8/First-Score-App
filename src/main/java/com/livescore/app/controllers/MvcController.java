@@ -77,7 +77,7 @@ public class MvcController {
 
 
 
-        return "fixture-details";
+        return "fixture-details2";
     }
 
 
