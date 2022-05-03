@@ -89,7 +89,7 @@
                         <div class="d-flex w-100 box3 mb-2 text-center mt-2">
                             <div class="w-100 d-block d-flex text-center justify-content-between">
                                 <div class="col-md-4">
-                                    <img th:src="@{${home.data[0].expand.homeTeam[0].badgeUrl}}" alt="img" width="40" height="40">
+                                    <img th:src="@{${home.expand.homeTeam[0].badgeUrl}}" alt="img" width="40" height="40">
                                     <p class="mb-0 pt-1 text2" th:text="${fixture.data[0].homeName}">Newcastle United</p>
                                 </div>
 
@@ -104,7 +104,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <img src="assets/images/k9.png"  th:src="@{${away.data[0].expand.awayTeam[0].badgeUrl}}" alt="img" width="40" height="40">
+                                    <img src="assets/images/k9.png"  th:src="@{${away.expand.awayTeam[0].badgeUrl}}" alt="img" width="40" height="40">
                                     <p th:text="${fixture.data[0].awayName}"class="mb-0 pt-1 text2">Liverpool</p>
                                 </div>
                             </div>
@@ -185,119 +185,118 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600">16</span>
+                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('shots_on_target')}">16</span>
                                         <div class="progress">
-                                            <div class="progress-bar bg-warning" style="width:40%"></div>
+                                            <div class="progress-bar bg-warning" style="width:100%"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right">7</span>
+                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('shots_on_target')}">7</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-secondary" style="width:70%"></div>
                                         </div>
                                     </div>
-
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <p class="text-center f600 text-secondary mb-0">
-                                            Shots on target
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600">16</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" style="width:30%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right">7</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
-                                        </div>
-                                    </div>
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <p class="text-center f600 text-secondary mb-0">-->
+<!--                                            Shots on target-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600">16</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <p class="text-center f600 text-secondary mb-0">
-                                            Possession (%)
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600">13</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" style="width:60%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right">9</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-secondary" style="width:30%"></div>
-                                        </div>
-                                    </div>
+<!--                                </div>-->
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <p class="text-center f600 text-secondary mb-0">-->
+<!--                                            Possession (%)-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600">13</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-warning" style="width:60%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600 text-right">9</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-secondary" style="width:30%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <p class="text-center f600 text-secondary mb-0">
-                                            Fouls Rate
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600">16</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" style="width:30%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right">7</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
-                                        </div>
-                                    </div>
+<!--                                </div>-->
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <p class="text-center f600 text-secondary mb-0">-->
+<!--                                            Fouls Rate-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600">16</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <p class="text-center f600 text-secondary mb-0">
-                                            Fouls Rate
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600">16</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" style="width:30%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right">7</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                </div>-->
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <p class="text-center f600 text-secondary mb-0">-->
+<!--                                            Fouls Rate-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600">16</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <p class="text-center f600 text-secondary mb-0">
-                                            Fouls Rate
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600">16</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" style="width:30%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right">7</span>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
-                                        </div>
-                                    </div>
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <p class="text-center f600 text-secondary mb-0">-->
+<!--                                            Fouls Rate-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600">16</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
+<!--                                        <div class="progress">-->
+<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                                </div>
+<!--                                </div>-->
                             </div>
 
 

@@ -2,10 +2,11 @@ package com.livescore.app.controllers;
 
 
 import com.livescore.app.model.*;
+import com.livescore.app.model.mymodels.FixtureStats;
 import com.livescore.app.service.FixtureService;
 import com.livescore.app.service.StandingService;
+import com.livescore.app.service.StatService;
 import com.livescore.app.service.TeamService;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -13,12 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 @Controller
 public class MvcController {
@@ -31,6 +26,9 @@ public class MvcController {
 
     @Autowired
     FixtureService fixtureService;
+
+    @Autowired
+    StatService statService;
 
 
     @GetMapping("/index/{id}")
@@ -63,25 +61,24 @@ public class MvcController {
     ) Integer id){
 
         FixtureData fixture = fixtureService.getFixtureById(id);
-        FixtureData home = fixtureService.getFixtureHomeTeamById(id);
-        FixtureData away = fixtureService.getFixtureAwayTeamById(id);
+        FixturesResponse home = fixtureService.getFixtureHomeTeamById(id);
+        FixturesResponse away = fixtureService.getFixtureAwayTeamById(id);
         FixtureData league = fixtureService.getFixtureLeagueById(id);
 
+
+        FixtureStats stats = statService.getStats(id, home.getIdHome(),away.getIdAway());
 
 
         model.addAttribute("fixture",fixture);
         model.addAttribute("league",league);
         model.addAttribute("home",home);
         model.addAttribute("away",away);
-
+        model.addAttribute("stats", stats);
 
 
 
         return "fixture-details2";
     }
-
-
-
 
 
 

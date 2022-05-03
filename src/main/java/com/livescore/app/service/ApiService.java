@@ -163,22 +163,22 @@ public class ApiService {
 
     }
 
-
-    public StatData getStatByFixtureId(Integer id, String expand) {
-
-        String url = fixtureUrl + id + "/stats";
-
-
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
-
-
-        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
-
-        return response.getBody();
-
-    }
+//
+//    public StatData getStatByFixtureId(Integer id, String expand) {
+//
+//        String url = fixtureUrl + id + "/stats";
+//
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        HttpEntity<String> request = new HttpEntity<>(headers);
+//        headers.setBearerAuth(token);
+//
+//
+//        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
+//
+//        return response.getBody();
+//
+//    }
 
 
     public LineUpData getLineUpByFixtureId(Integer id, String expand) {
@@ -368,9 +368,22 @@ public class ApiService {
         ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
 
         return response.getBody();
+    }
 
 
+    public StatData getStatsByFixtureId(Integer id){
 
+
+        String url = fixtureUrl + id  + "/stats";
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
+
+        return response.getBody();
 
 
     }

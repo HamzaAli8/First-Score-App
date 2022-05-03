@@ -124,13 +124,6 @@ public class TestController {
     }
 
 
-    @GetMapping(value = "/stats/{id}")
-    public StatData getStats(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
-    ) Integer id) {
-
-
-        return statService.getStats(id,expand);
-    }
 
 
     @GetMapping(value = "/lineup/{id}")
@@ -169,6 +162,13 @@ public class TestController {
 
 
         return fixtureService.getFixtureById(id);
+    }
+
+    @GetMapping(value = "/stat/{id}")
+    public StatData getStatsByFixtureId(@PathVariable(name = "id")Integer id){
+
+
+        return apiService.getStatsByFixtureId(id);
     }
 
 
