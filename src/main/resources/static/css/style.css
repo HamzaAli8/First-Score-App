@@ -428,3 +428,30 @@ h5 {
         padding-left: 0px !important;
     }
 }
+
+.match-score {
+	margin-top: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.match-score-number {
+
+	font-size: 35px;
+	font-weight: 600;
+	line-height: 1;
+	&--leading {
+		color: var(--color-theme-primary);
+	}
+}
+
+.match-score-divider {
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1;
+	color: var (--color-text-icon);
+	margin-left: 10px;
+	margin-right: 10px;
+
+
+}

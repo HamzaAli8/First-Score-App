@@ -87,20 +87,25 @@
                         </div>
 
                         <div class="d-flex w-100 box3 mb-2 text-center mt-2">
-                            <div class="w-100 d-block d-flex text-center">
+                            <div class="w-100 d-block d-flex text-center justify-content-between">
                                 <div class="col-md-4">
                                     <img th:src="@{${home.data[0].expand.homeTeam[0].badgeUrl}}" alt="img" width="40" height="40">
-                                    <p class="mb-0 pt-1 text2">Newcastle United</p>
+                                    <p class="mb-0 pt-1 text2" th:text="${fixture.data[0].homeName}">Newcastle United</p>
+                                </div>
+
+                                <div class="col-md-4" th:if="${fixture.data[0].status != 'finished'}">
+                                    <h4 class="pt-2" th:text="${#strings.substring(fixture.data[0].date,11,16)}">16:30</h4>
+                                    <p class="text-secondary mb-0" th:text="${#strings.substring(fixture.data[0].date,0,10)}">Today</p>
+                                </div>
+                                <div class="match-score" th:if="${fixture.data[0].status == 'finished'}">
+                                    <span class="match-score-number match-score-number--leading" th:text="${fixture.data[0].homeTeamGoals}">3</span>
+                                    <span class="match-score-divider">:</span>
+                                    <span class="match-score-number" th:text="${fixture.data[0].awayTeamGoals}">1</span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <h4 class="pt-2">16:30</h4>
-                                    <p class="text-secondary mb-0">Today</p>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <img src="assets/images/k9.png" alt="img" width="40" height="40">
-                                    <p class="mb-0 pt-1 text2">Liverpool</p>
+                                    <img src="assets/images/k9.png"  th:src="@{${away.data[0].expand.awayTeam[0].badgeUrl}}" alt="img" width="40" height="40">
+                                    <p th:text="${fixture.data[0].awayName}"class="mb-0 pt-1 text2">Liverpool</p>
                                 </div>
                             </div>
                         </div>
@@ -129,28 +134,39 @@
                                         <li class="list-group-item">
                                             <div class="match-div">
                                                 <i class="fa fa-calendar icons"></i>
-                                                <span class="sp1">30 April 2022</span>
+                                                <span class="sp1" th:text="${#strings.substring(fixture.data[0].date,0,10)}" >30 April 2022</span>
                                                 <span class="text-secondary sp2">Date</span>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="match-div">
                                                 <i class="fa fa-bell-o icons"></i>
-                                                <span class="sp1">Andre Marriner (England)</span>
-                                                <span class="text-secondary sp2">Refree</span>
+                                                <div th:if="${fixture.data[0].referees != null}">
+                                                <span class="sp1" th:text="${fixture.data[0].referees[0].refereeName}">Andre Marriner (England)</span>
+                                                </div>
+                                                <div th:if="${fixture.data[0].referees == null}">
+                                                <span class="sp1"> Not specified </span>
+                                                </div>
+                                                <span class="text-secondary sp2">Referee</span>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="match-div">
                                                 <i class="fa fa-home icons"></i>
-                                                <span class="sp1">St James' Park</span>
-                                                <span class="text-secondary sp2">Venue</span>
+                                                    <span class="sp1" th:text="${fixture.data[0].venueName}">St James' Park</span>
+                                                    <span class="text-secondary sp2">Venue</span>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="match-div">
                                                 <i class="fa fa-user-o icons"></i>
-                                                <span class="sp1">27,113</span>
+
+                                                <div th:if="${fixture.data[0].status == 'finished'}">
+                                                    <span class="sp1" th:text="${fixture.data[0].attendance}">27,113</span>
+                                                </div>
+                                                <div th:if="${fixture.data[0].status != 'finished'}">
+                                                    <span class="sp1">TBA</span>
+                                                </div>
                                                 <span class="text-secondary sp2">Spectators</span>
                                             </div>
                                         </li>
