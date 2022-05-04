@@ -35,8 +35,6 @@ public class FixtureService {
     }
 
 
-
-
     public FixturesResponse getFixtureAwayTeamById(Integer id) {
 
         return apiService.getFixtureAwayTeamById(id).getData().get(0);
@@ -47,5 +45,11 @@ public class FixtureService {
 
 
         return apiService.getFixtureLeagueById(id);
+    }
+
+    public FixturesResponse getHeadToHeadByFixtureId(Integer id){
+
+
+        return apiService.getFixtureHeadToHead(id).getData().get(0);
     }
 }

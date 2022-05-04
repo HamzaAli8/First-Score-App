@@ -91,19 +91,17 @@ public class ApiService {
     }
 
 
-    public StageData getStageBySeasonId(Integer id, String expand) {
+    public StageData getStageBySeasonId(Integer id) {
 
-        String url = stageUrl + id + "?expand={expand}";
+        String url = seasonUrl + id + "/stages";
 
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        Map<String, String> uriParams = new HashMap<>();
-        uriParams.put("expand", expand);
 
-        ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET, request, StageData.class, uriParams);
+        ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET, request, StageData.class);
 
         return response.getBody();
 
@@ -214,29 +212,17 @@ public class ApiService {
     }
 
 
-    public StandingData getStandingByStageId(Integer id, String expand) {
+    public StandingData getStandingByStageId(Integer id) {
 
 
-        String url = stageUrl + id + "/standing";
-        String url2 = stageUrl + id + "/standing" + "?expand={expand}";
+        String url2 = stageUrl + id + "/standing" + "?expand=team";
 
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-
-        Map<String, String> uriParams = new HashMap<>();
-        uriParams.put("expand", expand);
-
-        ResponseEntity<StandingData> response;
-        if (expand == null) {
-
-            response = restTemplate.exchange(url, HttpMethod.GET, request, StandingData.class);
-        } else {
-
-            response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class, uriParams);
-        }
+        ResponseEntity<StandingData> response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class);
         return response.getBody();
 
     }
@@ -386,6 +372,21 @@ public class ApiService {
         return response.getBody();
 
 
+    }
+
+    public FixtureData getFixtureHeadToHead(Integer id) {
+
+        String url = fixtureUrl + id +  "?expand=h2h";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+
+        return response.getBody();
     }
 }
 

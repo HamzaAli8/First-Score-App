@@ -53,29 +53,29 @@ public class TestController {
 
 
     @GetMapping(value = "/league/{id}")
-    public LeagueData League(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public LeagueData League(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return leagueService.getLeague(id,expand);
+        return leagueService.getLeague(id, expand);
     }
 
 
     @GetMapping(value = "/stage/{id}")
-    public StageData Stage(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public StageResponse Stage(@PathVariable(name = "id"
     ) Integer id) {
 
 
-        return stageService.getStageBySeasonId(id,expand);
+        return stageService.getStageBySeasonId(id);
     }
 
 
     @GetMapping(value = "/standing/{id}")
-    public StandingData getStanding(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public StandingData getStanding(@PathVariable(name = "id"
     ) Integer id) {
 
 
-    return standingService.getStandingByStageId(id, expand);
+        return standingService.getStandingByStageId(id);
     }
 
 
@@ -88,46 +88,43 @@ public class TestController {
     }
 
     @GetMapping(value = "/season/{id}")
-    public SeasonData Season(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public SeasonData Season(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return seasonService.getSeasonByLeagueId(id,expand);
+        return seasonService.getSeasonByLeagueId(id, expand);
     }
 
 
     @GetMapping(value = "/topscorer/{id}")
-    public TopScorerData getTopScorer(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public TopScorerData getTopScorer(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return playerService.getTopScorer(id,expand);
+        return playerService.getTopScorer(id, expand);
     }
 
 
     @GetMapping(value = "/appearances/{id}")
-    public PlayerData getTopApps(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public PlayerData getTopApps(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return playerService.getTopApps(id,expand);
+        return playerService.getTopApps(id, expand);
     }
-
 
 
     @GetMapping(value = "/event/{id}")
-    public EventData getEvents(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public EventData getEvents(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return eventService.getEvents(id,expand);
+        return eventService.getEvents(id, expand);
     }
 
 
-
-
     @GetMapping(value = "/lineup/{id}")
-    public LineUpData getLineups(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public LineUpData getLineups(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
@@ -135,7 +132,7 @@ public class TestController {
     }
 
     @GetMapping(value = "/venue/{id}")
-    public VenueData getVenue(@RequestParam (value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public VenueData getVenue(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
@@ -143,7 +140,7 @@ public class TestController {
     }
 
     @GetMapping(value = "/season/fixture/{id}")
-    public FixtureData getFixtures(@RequestParam(value = "from", required = false) @DateTimeFormat(pattern="yyyy-MM-dd")  String date, @PathVariable(name = "id"
+    public FixtureData getFixtures(@RequestParam(value = "from", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") String date, @PathVariable(name = "id"
     ) Integer id) {
 
 
@@ -152,37 +149,36 @@ public class TestController {
         localDate.format(formatter);
 
 
-        return fixtureService.getFixtureBySeasonId(id,date);
+        return fixtureService.getFixtureBySeasonId(id, date);
     }
 
 
     @GetMapping(value = "/fixture/{id}")
     public FixtureData getFixturesById(@PathVariable(name = "id"
-    ) Integer id){
+    ) Integer id) {
 
 
         return fixtureService.getFixtureById(id);
     }
 
     @GetMapping(value = "/stat/{id}")
-    public StatData getStatsByFixtureId(@PathVariable(name = "id")Integer id){
+    public StatData getStatsByFixtureId(@PathVariable(name = "id") Integer id) {
 
 
         return apiService.getStatsByFixtureId(id);
     }
 
+    @GetMapping(value = "/head/{id}")
+    public FixturesResponse getHeadById(@PathVariable(name = "id"
+    ) Integer id) {
+
+        return fixtureService.getHeadToHeadByFixtureId(id);
 
 
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 }
+
+
+
+

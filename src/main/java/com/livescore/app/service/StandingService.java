@@ -12,9 +12,9 @@ public class StandingService {
     ApiService apiService;
 
 
-    public StandingData getStandingByStageId(Integer id, String expand){
+    public StandingData getStandingByStageId(Integer id){
 
 
-        return apiService.getStandingByStageId(id, expand);
+        return apiService.getStandingByStageId(id);
     }
 }

@@ -42,20 +42,5 @@ public class StatService {
 
         return new FixtureStats(home, away);
 
-
-//        List<StatResponse> homeList = statList
-//                .stream()
-//                .filter(s -> s.getIdTeam().equals(homeId)).collect(Collectors.toList());
-//
-//
-//
-//        List<StatResponse> awayList = statList
-//                .stream()
-//                .filter(s -> s.getIdTeam().equals(awayId)).collect(Collectors.toList());
-
-
-
-
-
     }
 }

@@ -3,10 +3,7 @@ package com.livescore.app.controllers;
 
 import com.livescore.app.model.*;
 import com.livescore.app.model.mymodels.FixtureStats;
-import com.livescore.app.service.FixtureService;
-import com.livescore.app.service.StandingService;
-import com.livescore.app.service.StatService;
-import com.livescore.app.service.TeamService;
+import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -30,17 +27,16 @@ public class MvcController {
     @Autowired
     StatService statService;
 
+    @Autowired
+    StageService stageService;
+
 
     @GetMapping("/index/{id}")
-    public String home(Model model, @RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public String home(Model model,@PathVariable(name = "id"
     ) Integer id){
 
-        StandingData standings = standingService.getStandingByStageId(id, expand);
+        StandingData standings = standingService.getStandingByStageId(id);
         model.addAttribute("teams",standings);
-
-        TeamData teamData = teamService.getTeamBySeasonId(4210, expand);
-
-
 
         return "index";
     }
@@ -64,9 +60,16 @@ public class MvcController {
         FixturesResponse home = fixtureService.getFixtureHomeTeamById(id);
         FixturesResponse away = fixtureService.getFixtureAwayTeamById(id);
         FixtureData league = fixtureService.getFixtureLeagueById(id);
-
+        FixturesResponse prevFixtures = fixtureService.getHeadToHeadByFixtureId(id);
 
         FixtureStats stats = statService.getStats(id, home.getIdHome(),away.getIdAway());
+
+
+        Integer seasonId = away.getIdSeason();
+        StageResponse stage = stageService.getStageBySeasonId(seasonId);
+        Integer standingId = stage.getId();
+        StandingData standings = standingService.getStandingByStageId(standingId);
+
 
 
         model.addAttribute("fixture",fixture);
@@ -74,6 +77,8 @@ public class MvcController {
         model.addAttribute("home",home);
         model.addAttribute("away",away);
         model.addAttribute("stats", stats);
+        model.addAttribute("teams",standings);
+        model.addAttribute("prevFixtures", prevFixtures);
 
 
 

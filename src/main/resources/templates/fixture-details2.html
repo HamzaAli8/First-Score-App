@@ -197,106 +197,106 @@
                                         </div>
                                     </div>
                                 </div>
-<!--                                <div class="row mt-3">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <p class="text-center f600 text-secondary mb-0">-->
-<!--                                            Shots on target-->
-<!--                                        </p>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600">16</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
 
-<!--                                </div>-->
-<!--                                <div class="row mt-3">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <p class="text-center f600 text-secondary mb-0">-->
-<!--                                            Possession (%)-->
-<!--                                        </p>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600">13</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-warning" style="width:60%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600 text-right">9</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-secondary" style="width:30%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <p class="text-center f600 text-secondary mb-0">
+                                            Shots off target
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('shots_off_target')}">16</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" style="width:30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('shots_off_target')}" >7</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
+                                        </div>
+                                    </div>
+                                </div>
 
-<!--                                </div>-->
-<!--                                <div class="row mt-3">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <p class="text-center f600 text-secondary mb-0">-->
-<!--                                            Fouls Rate-->
-<!--                                        </p>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600">16</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <p class="text-center f600 text-secondary mb-0">
+                                            Possession (%)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('possession')}">16</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" style="width:30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('possession')}" >7</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
+                                        </div>
+                                    </div>
+                                </div>
 
-<!--                                </div>-->
-<!--                                <div class="row mt-3">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <p class="text-center f600 text-secondary mb-0">-->
-<!--                                            Fouls Rate-->
-<!--                                        </p>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600">16</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <p class="text-center f600 text-secondary mb-0">
+                                            Fouls
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('fouls')}">16</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" style="width:30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('fouls')}" >7</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
+                                        </div>
+                                    </div>
+                                </div>
 
-<!--                                <div class="row mt-3">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <p class="text-center f600 text-secondary mb-0">-->
-<!--                                            Fouls Rate-->
-<!--                                        </p>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600">16</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-warning" style="width:30%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-6">-->
-<!--                                        <span class="d-block numbr f600 text-right">7</span>-->
-<!--                                        <div class="progress">-->
-<!--                                            <div class="progress-bar bg-secondary" style="width:50%"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <p class="text-center f600 text-secondary mb-0">
+                                            Corners
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('corners')}">16</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" style="width:30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('corners')}" >7</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
+                                        </div>
+                                    </div>
+                                </div>
 
-<!--                                </div>-->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <p class="text-center f600 text-secondary mb-0">
+                                            Offsides
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('offsides')}">16</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" style="width:30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('offsides')}" >7</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-secondary" style="width:50%"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -326,75 +326,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
+                                        <tr th:each="team: ${teams.data}">
+                                            <td th:text="${team.ranking}">
                                                 1
                                             </td>
-                                            <td class="image-td">
+                                            <td class="image-td"  >
                                                 <a href="">
-                                                    <img src="assets/images/k1.png" alt="img" width="30">
-                                                    Title
+                                                    <img th:src="@{${team.expand.team[0].badgeUrl}}" alt="img" width="30" />
+                                                    <span th:text="${team.teamName}"> Title  </span>
                                                 </a>
                                             </td>
-                                            <td class="hd">33</td>
-                                            <td class="hd"> 29</td>
-                                            <td class="hd">40</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td class="image-td">
-                                                <a href="">
-                                                    <img src="assets/images/k3.png" alt="img" width="30">
-                                                    Manchester
-                                                </a>
-                                            </td>
-                                            <td class="hd">33</td>
-                                            <td class="hd"> 59</td>
-                                            <td class="hd">80</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td class="image-td">
-                                                <a href="">
-                                                    <img src="assets/images/k2.png" alt="img" width="28">
-                                                    Heading
-                                                </a>
-                                            </td>
-                                            <td class="hd">23</td>
-                                            <td class="hd"> 99</td>
-                                            <td class="hd">10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                4
-                                            </td>
-                                            <td class="image-td">
-                                                <a href="">
-                                                    <img src="assets/images/k5.png" alt="img" width="28">
-                                                    Heading
-                                                </a>
-                                            </td>
-                                            <td class="hd">33</td>
-                                            <td class="hd"> 59</td>
-                                            <td class="hd">80</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td class="image-td">
-                                                <a href="">
-                                                    <img src="assets/images/k4.png" alt="img" width="28">
-                                                    Manchester
-                                                </a>
-                                            </td>
-                                            <td class="hd">33</td>
-                                            <td class="hd"> 59</td>
-                                            <td class="hd">80</td>
+                                            <td class="hd" th:text="${team.gamesPlayed}">33</td>
+                                            <td class="hd" th:text="${team.goalDifference}"> 29</td>
+                                            <td class="hd" th:text="${team.points}">40</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -403,142 +347,38 @@
 
 
                             <div class="tab-pane fade" id="pills-06" role="tabpanel" aria-labelledby="pills-06-tab">
-                                <div class="match-div">
+                                <div class="match-div" >
                                     <a href="">
-                                        <img src="assets/images/holland.jpg" alt="img">
-                                        <span class="sp1">Premier League</span>
-                                        <span class="text-secondary sp2">Holland</span>
+                                        <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}" alt="img">
+                                        <span class="sp1" th:text="${league.data[0].expand.league[0].name}">Premier League</span>
+                                        <span class="text-secondary sp2" th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
                                     </a>
                                 </div>
-                                <div class="d-flex w-100 box1 mt-3 box1-dark">
+                                <div class="d-flex w-100 box1 mt-3 box1-dark" th:each="fixture: ${prevFixtures.expand.head2head}">
                                     <div href="" class="w-100 d-block d-flex">
                                         <div class="col-md-2 col-3 text-center">
                                             <p class="mb-0">
-                                                <span class="fw500" style="font-size:12px">3 JAN</span>
+                                                <span class="fw500" style="font-size:12px" th:text="${#strings.substring(fixture.date,0,10)}">3 JAN</span>
                                                 <span class="pt-1 fw500 d-block">FT</span>
                                             </p>
                                         </div>
                                         <div class="col-md-10 col-9">
                                             <p class="mb-1">
-                                                <img src="assets/images/k5.png" alt="img" width="24">
-                                                <span class="ml-2">Norvich City <em><b>3</b></em> </span>
+                                                <img th:src="@{${home.expand.homeTeam[0].badgeUrl}}" alt="img" width="24">
+                                                <span class="ml-2" th:text="${fixture.homeName}">Norvich City </span>
+                                                <span><em th:text="${fixture.homeTeamGoals}"><b>3</b></em> </span>
                                             </p>
                                             <p class="mb-0">
-                                                <img src="assets/images/k2.png" alt="img" width="24">
-                                                <span class="ml-2">Chelsea <em><b>1</b></em> </span>
+                                                <img th:src="@{${away.expand.awayTeam[0].badgeUrl}}" alt="img" width="24">
+                                                <span class="ml-2" th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
+                                                <span ><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
                                             </p>
                                         </div>
 
                                     </div>
                                 </div>
-
-
-                                <div class="match-div mt-4">
-                                    <a href="">
-                                        <img src="assets/images/germany.jpg" alt="img">
-                                        <span class="sp1">Copa del Rey</span>
-                                        <span class="text-secondary sp2">Germany</span>
-                                    </a>
-                                </div>
-                                <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                    <div href="" class="w-100 d-block d-flex">
-                                        <div class="col-md-2 col-3 text-center">
-                                            <p class="mb-0">
-                                                <span class="fw500" style="font-size:12px">2022</span>
-                                                <span class="pt-1 fw500 d-block">FT</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-10 col-9">
-                                            <p class="mb-1">
-                                                <img src="assets/images/k3.png" alt="img" width="24">
-                                                <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <img src="assets/images/k2.png" alt="img" width="24">
-                                                <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                    <div href="" class="w-100 d-block d-flex">
-                                        <div class="col-md-2 col-3 text-center">
-                                            <p class="mb-0">
-                                                <span class="fw500" style="font-size:12px">3 JAN</span>
-                                                <span class="pt-1 fw500 d-block">FT</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-10 col-9">
-                                            <p class="mb-1">
-                                                <img src="assets/images/k1.png" alt="img" width="24">
-                                                <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <img src="assets/images/k3.png" alt="img" width="24">
-                                                <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="match-div mt-4">
-                                    <a href="">
-                                        <img src="assets/images/england.jpg" alt="img">
-                                        <span class="sp1">Primera Division</span>
-                                        <span class="text-secondary sp2">England</span>
-                                    </a>
-                                </div>
-                                <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                    <div href="" class="w-100 d-block d-flex">
-                                        <div class="col-md-2 col-3 text-center">
-                                            <p class="mb-0">
-                                                <span class="fw500" style="font-size:12px">2022</span>
-                                                <span class="pt-1 fw500 d-block">FT</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-10 col-9">
-                                            <p class="mb-1">
-                                                <img src="assets/images/k3.png" alt="img" width="24">
-                                                <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <img src="assets/images/k2.png" alt="img" width="24">
-                                                <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                    <div href="" class="w-100 d-block d-flex">
-                                        <div class="col-md-2 col-3 text-center">
-                                            <p class="mb-0">
-                                                <span class="fw500" style="font-size:12px">3 JAN</span>
-                                                <span class="pt-1 fw500 d-block">FT</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-10 col-9">
-                                            <p class="mb-1">
-                                                <img src="assets/images/k1.png" alt="img" width="24">
-                                                <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <img src="assets/images/k3.png" alt="img" width="24">
-                                                <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-
-
-
-
+                    </div>
                     </div>
 
                 </div>
@@ -580,75 +420,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
+                            <tr th:each="team: ${teams.data}">
+                                <td th:text="${team.ranking}">
                                     1
                                 </td>
-                                <td class="image-td">
+                                <td class="image-td"  >
                                     <a href="">
-                                        <img src="assets/images/k1.png" alt="img" width="30" />
-                                        Title
+                                        <img th:src="@{${team.expand.team[0].badgeUrl}}" alt="img" width="30" />
+                                        <span th:text="${team.teamName}"> Title  </span>
                                     </a>
                                 </td>
-                                <td class="hd">33</td>
-                                <td class="hd"> 29</td>
-                                <td class="hd">40</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    2
-                                </td>
-                                <td class="image-td">
-                                    <a href="">
-                                        <img src="assets/images/k3.png" alt="img" width="30" />
-                                        Manchester
-                                    </a>
-                                </td>
-                                <td class="hd">33</td>
-                                <td class="hd"> 59</td>
-                                <td class="hd">80</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    3
-                                </td>
-                                <td class="image-td">
-                                    <a href="">
-                                        <img src="assets/images/k2.png" alt="img" width="28" />
-                                        Heading
-                                    </a>
-                                </td>
-                                <td class="hd">23</td>
-                                <td class="hd"> 99</td>
-                                <td class="hd">10</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    4
-                                </td>
-                                <td class="image-td">
-                                    <a href="">
-                                        <img src="assets/images/k5.png" alt="img" width="28" />
-                                        Heading
-                                    </a>
-                                </td>
-                                <td class="hd">33</td>
-                                <td class="hd"> 59</td>
-                                <td class="hd">80</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    5
-                                </td>
-                                <td class="image-td">
-                                    <a href="">
-                                        <img src="assets/images/k4.png" alt="img" width="28" />
-                                        Manchester
-                                    </a>
-                                </td>
-                                <td class="hd">33</td>
-                                <td class="hd"> 59</td>
-                                <td class="hd">80</td>
+                                <td class="hd" th:text="${team.gamesPlayed}">33</td>
+                                <td class="hd" th:text="${team.goalDifference}"> 29</td>
+                                <td class="hd" th:text="${team.points}">40</td>
                             </tr>
                             </tbody>
 
