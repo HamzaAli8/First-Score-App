@@ -18,10 +18,12 @@
         <div class="col-md-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">
-                    <img src="assets/images/icon-logo.webp" alt="img" width="30" />
+                    <img src="assets/images/icon-logo.webp" alt="img" width="30"/>
                     LiveScore
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -58,7 +60,7 @@
         </div>
     </div>
 </div>
-<hr />
+<hr/>
 <div class="container">
     <div class="row">
     </div>
@@ -73,9 +75,11 @@
                             <div class="col-9">
                                 <div class="match-div">
                                     <a href="">
-                                        <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}" alt="img"/> >
+                                        <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"
+                                             alt="img"/> >
                                         <span th:text="${league.data[0].expand.league[0].name}" class="sp1">Premier League</span>
-                                        <span th:text="${league.data[0].expand.league[0].countryName}" class="text-secondary sp2">Holland</span>
+                                        <span th:text="${league.data[0].expand.league[0].countryName}"
+                                              class="text-secondary sp2">Holland</span>
                                     </a>
                                 </div>
                             </div>
@@ -89,44 +93,61 @@
                         <div class="d-flex w-100 box3 mb-2 text-center mt-2">
                             <div class="w-100 d-block d-flex text-center justify-content-between">
                                 <div class="col-md-4">
-                                    <img th:src="@{${home.expand.homeTeam[0].badgeUrl}}" alt="img" width="40" height="40">
-                                    <p class="mb-0 pt-1 text2" th:text="${fixture.data[0].homeName}">Newcastle United</p>
+                                    <img th:src="@{${home.expand.homeTeam[0].badgeUrl}}" alt="img" width="40"
+                                         height="40">
+                                    <p class="mb-0 pt-1 text2" th:text="${fixture.data[0].homeName}">Newcastle
+                                        United</p>
                                 </div>
 
                                 <div class="col-md-4" th:if="${fixture.data[0].status != 'finished'}">
-                                    <h4 class="pt-2" th:text="${#strings.substring(fixture.data[0].date,11,16)}">16:30</h4>
-                                    <p class="text-secondary mb-0" th:text="${#strings.substring(fixture.data[0].date,0,10)}">Today</p>
+                                    <h4 class="pt-2" th:text="${#strings.substring(fixture.data[0].date,11,16)}">
+                                        16:30</h4>
+                                    <p class="text-secondary mb-0"
+                                       th:text="${#strings.substring(fixture.data[0].date,0,10)}">Today</p>
                                 </div>
                                 <div class="match-score" th:if="${fixture.data[0].status == 'finished'}">
-                                    <span class="match-score-number match-score-number--leading" th:text="${fixture.data[0].homeTeamGoals}">3</span>
+                                    <span class="match-score-number match-score-number--leading"
+                                          th:text="${fixture.data[0].homeTeamGoals}">3</span>
                                     <span class="match-score-divider">:</span>
                                     <span class="match-score-number" th:text="${fixture.data[0].awayTeamGoals}">1</span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <img src="assets/images/k9.png"  th:src="@{${away.expand.awayTeam[0].badgeUrl}}" alt="img" width="40" height="40">
-                                    <p th:text="${fixture.data[0].awayName}"class="mb-0 pt-1 text2">Liverpool</p>
+                                    <img src="assets/images/k9.png" th:src="@{${away.expand.awayTeam[0].badgeUrl}}"
+                                         alt="img" width="40" height="40">
+                                    <p th:text="${fixture.data[0].awayName}" class="mb-0 pt-1 text2">Liverpool</p>
                                 </div>
                             </div>
                         </div>
 
                         <ul class="nav nav-pills mb-3 tab2 mt-4" id="pills-tab-2" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="pills-01-tab" data-toggle="pill" href="#pills-01" role="tab" aria-controls="pills-01" aria-selected="true">Info</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="pills-03-tab" data-toggle="pill" href="#pills-03" role="tab" aria-controls="pills-03" aria-selected="false">Stats</a>
+                                <a class="nav-link active" id="pills-01-tab" data-toggle="pill" href="#pills-01"
+                                   role="tab" aria-controls="pills-01" aria-selected="true">Info</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-04-tab" data-toggle="pill" href="#pills-05" role="tab" aria-controls="pills-05" aria-selected="false">Table</a>
+                                <a class="nav-link" id="pills-02-tab" data-toggle="pill" href="#pills-02" role="tab"
+                                   aria-controls="pills-02" aria-selected="false">Summary</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-03-tab" data-toggle="pill" href="#pills-03" role="tab"
+                                   aria-controls="pills-03" aria-selected="false">Stats</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-04-tab" data-toggle="pill" href="#pills-05" role="tab"
+                                   aria-controls="pills-05" aria-selected="false">Table</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-05-tab" data-toggle="pill" href="#pills-06" role="tab" aria-controls="pills-06" aria-selected="false">H2H</a>
+                                <a class="nav-link" id="pills-05-tab" data-toggle="pill" href="#pills-06" role="tab"
+                                   aria-controls="pills-06" aria-selected="false">H2H</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent-2">
-                            <div class="tab-pane fade show active" id="pills-01" role="tabpanel" aria-labelledby="pills-01-tab">
+                            <div class="tab-pane fade show active" id="pills-01" role="tabpanel"
+                                 aria-labelledby="pills-01-tab">
                                 <h4 class="info pt-3 pb-1">Match Info</h4>
 
                                 <div class="card w-100">
@@ -134,7 +155,8 @@
                                         <li class="list-group-item">
                                             <div class="match-div">
                                                 <i class="fa fa-calendar icons"></i>
-                                                <span class="sp1" th:text="${#strings.substring(fixture.data[0].date,0,10)}" >30 April 2022</span>
+                                                <span class="sp1"
+                                                      th:text="${#strings.substring(fixture.data[0].date,0,10)}">30 April 2022</span>
                                                 <span class="text-secondary sp2">Date</span>
                                             </div>
                                         </li>
@@ -142,10 +164,11 @@
                                             <div class="match-div">
                                                 <i class="fa fa-bell-o icons"></i>
                                                 <div th:if="${fixture.data[0].referees != null}">
-                                                <span class="sp1" th:text="${fixture.data[0].referees[0].refereeName}">Andre Marriner (England)</span>
+                                                    <span class="sp1"
+                                                          th:text="${fixture.data[0].referees[0].refereeName}">Andre Marriner (England)</span>
                                                 </div>
                                                 <div th:if="${fixture.data[0].referees == null}">
-                                                <span class="sp1"> Not specified </span>
+                                                    <span class="sp1"> Not specified </span>
                                                 </div>
                                                 <span class="text-secondary sp2">Referee</span>
                                             </div>
@@ -153,8 +176,9 @@
                                         <li class="list-group-item">
                                             <div class="match-div">
                                                 <i class="fa fa-home icons"></i>
-                                                    <span class="sp1" th:text="${fixture.data[0].venueName}">St James' Park</span>
-                                                    <span class="text-secondary sp2">Venue</span>
+                                                <span class="sp1"
+                                                      th:text="${fixture.data[0].venueName}">St James' Park</span>
+                                                <span class="text-secondary sp2">Venue</span>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
@@ -162,7 +186,8 @@
                                                 <i class="fa fa-user-o icons"></i>
 
                                                 <div th:if="${fixture.data[0].status == 'finished'}">
-                                                    <span class="sp1" th:text="${fixture.data[0].attendance}">27,113</span>
+                                                    <span class="sp1"
+                                                          th:text="${fixture.data[0].attendance}">27,113</span>
                                                 </div>
                                                 <div th:if="${fixture.data[0].status != 'finished'}">
                                                     <span class="sp1">TBA</span>
@@ -185,13 +210,15 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('shots_on_target')}">16</span>
+                                        <span class="d-block numbr f600"
+                                              th:text="${stats.homeTeam.get('shots_on_target')}">16</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-warning" style="width:100%"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('shots_on_target')}">7</span>
+                                        <span class="d-block numbr f600 text-right"
+                                              th:text="${stats.awayTeam.get('shots_on_target')}">7</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-secondary" style="width:70%"></div>
                                         </div>
@@ -205,13 +232,15 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('shots_off_target')}">16</span>
+                                        <span class="d-block numbr f600"
+                                              th:text="${stats.homeTeam.get('shots_off_target')}">16</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-warning" style="width:30%"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('shots_off_target')}" >7</span>
+                                        <span class="d-block numbr f600 text-right"
+                                              th:text="${stats.awayTeam.get('shots_off_target')}">7</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-secondary" style="width:50%"></div>
                                         </div>
@@ -231,7 +260,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('possession')}" >7</span>
+                                        <span class="d-block numbr f600 text-right"
+                                              th:text="${stats.awayTeam.get('possession')}">7</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-secondary" style="width:50%"></div>
                                         </div>
@@ -245,13 +275,15 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('fouls')}">16</span>
+                                        <span class="d-block numbr f600"
+                                              th:text="${stats.homeTeam.get('fouls')}">16</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-warning" style="width:30%"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('fouls')}" >7</span>
+                                        <span class="d-block numbr f600 text-right"
+                                              th:text="${stats.awayTeam.get('fouls')}">7</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-secondary" style="width:50%"></div>
                                         </div>
@@ -265,13 +297,15 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('corners')}">16</span>
+                                        <span class="d-block numbr f600"
+                                              th:text="${stats.homeTeam.get('corners')}">16</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-warning" style="width:30%"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('corners')}" >7</span>
+                                        <span class="d-block numbr f600 text-right"
+                                              th:text="${stats.awayTeam.get('corners')}">7</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-secondary" style="width:50%"></div>
                                         </div>
@@ -285,13 +319,15 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600" th:text="${stats.homeTeam.get('offsides')}">16</span>
+                                        <span class="d-block numbr f600"
+                                              th:text="${stats.homeTeam.get('offsides')}">16</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-warning" style="width:30%"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="d-block numbr f600 text-right" th:text="${stats.awayTeam.get('offsides')}" >7</span>
+                                        <span class="d-block numbr f600 text-right"
+                                              th:text="${stats.awayTeam.get('offsides')}">7</span>
                                         <div class="progress">
                                             <div class="progress-bar bg-secondary" style="width:50%"></div>
                                         </div>
@@ -299,6 +335,100 @@
                                 </div>
                             </div>
 
+                            <div class="tab-pane fade" id="pills-02" role="tabpanel" aria-labelledby="pills-02-tab">
+                                <h4 class="info pt-3 pb-1">Match Summary</h4>
+
+                                <div class="card w-100">
+                                    <ul class="list-group list-group-flush list4">
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    7'
+                                                </div>
+                                                <div class="col-8">
+                                                    <p class="mb-0">
+                                                        <span class="f600">Y. En-Nesyri</span>
+                                                        <br/>
+                                                        I. Rakitic
+
+                                                    </p>
+                                                </div>
+                                                <div class="col-2">
+                                                    2-0
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    17'
+                                                </div>
+                                                <div class="col-8">
+                                                    <p class="mb-0 f600">
+                                                        <span class="yellow"></span> J. Johnson
+
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    HT
+                                                </div>
+                                                <div class="col-10">
+                                                    <p class="mb-0 f600">
+                                                        1-0
+
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    17'
+                                                </div>
+                                                <div class="col-8">
+                                                    <p class="mb-0 f600">
+                                                        <span class="yellow"></span> P. Gomez
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    HT
+                                                </div>
+                                                <div class="col-10">
+                                                    <p class="mb-0 f600">
+                                                        1-0
+
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    17'
+                                                </div>
+                                                <div class="col-8">
+                                                    <p class="mb-0 f600">
+                                                        <span class="yellow"></span> P. Gomez
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
 
                             <div class="tab-pane fade" id="pills-05" role="tabpanel" aria-labelledby="pills-05-tab">
@@ -309,17 +439,20 @@
                                             <th class="kd">#</th>
                                             <th class="jd">Team</th>
                                             <th>
-                                                    <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Played">
+                                                    <span data-toggle="tooltip" data-placement="top" title=""
+                                                          data-original-title="Played">
                                                         P
                                                     </span>
                                             </th>
                                             <th>
-                                                    <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Goals Difference">
+                                                    <span data-toggle="tooltip" data-placement="top" title=""
+                                                          data-original-title="Goals Difference">
                                                         GD
                                                     </span>
                                             </th>
                                             <th>
-                                                    <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Points">
+                                                    <span data-toggle="tooltip" data-placement="top" title=""
+                                                          data-original-title="Points">
                                                         Pts
                                                     </span>
                                             </th>
@@ -330,9 +463,10 @@
                                             <td th:text="${team.ranking}">
                                                 1
                                             </td>
-                                            <td class="image-td"  >
+                                            <td class="image-td">
                                                 <a href="">
-                                                    <img th:src="@{${team.expand.team[0].badgeUrl}}" alt="img" width="30" />
+                                                    <img th:src="@{${team.expand.team[0].badgeUrl}}" alt="img"
+                                                         width="30"/>
                                                     <span th:text="${team.teamName}"> Title  </span>
                                                 </a>
                                             </td>
@@ -347,38 +481,45 @@
 
 
                             <div class="tab-pane fade" id="pills-06" role="tabpanel" aria-labelledby="pills-06-tab">
-                                <div class="match-div" >
+                                <div class="match-div">
                                     <a href="">
-                                        <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}" alt="img">
+                                        <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"
+                                             alt="img">
                                         <span class="sp1" th:text="${league.data[0].expand.league[0].name}">Premier League</span>
-                                        <span class="text-secondary sp2" th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
+                                        <span class="text-secondary sp2"
+                                              th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
                                     </a>
                                 </div>
-                                <div class="d-flex w-100 box1 mt-3 box1-dark" th:each="fixture: ${prevFixtures.expand.head2head}">
+                                <div class="d-flex w-100 box1 mt-3 box1-dark"
+                                     th:each="fixture: ${prevFixtures.expand.head2head}">
                                     <div href="" class="w-100 d-block d-flex">
                                         <div class="col-md-2 col-3 text-center">
                                             <p class="mb-0">
-                                                <span class="fw500" style="font-size:12px" th:text="${#strings.substring(fixture.date,0,10)}">3 JAN</span>
+                                                <span class="fw500" style="font-size:12px"
+                                                      th:text="${#strings.substring(fixture.date,0,10)}">3 JAN</span>
                                                 <span class="pt-1 fw500 d-block">FT</span>
                                             </p>
                                         </div>
                                         <div class="col-md-10 col-9">
                                             <p class="mb-1">
-                                                <img th:src="@{${home.expand.homeTeam[0].badgeUrl}}" alt="img" width="24">
+                                                <img th:src="@{${home.expand.homeTeam[0].badgeUrl}}" alt="img"
+                                                     width="24">
                                                 <span class="ml-2" th:text="${fixture.homeName}">Norvich City </span>
                                                 <span><em th:text="${fixture.homeTeamGoals}"><b>3</b></em> </span>
                                             </p>
                                             <p class="mb-0">
-                                                <img th:src="@{${away.expand.awayTeam[0].badgeUrl}}" alt="img" width="24">
-                                                <span class="ml-2" th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
-                                                <span ><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
+                                                <img th:src="@{${away.expand.awayTeam[0].badgeUrl}}" alt="img"
+                                                     width="24">
+                                                <span class="ml-2"
+                                                      th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
+                                                <span><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
                                             </p>
                                         </div>
 
                                     </div>
                                 </div>
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                 </div>
@@ -424,9 +565,9 @@
                                 <td th:text="${team.ranking}">
                                     1
                                 </td>
-                                <td class="image-td"  >
+                                <td class="image-td">
                                     <a href="">
-                                        <img th:src="@{${team.expand.team[0].badgeUrl}}" alt="img" width="30" />
+                                        <img th:src="@{${team.expand.team[0].badgeUrl}}" alt="img" width="30"/>
                                         <span th:text="${team.teamName}"> Title  </span>
                                     </a>
                                 </td>
@@ -455,7 +596,8 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
-    </script>
+
+</script>
 
 </body>
 </html>

@@ -30,15 +30,49 @@ public class MvcController {
     @Autowired
     StageService stageService;
 
+    @Autowired
+    CountryService countryService;
 
-    @GetMapping("/index/{id}")
-    public String home(Model model,@PathVariable(name = "id"
+
+    @GetMapping("/")
+    public String home(Model model){
+
+        CountryResponse Eng = countryService.getCountry(27);
+        CountryResponse Fra = countryService.getCountry(31);
+        CountryResponse Ger = countryService.getCountry(32);
+        CountryResponse Por = countryService.getCountry(67);
+        CountryResponse Spa = countryService.getCountry(80);
+        CountryResponse Sco = countryService.getCountry(74);
+        CountryResponse Ita = countryService.getCountry(45);
+        CountryResponse Bra = countryService.getCountry(13);
+        CountryResponse Arg = countryService.getCountry(5);
+        CountryResponse Usa = countryService.getCountry(89);
+
+        model.addAttribute("Eng",Eng);
+        model.addAttribute("Fra",Fra);
+        model.addAttribute("Ger",Ger);
+        model.addAttribute("Por",Por);
+        model.addAttribute("Spa",Spa);
+        model.addAttribute("Sco",Sco);
+        model.addAttribute("Ita",Ita);
+        model.addAttribute("Bra",Bra);
+        model.addAttribute("Arg",Arg);
+        model.addAttribute("Usa",Usa);
+
+
+
+
+        return "index";
+    }
+
+    @GetMapping("/standings/{id}")
+    public String standings(Model model,@PathVariable(name = "id"
     ) Integer id){
 
         StandingData standings = standingService.getStandingByStageId(id);
         model.addAttribute("teams",standings);
 
-        return "index";
+        return "standings";
     }
 
 

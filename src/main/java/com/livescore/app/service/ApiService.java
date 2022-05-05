@@ -37,6 +37,11 @@ public class ApiService {
     @Value("${team_url}")
     private String teamUrl;
 
+    @Value("${country_url}")
+    private String countryUrl;
+
+
+
 
     @Autowired
     RestTemplate restTemplate;
@@ -387,6 +392,24 @@ public class ApiService {
         ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
 
         return response.getBody();
+    }
+
+    public CountryData getCountry (Integer id){
+
+        String url = countryUrl + id;
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<CountryData> response = restTemplate.exchange(url, HttpMethod.GET, request, CountryData.class);
+
+        return response.getBody();
+
+
+
     }
 }
 
