@@ -3,6 +3,7 @@ package com.livescore.app.service;
 
 
 import com.livescore.app.model.LeagueData;
+import com.livescore.app.model.LeagueResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,11 @@ public class LeagueService {
 
     }
 
+    public LeagueResponse getNextFixturesByLeagueId(Integer id){
 
+       LeagueResponse league =  apiService.getNextFixturesByLeagueId(id).getData().get(0);
 
-
-
-
+       return league;
+    }
 
 }

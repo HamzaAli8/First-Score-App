@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class MvcController {
 
@@ -33,34 +35,22 @@ public class MvcController {
     @Autowired
     CountryService countryService;
 
+    @Autowired
+    LeagueService leagueService;
+
 
     @GetMapping("/")
     public String home(Model model){
 
-        CountryResponse Eng = countryService.getCountry(27);
-        CountryResponse Fra = countryService.getCountry(31);
-        CountryResponse Ger = countryService.getCountry(32);
-        CountryResponse Por = countryService.getCountry(67);
-        CountryResponse Spa = countryService.getCountry(80);
-        CountryResponse Sco = countryService.getCountry(74);
-        CountryResponse Ita = countryService.getCountry(45);
-        CountryResponse Bra = countryService.getCountry(13);
-        CountryResponse Arg = countryService.getCountry(5);
-        CountryResponse Usa = countryService.getCountry(89);
 
-        model.addAttribute("Eng",Eng);
-        model.addAttribute("Fra",Fra);
-        model.addAttribute("Ger",Ger);
-        model.addAttribute("Por",Por);
-        model.addAttribute("Spa",Spa);
-        model.addAttribute("Sco",Sco);
-        model.addAttribute("Ita",Ita);
-        model.addAttribute("Bra",Bra);
-        model.addAttribute("Arg",Arg);
-        model.addAttribute("Usa",Usa);
+        LeagueResponse Eng = leagueService.getNextFixturesByLeagueId(234);
+        LeagueResponse Ita = leagueService.getNextFixturesByLeagueId(318);
+        LeagueResponse Spa = leagueService.getNextFixturesByLeagueId(466);
 
 
-
+        model.addAttribute("Eng", Eng);
+        model.addAttribute("Ita", Ita);
+        model.addAttribute("Spa", Spa);
 
         return "index";
     }
@@ -70,7 +60,12 @@ public class MvcController {
     ) Integer id){
 
         StandingData standings = standingService.getStandingByStageId(id);
+        StandingResponse stand = standingService.getLeagueStandingByStageId(id);
         model.addAttribute("teams",standings);
+        model.addAttribute("stand", stand);
+
+
+
 
         return "standings";
     }

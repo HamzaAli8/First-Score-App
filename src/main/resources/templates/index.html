@@ -91,63 +91,75 @@
                 <div class="card-body">
                     <ul class="list-inline list1 mb-0">
                         <li>
-                            <a href="">
-                                <img th:src="@{${Eng.flag}}" alt="img"/>
+                            <a th:href="@{/standings/4108}">
+                                <img src="https://cdn.elenasport.io/flags/svg/27" alt="img"/>
                                 England
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <img th:src="@{${Fra.flag}}" alt="img"/>
+                            <a th:href="@{/standings/4298}">
+                                <img src="https://cdn.elenasport.io/flags/svg/31" alt="img"/>
                                 France
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <img th:src="@{${Ger.flag}}" alt="img"/>
+                            <a th:href="@{/standings/4153}">
+                                <img src="https://cdn.elenasport.io/flags/svg/32" alt="img"/>
                                 Germany
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <img th:src="@{${Por.flag}}" alt="img"/>
+                            <a th:href="@{/standings/4171}">
+                                <img src="https://cdn.elenasport.io/flags/svg/67" alt="img"/>
                                 Portugal
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <img th:src="@{${Ita.flag}}" alt="img"/>
-                                Italy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img th:src="@{${Spa.flag}}" alt="img"/>
+                            <a th:href="@{/standings/4157}">
+                                <img src="https://cdn.elenasport.io/flags/svg/80" alt="img"/>
                                 Spain
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <img th:src="@{${Sco.flag}}" alt="img"/>
+                            <a th:href="@{/standings/4184}">
+                                <img src="https://cdn.elenasport.io/flags/svg/45" alt="img"/>
+                                Italy
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/standings/4114}">
+                                <img src="https://cdn.elenasport.io/flags/svg/74" alt="img"/>
                                 Scotland
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img th:src="@{${Bra.flag}}"  alt="img"/>
+                                <img src="https://cdn.elenasport.io/flags/svg/13" alt="img"/>
                                 Brazil
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img th:src="@{${Arg.flag}}"  alt="img"/>
+                                <img src="https://cdn.elenasport.io/flags/svg/5" alt="img"/>
                                 Argentina
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img th:src="@{${Usa.flag}}"  alt="img"/>
+                                <img src="https://cdn.elenasport.io/flags/svg/89" alt="img"/>
                                 USA
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img th:src="@{/images/UEFA_ChampionsLeague.png}" alt="img" width="40" />
+                                UEFA Champions League
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img th:src="@{/images/UEFA_EuropaLeague_logo.png}" alt="img" width="40" />
+                                UEFA Europa League
                             </a>
                         </li>
                     </ul>
@@ -195,27 +207,28 @@
                 <div class="card-body p-3">
                     <div class="match-div">
                         <a href="">
-                            <img src="assets/images/holland.jpg" alt="img"/>
+                            <img src="https://cdn.elenasport.io/flags/svg/27" alt="img"/>
                             <span class="sp1">Premier League</span>
-                            <span class="text-secondary sp2">Holland</span>
+                            <span class="text-secondary sp2">England</span>
                         </a>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <div class="d-flex w-100 box1 mb-2 box1-dark">
-                                <a href="" class="w-100 d-block d-flex">
+                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Eng.expand.seasons[0].expand.nextFixtures}"
+                                 th:unless="${p.index > 3}" >
+                                <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                     <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
+                                        <span class="time" th:text="${#strings.substring(fixture.date,11,16)}">16:30</span>
                                     </div>
                                     <div class="col-md-8 col-8">
                                         <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24"/>
-                                            <span class="ml-2">Premier League</span>
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}" alt="img" width="24">
+                                            <span th:text="${fixture.homeName}"class="ml-2">Norwich</span>
                                         </p>
                                         <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"alt="img" width="24"/>
+                                            <span  th:text="${fixture.awayName}"class="ml-2">Chelsea</span>
                                         </p>
                                     </div>
                                     <div class="col-md-2 col-2 text-right">
@@ -223,61 +236,33 @@
                                     </div>
                                 </a>
                             </div>
-                            <!--  -->
-                            <div class="d-flex w-100 box1 mb-2">
-                                <a href="" class="w-100 d-block d-flex">
+                    </div>
+                    </div>
+
+                    <div class="match-div mt-3">
+                        <a href="">
+                            <img src="https://cdn.elenasport.io/flags/svg/45" alt="img"/>
+                            <span class="sp1">Serie A</span>
+                            <span class="text-secondary sp2">Italy</span>
+                        </a>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Ita.expand.seasons[0].expand.nextFixtures}"
+                                 th:unless="${p.index > 3}" >
+                                <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                     <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
+                                        <span class="time" th:text="${#strings.substring(fixture.date,11,16)}">16:30</span>
                                     </div>
+                                    "
                                     <div class="col-md-8 col-8">
                                         <p class="mb-1">
-                                            <img src="assets/images/k5.png" alt="img" width="24"/>
-                                            <span class="ml-2">Norvich City</span>
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}" alt="img" width="24">
+                                            <span th:text="${fixture.homeName}"class="ml-2">Norwich</span>
                                         </p>
                                         <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 col-2 text-right">
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex w-100 box1 box1-dark mb-2">
-                                <a href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
-                                    </div>
-                                    <div class="col-md-8 col-8">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24"/>
-                                            <span class="ml-2">Premier League</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k4.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 col-2 text-right">
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <!--  -->
-                            <div class="d-flex w-100 box1 mb-2">
-                                <a href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
-                                    </div>
-                                    <div class="col-md-8 col-8">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24"/>
-                                            <span class="ml-2">Some text</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"alt="img" width="24"/>
+                                            <span  th:text="${fixture.awayName}"class="ml-2">Chelsea</span>
                                         </p>
                                     </div>
                                     <div class="col-md-2 col-2 text-right">
@@ -290,108 +275,27 @@
 
                     <div class="match-div mt-3">
                         <a href="">
-                            <img src="assets/images/italy.jpg" alt="img"/>
-                            <span class="sp1">New League</span>
-                            <span class="text-secondary sp2">Italy</span>
+                            <img src="https://cdn.elenasport.io/flags/svg/80" alt="img"/>
+                            <span class="sp1">La Liga</span>
+                            <span class="text-secondary sp2">Spain</span>
                         </a>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <div class="d-flex w-100 box1 box1-dark mb-2">
-                                <a href="" class="w-100 d-block d-flex">
+                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Spa.expand.seasons[0].expand.nextFixtures}"
+                                 th:unless="${p.index > 3}" >
+                                <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                     <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
+                                        <span class="time" th:text="${#strings.substring(fixture.date,11,16)}">16:30</span>
                                     </div>
                                     <div class="col-md-8 col-8">
                                         <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24"/>
-                                            <span class="ml-2">Premier League</span>
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}" alt="img" width="24">
+                                            <span th:text="${fixture.homeName}"class="ml-2">Norwich</span>
                                         </p>
                                         <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 col-2 text-right">
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <!--  -->
-                            <div class="d-flex w-100 box1 mb-2">
-                                <a href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
-                                    </div>
-                                    <div class="col-md-8 col-8">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k5.png" alt="img" width="24"/>
-                                            <span class="ml-2">Norvich City <em>3</em> </span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea <em>1</em> </span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 col-2 text-right">
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex w-100 box1 box1-dark mb-2">
-                                <a href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
-                                    </div>
-                                    <div class="col-md-8 col-8">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24"/>
-                                            <span class="ml-2">Premier League</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k4.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 col-2 text-right">
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <!--  -->
-                            <div class="d-flex w-100 box1 mb-2">
-                                <a href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
-                                    </div>
-                                    <div class="col-md-8 col-8">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24"/>
-                                            <span class="ml-2">Some text</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 col-2 text-right">
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex w-100 box1 box1-dark mb-2">
-                                <a href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
-                                    </div>
-                                    <div class="col-md-8 col-8">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24"/>
-                                            <span class="ml-2">Premier League</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k4.png" alt="img" width="24"/>
-                                            <span class="ml-2">Chelsea</span>
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"alt="img" width="24"/>
+                                            <span  th:text="${fixture.awayName}"class="ml-2">Chelsea</span>
                                         </p>
                                     </div>
                                     <div class="col-md-2 col-2 text-right">

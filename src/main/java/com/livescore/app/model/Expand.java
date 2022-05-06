@@ -17,7 +17,8 @@ public class Expand {
     private List<SeasonResponse> currentSeason;
     @JsonProperty("next_fixtures")
     private List<FixturesResponse> nextFixtures;
-    @JsonProperty("season")
+    @JsonProperty("seasons")
+    private List<SeasonResponse> seasons;
     private List<SeasonResponse> season;
     @JsonProperty("h2h")
     private List<FixturesResponse> head2head;
@@ -28,6 +29,10 @@ public class Expand {
     @JsonProperty("away_team")
     private List<TeamResponse> awayTeam;
     private List<LeagueResponse> league;
+    private List<StageResponse> stage;
+
+
+
 
 
 }

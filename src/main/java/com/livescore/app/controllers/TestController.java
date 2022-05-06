@@ -52,13 +52,13 @@ public class TestController {
     ApiService apiService;
 
 
-    @GetMapping(value = "/league/{id}")
-    public LeagueData League(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
-    ) Integer id) {
-
-
-        return leagueService.getLeague(id, expand);
-    }
+//    @GetMapping(value = "/league/{id}")
+//    public LeagueData League(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
+//    ) Integer id) {
+//
+//
+//        return leagueService.getLeague(id, expand);
+//    }
 
 
     @GetMapping(value = "/stage/{id}")
@@ -173,6 +173,24 @@ public class TestController {
     ) Integer id) {
 
         return fixtureService.getHeadToHeadByFixtureId(id);
+
+
+    }
+
+    @GetMapping(value = "/league/{id}")
+    public LeagueResponse getLeagueById(@PathVariable(name = "id"
+    ) Integer id) {
+
+        return leagueService.getNextFixturesByLeagueId(id);
+
+
+    }
+
+    @GetMapping(value = "/leagueStandings/{id}")
+    public StandingResponse getStandingsById(@PathVariable(name = "id"
+    ) Integer id) {
+
+        return standingService.getLeagueStandingByStageId(id);
 
 
     }

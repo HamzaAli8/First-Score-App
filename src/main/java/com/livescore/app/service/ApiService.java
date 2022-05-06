@@ -232,6 +232,24 @@ public class ApiService {
 
     }
 
+    public StandingData getLeagueAndStandingByStageId(Integer id) {
+
+
+        String url2 = stageUrl + id + "/standing" + "?expand=stage.season.league";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+        ResponseEntity<StandingData> response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class);
+        return response.getBody();
+
+    }
+
+
+
+
     public VenueData getVenueById(Integer id, String expand) {
 
         String url = venueUrl + id;
@@ -394,9 +412,9 @@ public class ApiService {
         return response.getBody();
     }
 
-    public CountryData getCountry (Integer id){
+    public CountryData getCountries (){
 
-        String url = countryUrl + id;
+        String url = countryUrl;
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -405,6 +423,61 @@ public class ApiService {
 
 
         ResponseEntity<CountryData> response = restTemplate.exchange(url, HttpMethod.GET, request, CountryData.class);
+
+        return response.getBody();
+
+    }
+
+    public LeagueData getNextFixturesByLeagueId(Integer id){
+
+
+        String url = leagueUrl + id +  "?expand=seasons.next_fixtures";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+
+        return response.getBody();
+
+
+
+    }
+
+
+    public LeagueData getHomeNextFixturesByLeagueId(Integer id){
+
+
+        String url = leagueUrl + id +  "?expand=seasons.next_fixtures.home_team";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+
+        return response.getBody();
+
+    }
+
+
+    public LeagueData getAwayNextFixturesByLeagueId(Integer id){
+
+
+        String url = leagueUrl + id +  "?expand=seasons.next_fixtures.away_team";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
 
         return response.getBody();
 

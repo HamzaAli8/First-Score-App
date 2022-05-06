@@ -14,5 +14,6 @@ public class StageResponse {
     private Integer idSeason;
     private String name;
     private boolean hasStanding;
+    private Expand expand;
 
 }
