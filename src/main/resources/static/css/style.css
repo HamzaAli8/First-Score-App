@@ -40,8 +40,8 @@ h5 {
 }
 
 .btn-orange {
-    background: #f28300;
-    border: 1px solid #f28300;
+    background: #e31b1b;
+    border: 1px solid #e31b1b;
     color: white;
 }
 
@@ -94,7 +94,7 @@ h5 {
     }
 
 .orange {
-    color: #f28300;
+    color: #e31b1b;
 }
 
 .list4 {
@@ -131,7 +131,7 @@ h5 {
 }
 
 .bg-warning {
-    background-color: #f28300 !important;
+    background-color: #e31b1b !important;
 }
 
 .tab1 .nav-link {
@@ -156,7 +156,7 @@ h5 {
 
     .tab2 .nav-link.active {
         color: #fff !important;
-        background-color: #f28300 !important;
+        background-color: #e31b1b !important;
         /*border-radius: 26px !important;*/
     }
 
@@ -249,7 +249,7 @@ h5 {
 }
 
 .badge1 {
-    background: #f28300;
+    background: #e31b1b;
 }
 
 
@@ -361,7 +361,7 @@ h5 {
 }
 
     .orang-star:hover {
-        color: #f28300;
+        color: #e31b1b;
     }
 
 .f700 {
