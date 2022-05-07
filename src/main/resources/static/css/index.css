@@ -23,6 +23,14 @@ body {
   align-items: center;
   gap: 0.5em;
 }
+
+.comp-name{
+
+ color: #f0f7f6;
+
+
+
+}
 .comp-select {
   display: flex;
   justify-content: center;
@@ -100,6 +108,7 @@ body {
 }
 .comp-table tbody tr:hover {
   background-color: rgb(204, 204, 204);
+  cursor: pointer
 }
 .comp-table tbody tr:not(:last-child) {
   border-bottom: 0.1em solid rgb(200, 200, 200);
@@ -125,15 +134,6 @@ body {
 .comp-table-body td {
   font-weight: 500;
 }
-
-.navbar-brand {
-  width: 170px;
-  font-size: 50px;
-}
-.navbar-brand img {
-  height: 100px;
-  /* put value of image height as your need */
-  margin-right: 7px;
 
 .comp-table-body td.team {
   display: flex;

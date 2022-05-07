@@ -1,6 +1,7 @@
 package com.livescore.app.service;
 
 import com.livescore.app.model.TeamData;
+import com.livescore.app.model.TeamResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +12,8 @@ public class TeamService {
     ApiService apiService;
 
 
-    public TeamData getTeamBySeasonId(Integer id, String expand){
+    public TeamResponse getTeamBySeasonId(Integer id){
 
-        return apiService.getTeamById(id, expand);
+        return apiService.getTeamById(id).getData().get(0);
     }
 }

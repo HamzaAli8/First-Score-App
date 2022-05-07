@@ -115,5 +115,18 @@ public class MvcController {
     }
 
 
+    @GetMapping("/teams/{id}")
+    public String getTeamById(Model model, @PathVariable(name = "id"
+    ) Integer id){
+
+        TeamResponse teams = teamService.getTeamBySeasonId(id);
+        model.addAttribute("teams",teams);
+
+        return "teams";
+    }
+
+
+
+
 
 }

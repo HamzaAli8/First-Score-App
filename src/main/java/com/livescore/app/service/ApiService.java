@@ -265,7 +265,7 @@ public class ApiService {
         return response.getBody();
     }
 
-    public TeamData getTeamById(Integer id, String expand) {
+    public TeamData getTeamById(Integer id) {
 
         String url = teamUrl + id;
 
