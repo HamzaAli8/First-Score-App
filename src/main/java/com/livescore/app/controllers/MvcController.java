@@ -2,6 +2,7 @@ package com.livescore.app.controllers;
 
 
 import com.livescore.app.model.*;
+import com.livescore.app.model.mymodels.FixtureEvents;
 import com.livescore.app.model.mymodels.FixtureStats;
 import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class MvcController {
 
     @Autowired
     LeagueService leagueService;
+
+    @Autowired
+    EventService eventService;
 
 
     @GetMapping("/")
@@ -92,6 +96,9 @@ public class MvcController {
         FixturesResponse prevFixtures = fixtureService.getHeadToHeadByFixtureId(id);
 
         FixtureStats stats = statService.getStats(id, home.getIdHome(),away.getIdAway());
+
+        FixtureEvents events = eventService.getStats(id, home.getIdHome(), away.getIdAway());
+
 
 
         Integer seasonId = away.getIdSeason();

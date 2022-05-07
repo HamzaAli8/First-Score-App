@@ -119,7 +119,7 @@ public class TestController {
     ) Integer id) {
 
 
-        return eventService.getEvents(id, expand);
+        return eventService.getEvents(id);
     }
 
 

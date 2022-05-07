@@ -150,7 +150,7 @@ public class ApiService {
 
     }
 
-    public EventData getEventByFixtureId(Integer id, String expand) {
+    public EventData getEventByFixtureId(Integer id) {
 
         String url = fixtureUrl + id + "/events";
 
