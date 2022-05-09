@@ -2,17 +2,13 @@ package com.livescore.app.service;
 
 import com.livescore.app.model.EventData;
 import com.livescore.app.model.EventResponse;
-import com.livescore.app.model.StatData;
-import com.livescore.app.model.StatResponse;
 import com.livescore.app.model.mymodels.FixtureEvents;
-import com.livescore.app.model.mymodels.FixtureStats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 public class EventService {
@@ -38,27 +34,20 @@ public class EventService {
             eventList = eventData.getData();
         }
 
-        Map<Integer, String> homeTypeElapsed = eventList.stream()
+       List<EventResponse> homeTeamEvents = eventList.stream()
                 .filter(eventResponse -> eventResponse.getIdTeam().equals(homeId))
-                .collect(Collectors.toMap(EventResponse :: getElapsed, EventResponse ::getType));
+                .collect(Collectors.toList());
 
 
-        Map<Integer, String> awayTypeElapsed = eventList.stream()
+        List<EventResponse> awayTeamEvents = eventList.stream()
                 .filter(eventResponse -> eventResponse.getIdTeam().equals(awayId))
-                .collect(Collectors.toMap(EventResponse ::getElapsed, EventResponse :: getType));
-
-        Map<Integer, String> homePlayers = eventList.stream()
-                .filter(eventResponse -> eventResponse.getIdTeam().equals(homeId))
-                .collect(Collectors.toMap(EventResponse :: getElapsed, EventResponse ::getPlayer1Name));
-
-
-        Map<Integer, String> awayPlayers = eventList.stream()
-                .filter(eventResponse -> eventResponse.getIdTeam().equals(awayId))
-                .collect(Collectors.toMap(EventResponse ::getElapsed, EventResponse :: getPlayer1Name));
+                .collect(Collectors.toList());
 
 
 
-         return new FixtureEvents(homeTypeElapsed,awayTypeElapsed,homePlayers,awayPlayers);
+
+        return new FixtureEvents(homeTeamEvents,awayTeamEvents);
 
     }
+
 }

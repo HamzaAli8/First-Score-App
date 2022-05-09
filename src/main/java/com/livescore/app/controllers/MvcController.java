@@ -115,6 +115,9 @@ public class MvcController {
         model.addAttribute("stats", stats);
         model.addAttribute("teams",standings);
         model.addAttribute("prevFixtures", prevFixtures);
+        model.addAttribute("events", events);
+
+
 
 
 

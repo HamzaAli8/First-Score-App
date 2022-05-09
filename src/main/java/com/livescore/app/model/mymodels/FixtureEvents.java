@@ -1,9 +1,11 @@
 package com.livescore.app.model.mymodels;
 
+import com.livescore.app.model.EventResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -11,8 +13,6 @@ import java.util.Map;
 @NoArgsConstructor
 public class FixtureEvents {
 
-    private Map<Integer,String> homeTypeElapsed;
-    private Map<Integer, String> awayTypeElapsed;
-    private Map<Integer, String> homePlayers;
-    private Map<Integer, String> awayPlayers;
+    private List<EventResponse> homeTypeElapsed;
+    private List<EventResponse> awayTypeElapsed;
 }
