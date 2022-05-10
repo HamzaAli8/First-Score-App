@@ -355,12 +355,37 @@
                                                     <span th:text="${event.elapsed}"> 7' </span>
                                                 </div>
                                                 <div class="col-4">
-                                                     <span th:if="${event.type == 'subst'}">
+                                                      <span th:if="${event.type == 'subst'}">
                                                         <i class="fa fa-exchange" aria-hidden="true"></i>
                                                     </span>
                                                     <span th:if="${event.type == 'goal'}">
                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                                     </span>
+                                                    <span th:if="${event.type == 'y_card'}">
+                                                        <i class="fa fa-square" style='color: #f3da35'aria-hidden="true"></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'y2_card'}">
+                                                        <i class='fa fa-square' style='color: #f3da35'></i>
+                                                        <i class='fa fa-square' style='color: #f3da35'></i>
+                                                          <i class='fa fa-square' style='color: red'></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'r_card'}">
+                                                     <i class='fa fa-square' style='color: red'></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'pen_scored'}">
+                                                       <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'own_goal'}">
+                                                       <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    </span>
+
+                                                    <span th:if="${event.type == 'pen_scored'}">
+                                                      <i class="fa-solid fa-hands" style='color: #f2eee4'></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'pen_missed'}">
+                                                     <i class="fa-solid fa-xmark" ></i>
+                                                    </span>
+                                                    <i class="fa-solid fa-xmark" style='color: red'></i>
                                                 </div>
                                             </div>
                                         </li>
@@ -373,6 +398,31 @@
                                                     <span th:if="${event.type == 'goal'}">
                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                                     </span>
+                                                    <span th:if="${event.type == 'y_card'}">
+                                                        <i class="fa fa-square" style='color: #f3da35'aria-hidden="true"></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'y2_card'}">
+                                                        <i class='fa fa-square' style='color: #f3da35'></i>
+                                                        <i class='fa fa-square' style='color: #f3da35'></i>
+                                                          <i class='fa fa-square' style='color: red'></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'r_card'}">
+                                                     <i class='fa fa-square' style='color: red'></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'pen_scored'}">
+                                                       <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'own_goal'}">
+                                                       <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                    </span>
+
+                                                    <span th:if="${event.type == 'pen_scored'}">
+                                                      <i class="fa-solid fa-hands" style='color: #f2eee4'></i>
+                                                    </span>
+                                                    <span th:if="${event.type == 'pen_missed'}">
+                                                     <i class="fa-solid fa-xmark" ></i>
+                                                    </span>
+                                                    <i class="fa-solid fa-xmark" style='color: red'></i>
                                                 </div>
                                                 <div class="col-4">
                                                     <span th:text="${event.elapsed}"> 7' </span>
