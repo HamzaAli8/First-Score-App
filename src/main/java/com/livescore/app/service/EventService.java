@@ -44,6 +44,10 @@ public class EventService {
                 .collect(Collectors.toList());
 
 
+        homeTeamEvents.sort(Comparator.comparing(EventResponse::getElapsed));
+        awayTeamEvents.sort(Comparator.comparing(EventResponse::getElapsed));
+
+
 
 
         return new FixtureEvents(homeTeamEvents,awayTeamEvents);

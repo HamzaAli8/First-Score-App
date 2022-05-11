@@ -137,11 +137,15 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-04-tab" data-toggle="pill" href="#pills-05" role="tab"
+                                <a class="nav-link" id="pills-04-tab" data-toggle="pill" href="#pills-04" role="tab" aria-controls="pills-04" aria-selected="false">Line-Ups</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-05-tab" data-toggle="pill" href="#pills-05" role="tab"
                                    aria-controls="pills-05" aria-selected="false">Table</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-05-tab" data-toggle="pill" href="#pills-06" role="tab"
+                                <a class="nav-link" id="pills-06-tab" data-toggle="pill" href="#pills-06" role="tab"
                                    aria-controls="pills-06" aria-selected="false">H2H</a>
                             </li>
                         </ul>
@@ -356,7 +360,8 @@
                                                 </div>
                                                 <div class="col-4">
                                                       <span th:if="${event.type == 'subst'}">
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i>
+                                                        <i class="fa fa-arrow-circle-up color2 pr-1"></i>
+                                                        <i class="fa fa-arrow-circle-down color1 pr-1"></i>
                                                     </span>
                                                     <span th:if="${event.type == 'goal'}">
                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
@@ -393,7 +398,8 @@
                                             <div class="row"  th:each="event: ${events.awayTypeElapsed}">
                                                 <div class="col-4" >
                                                     <span th:if="${event.type == 'subst'}">
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i>
+                                                        <i class="fa fa-arrow-circle-up color2 pr-1"></i>
+                                                        <i class="fa fa-arrow-circle-down color1 pr-1"></i>
                                                     </span>
                                                     <span th:if="${event.type == 'goal'}">
                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
@@ -415,7 +421,6 @@
                                                     <span th:if="${event.type == 'own_goal'}">
                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                                     </span>
-
                                                     <span th:if="${event.type == 'pen_scored'}">
                                                       <i class="fa-solid fa-hands" style='color: #f2eee4'></i>
                                                     </span>
@@ -439,7 +444,251 @@
                                                 </div>
                                             </div>
                                         </li>
+                                    </ul>
+                                </div>
+                            </div>
 
+
+                            <div class="tab-pane fade" id="pills-04" role="tabpanel" aria-labelledby="pills-04-tab">
+                                <h4 class="info pt-4 pb-2">Starting Line-Up</h4>
+                                <div class="card w-100 mt-1">
+
+                                    <aside class="a-📋 a-🤼-xl bg-white ph3 pt3 pt5-xl z-1 flex flex-wrap content-start"
+                                           id="js-line-ups"
+                                           aria-labelledby="tab-line-ups" role="tabpanel">
+                                        <h2 id="lx-football-team-lineups" class="mt0 fw4 f4 dn db-xl">Line-ups</h2>
+                                        <div class="flex-auto mr3">
+                                            <h3 class="mt0 mb3 f4">Man Utd</h3>
+                                            <ul class="list pl0">
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">1</b>
+                                                    <abbr title="David de Gea">de Gea</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">25</b>
+                                                    <abbr title="A Valencia">A Valencia</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">3</b>
+                                                    <abbr title="Eric Bailly">Bailly</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">12</b>
+                                                    <abbr title="Chris Smalling">Smalling</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">5</b>
+                                                    <abbr title="Marcos Rojo">Rojo</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">21</b>
+                                                    <abbr title="Ander Herrera">Herrera</abbr>
+                                                    <span class="clip">Booked at 24mins</span>
+                                                    <svg width="1em" height="1em" class="dib yellow ml2 f5 rot"><use xlink:href="#card"/></svg>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">6</b><abbr title="Paul Pogba">Pogba</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">8</b>
+                                                    <abbr title="Juan Mata">Mata</abbr>
+                                                    <span class="clip">Substituted for</span>
+                                                    <svg width="1em" height="1em" class="dib mh2 f5"><use xlink:href="#substitute"/></svg>
+                                                    <abbr title="Michael Carrick" class="mr1">Carrick</abbr>
+                                                    <span class="clip">at</span>45'<span class="clip">minutes</span>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">14</b>
+                                                    <abbr title="Jesse Lingard">Lingard</abbr>
+                                                    <span class="clip">Booked at 41mins</span>
+                                                    <svg width="1em" height="1em" class="dib yellow mh2 f5 rot"><use xlink:href="#card"/></svg>
+                                                    <span class="clip">Substituted for</span>
+                                                    <svg width="1em" height="1em" class="dib mr1 f5"><use xlink:href="#substitute"/></svg>
+                                                    <abbr title="Marcus Rashford" class="mr1">Rashford</abbr>
+                                                    <span class="clip">at</span>77'<span class="clip">minutes</span>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">11</b>
+                                                    <abbr title="Anthony Martial">Martial</abbr>
+                                                    <span class="clip">Substituted for</span>
+                                                    <svg width="1em" height="1em" class="dib mh2 f5"><use xlink:href="#substitute"/></svg>
+                                                    <abbr title="Marouane Fellaini" class="mr1">Fellaini</abbr>
+                                                    <span class="clip">at</span>90'<span class="clip">minutes</span>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">9</b>
+                                                    <abbr title="Zlatan Ibrahimovic">Ibrahimovic</abbr>
+                                                </li>
+                                            </ul>
+                                            <h4 class="fw4 f4 mb3">Substitutes</h4>
+                                            <ul class="list pl0 mb4">
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">10</b>
+                                                    <abbr title="Wayne Rooney">Rooney</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">16</b>
+                                                    <abbr title="Michael Carrick">Carrick</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">17</b>
+                                                    <abbr title="Daley Blind">Blind</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">18</b>
+                                                    <abbr title="Ashley Young">Young</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">19</b>
+                                                    <abbr title="Marcus Rashford">Rashford</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">20</b>
+                                                    <abbr title="Sergio Romero">Romero</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">27</b>
+                                                    <abbr title="Marouane Fellaini">Fellaini</abbr>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="flex-auto mb5">
+                                            <h3 class="mt0 mb3 f4">Southampton</h3>
+                                            <ul class="list pl0">
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">1</b>
+                                                    <abbr title="Fraser Forster">Forster</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">2</b>
+                                                    <abbr title="Cédric Soares">Soares</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">24</b>
+                                                    <abbr title="Jack Stephens">Stephens</abbr>
+                                                    <span class="clip">Booked at 40mins</span>
+                                                    <svg width="1em" height="1em" class="dib yellow ml2 f5 rot"><use xlink:href="#card"/></svg>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">3</b>
+                                                    <abbr title="Maya Yoshida">Yoshida</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">21</b>
+                                                    <abbr title="Ryan Bertrand">Bertrand</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">16</b>
+                                                    <abbr title="James Ward-Prowse">Ward-Prowse</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">14</b>
+                                                    <abbr title="Oriol Romeu">Romeu</abbr>
+                                                    <span class="clip">Booked at 18mins</span>
+                                                    <svg width="1em" height="1em" class="dib yellow ml2 f5 rot"><use xlink:href="#card"/></svg>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">8</b>
+                                                    <abbr title="Steven Davis">Davis</abbr>
+                                                    <span class="clip">Substituted for</span>
+                                                    <svg width="1em" height="1em" class="dib mh2 f5"><use xlink:href="#substitute"/></svg>
+                                                    <abbr title="Jay Rodriguez" class="mr1">Rodriguez</abbr>
+                                                    <span class="clip">at</span>90'<span class="clip">minutes</span>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">22</b>
+                                                    <abbr title="Nathan Redmond">Redmond</abbr>
+                                                    <span class="clip">Booked at 56mins</span>
+                                                    <svg width="1em" height="1em" class="dib yellow ml2 f5 rot"><use xlink:href="#card"/></svg>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">11</b>
+                                                    <abbr title="Dusan Tadic">Tadic</abbr>
+                                                    <span class="clip">Substituted for</span>
+                                                    <svg width="1em" height="1em" class="dib mh2 f5"><use xlink:href="#substitute"/></svg>
+                                                    <abbr title="Sofiane Boufal" class="mr1">Boufal</abbr>
+                                                    <span class="clip">at</span>77'<span class="clip">minutes</span>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">20</b>
+                                                    <abbr title="Manolo Gabbiadini">Gabbiadini</abbr>
+                                                    <span class="clip">Substituted for</span>
+                                                    <svg width="1em" height="1em" class="dib mh2 f5"><use xlink:href="#substitute"/></svg>
+                                                    <abbr title="Shane Long" class="mr1">Long</abbr>
+                                                    <span class="clip">at</span>83'<span class="clip">minutes</span>
+                                                </li>
+                                            </ul>
+                                            <h4 class="fw4 f4 mb3">Substitutes</h4>
+                                            <ul class="list pl0 mb0">
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">7</b>
+                                                    <abbr title="Shane Long">Long</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">9</b>
+                                                    <abbr title="Jay Rodriguez">Rodriguez</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">12</b>
+                                                    <abbr title="Martín Cáceres">Cáceres</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">19</b>
+                                                    <abbr title="Sofiane Boufal">Boufal</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">23</b>
+                                                    <abbr title="Pierre-Emile Højbjerg">Højbjerg</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">38</b>
+                                                    <abbr title="Sam McQueen">McQueen</abbr>
+                                                </li>
+                                                <li class="pa2 bb b--moon-gray flex items-center">
+                                                    <b class="w2 dib">40</b>
+                                                    <abbr title="Mouez Hassen">Hassen</abbr>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    <ul class="list-group list-group-flush list5">
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-6 text-center">
+                                                    <span class="f600"> Víctor Chust</span>
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <span class="f600">Juan Cala</span>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <h4 class="info pt-4 pb-2 pt-2">SUBSTITUTE PLAYERS</h4>
+                                <div class="card w-100 mt-1">
+                                    <ul class="list-group list-group-flush list5">
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-6 text-center">
+                                                    <span class="f600"> Víctor Chust</span>
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <span class="f600">Juan Cala</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-6 text-center">
+                                                    <span class="f600"> Marko Dmitrovic</span>
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <span class="f600">Juan Cala</span>
+                                                </div>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -492,7 +741,6 @@
                                     </table>
                                 </div>
                             </div>
-
 
                             <div class="tab-pane fade" id="pills-06" role="tabpanel" aria-labelledby="pills-06-tab">
                                 <div class="match-div">
@@ -615,22 +863,3 @@
 
 </body>
 </html>
-
-
-<li class="list-group-item">
-    <div class="row">
-        <div class="col-4">
-            <p class="mb-0">
-                <span class="f600">Y. En-Nesyri</span>
-                <br />
-                <span> Sevilla </span>
-            </p>
-        </div>
-        <div class="col-4">
-            7'
-        </div>
-        <div class="col-4">
-            goal
-        </div>
-    </div>
-</li>
