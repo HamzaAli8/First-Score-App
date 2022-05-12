@@ -12,5 +12,6 @@ import java.util.List;
 public class LineUpData {
 
     private List<LineUpResponse> data;
+    private Pagination pagination;
 
 }

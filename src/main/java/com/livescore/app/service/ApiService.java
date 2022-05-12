@@ -186,7 +186,9 @@ public class ApiService {
 
     public LineUpData getLineUpByFixtureId(Integer id) {
 
-        String url = fixtureUrl + id + "/lineups";
+        int page = 1;
+
+        String url = fixtureUrl + id + "/lineups?page=" + page;
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -196,7 +198,15 @@ public class ApiService {
 
         ResponseEntity<LineUpData> response = restTemplate.exchange(url, HttpMethod.GET, request, LineUpData.class);
 
+        while (response.getBody().getPagination().getHasNextPage()){
+
+            page = page + 1;
+        }
+
         return response.getBody();
+
+
+
 
     }
 

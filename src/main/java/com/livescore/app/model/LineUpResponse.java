@@ -17,10 +17,10 @@ public class LineUpResponse {
     private Integer idTeam;
     private String playerName;
     private Integer row;
-    private Integer col;
+    private String col;
     private String position;
     private String shirtNumber;
     @JsonProperty("isStartingXI")
     private boolean StartingXI;
-    private Pagination pagination;
+
 }
