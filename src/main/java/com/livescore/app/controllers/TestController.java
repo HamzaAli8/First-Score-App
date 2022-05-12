@@ -128,7 +128,7 @@ public class TestController {
     ) Integer id) {
 
 
-        return lineUpService.getLineUpByFixtureId(id, expand);
+        return lineUpService.getLineUpByFixtureId(id);
     }
 
     @GetMapping(value = "/venue/{id}")

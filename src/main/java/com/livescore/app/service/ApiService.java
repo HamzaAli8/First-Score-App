@@ -184,7 +184,7 @@ public class ApiService {
 //    }
 
 
-    public LineUpData getLineUpByFixtureId(Integer id, String expand) {
+    public LineUpData getLineUpByFixtureId(Integer id) {
 
         String url = fixtureUrl + id + "/lineups";
 

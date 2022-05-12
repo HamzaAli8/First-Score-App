@@ -22,4 +22,5 @@ public class LineUpResponse {
     private String shirtNumber;
     @JsonProperty("isStartingXI")
     private boolean StartingXI;
+    private Pagination pagination;
 }

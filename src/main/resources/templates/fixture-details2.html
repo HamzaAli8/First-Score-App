@@ -473,44 +473,12 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
+                                                    <b>11</b>
+                                                    <abbr>Duscan Tadic</abbr>
                                                 </div>
                                                 <div class="col-6 text-center">
-                                                    <span class="f600">Juan Cala</span>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Javier Diaz</span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Juan Cala</span>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Juan Cala</span>
+                                                    <b>3</b>
+                                                    <abbr>Bailly</abbr>
                                                 </div>
                                             </div>
                                         </li>
@@ -642,7 +610,7 @@
                                     </a>
                                 </div>
                                 <div class="d-flex w-100 box1 mt-3 box1-dark"
-                                     th:each="fixture: ${prevFixtures.expand.head2head}">
+                                     th:each="fixture,p: ${prevFixtures.expand.head2head}"  th:unless="${p.index < 3}" >
                                     <div href="" class="w-100 d-block d-flex">
                                         <div class="col-md-2 col-3 text-center">
                                             <p class="mb-0">
@@ -653,14 +621,12 @@
                                         </div>
                                         <div class="col-md-10 col-9">
                                             <p class="mb-1">
-                                                <img th:src="@{${home.expand.homeTeam[0].badgeUrl}}" alt="img"
-                                                     width="24">
+                                                <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}" alt="img" width="24">
                                                 <span class="ml-2" th:text="${fixture.homeName}">Norvich City </span>
                                                 <span><em th:text="${fixture.homeTeamGoals}"><b>3</b></em> </span>
                                             </p>
                                             <p class="mb-0">
-                                                <img th:src="@{${away.expand.awayTeam[0].badgeUrl}}" alt="img"
-                                                     width="24">
+                                                <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"alt="img" width="24"/>
                                                 <span class="ml-2"
                                                       th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
                                                 <span><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
