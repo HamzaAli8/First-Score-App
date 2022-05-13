@@ -1,8 +1,6 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.LineUpData;
-import com.livescore.app.model.LineUpResponse;
-import lombok.*;
+import com.livescore.app.elenamodel.LineUpData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

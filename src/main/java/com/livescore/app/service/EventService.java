@@ -1,14 +1,13 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.EventData;
-import com.livescore.app.model.EventResponse;
-import com.livescore.app.model.mymodels.FixtureEvents;
+import com.livescore.app.elenamodel.EventData;
+import com.livescore.app.elenamodel.EventResponse;
+import com.livescore.app.elenamodel.mymodels.FixtureEvents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.Map;
 
 @Service
 public class EventService {

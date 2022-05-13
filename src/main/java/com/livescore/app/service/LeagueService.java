@@ -2,8 +2,8 @@ package com.livescore.app.service;
 
 
 
-import com.livescore.app.model.LeagueData;
-import com.livescore.app.model.LeagueResponse;
+import com.livescore.app.elenamodel.LeagueData;
+import com.livescore.app.elenamodel.LeagueResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

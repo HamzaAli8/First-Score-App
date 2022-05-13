@@ -1,6 +1,6 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.VenueData;
+import com.livescore.app.elenamodel.VenueData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

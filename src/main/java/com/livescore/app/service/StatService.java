@@ -1,8 +1,8 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.mymodels.FixtureStats;
-import com.livescore.app.model.StatData;
-import com.livescore.app.model.StatResponse;
+import com.livescore.app.elenamodel.mymodels.FixtureStats;
+import com.livescore.app.elenamodel.StatData;
+import com.livescore.app.elenamodel.StatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

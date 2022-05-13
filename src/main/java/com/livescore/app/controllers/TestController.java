@@ -1,7 +1,8 @@
 package com.livescore.app.controllers;
 
 
-import com.livescore.app.model.*;
+import com.livescore.app.elenamodel.*;
+import com.livescore.app.newsmodel.NewsResponses;
 import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 
 @RestController
@@ -193,6 +193,13 @@ public class TestController {
         return standingService.getLeagueStandingByStageId(id);
 
 
+    }
+
+    @GetMapping(value="/news")
+    public NewsResponses getNewsArticles(){
+
+
+        return apiService.getNewsArticles();
     }
 
 }

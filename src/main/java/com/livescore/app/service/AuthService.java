@@ -1,6 +1,6 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.Token;
+import com.livescore.app.elenamodel.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

@@ -1,11 +1,10 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.CountryResponse;
+import com.livescore.app.elenamodel.CountryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CountryService {

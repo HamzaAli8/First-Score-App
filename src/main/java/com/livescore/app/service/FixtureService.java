@@ -1,11 +1,9 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.FixtureData;
-import com.livescore.app.model.FixturesResponse;
+import com.livescore.app.elenamodel.FixtureData;
+import com.livescore.app.elenamodel.FixturesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 
 @Service
 public class FixtureService {

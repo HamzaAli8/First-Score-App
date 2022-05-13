@@ -1,6 +1,7 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.*;
+import com.livescore.app.elenamodel.*;
+import com.livescore.app.newsmodel.NewsResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -39,6 +40,13 @@ public class ApiService {
 
     @Value("${country_url}")
     private String countryUrl;
+
+    @Value("${news_api_key}")
+    private String newsApiKey;
+
+
+
+
 
 
 
@@ -491,8 +499,26 @@ public class ApiService {
 
         return response.getBody();
 
+    }
+
+    public NewsResponses getNewsArticles(){
+
+        String url = "https://api.newscatcherapi.com/v2/search?q=premierleague&lang=en";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("x_api_key", newsApiKey);
+        HttpEntity<String> request = new HttpEntity<>(headers);
+
+
+
+        ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
+
+        return response.getBody();
 
 
     }
+
+
 }
 

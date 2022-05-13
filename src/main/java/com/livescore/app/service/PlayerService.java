@@ -1,7 +1,7 @@
 package com.livescore.app.service;
 
-import com.livescore.app.model.PlayerData;
-import com.livescore.app.model.TopScorerData;
+import com.livescore.app.elenamodel.PlayerData;
+import com.livescore.app.elenamodel.TopScorerData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
