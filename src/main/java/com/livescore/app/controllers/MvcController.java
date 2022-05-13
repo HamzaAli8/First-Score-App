@@ -4,6 +4,7 @@ package com.livescore.app.controllers;
 import com.livescore.app.elenamodel.*;
 import com.livescore.app.elenamodel.mymodels.FixtureEvents;
 import com.livescore.app.elenamodel.mymodels.FixtureStats;
+import com.livescore.app.newsmodel.NewsResponses;
 import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,6 +41,9 @@ public class MvcController {
     @Autowired
     EventService eventService;
 
+    @Autowired
+    NewsService newsService;
+
 
     @GetMapping("/")
     public String home(Model model){
@@ -49,10 +53,14 @@ public class MvcController {
         LeagueResponse Ita = leagueService.getNextFixturesByLeagueId(318);
         LeagueResponse Spa = leagueService.getNextFixturesByLeagueId(466);
 
+        NewsResponses news = newsService.getNewsArticles();
+
+
 
         model.addAttribute("Eng", Eng);
         model.addAttribute("Ita", Ita);
         model.addAttribute("Spa", Spa);
+        model.addAttribute("news", news);
 
         return "index";
     }
