@@ -503,7 +503,16 @@ public class ApiService {
 
     public NewsResponses getNewsArticles(){
 
-        String url = "https://api.newscatcherapi.com/v2/search?q=premierleague&lang=en";
+
+        Date date1 = new Date();
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNow = sdf.format(date1);
+
+        String url = "https://api.newscatcherapi.com/v2/search?q=premierleague&lang=en&countries=US,GB&topic=sport";
+
+
 
 
         HttpHeaders headers = new HttpHeaders();
