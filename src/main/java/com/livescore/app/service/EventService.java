@@ -15,7 +15,7 @@ public class EventService {
     @Autowired
     ApiService apiService;
 
-    public EventData getEvents(Integer id){
+    public EventData getEvents(Integer id) {
 
         return apiService.getEventByFixtureId(id);
     }
@@ -33,10 +33,9 @@ public class EventService {
             eventList = eventData.getData();
         }
 
-       List<EventResponse> homeTeamEvents = eventList.stream()
+        List<EventResponse> homeTeamEvents = eventList.stream()
                 .filter(eventResponse -> eventResponse.getIdTeam().equals(homeId))
                 .collect(Collectors.toList());
-
 
         List<EventResponse> awayTeamEvents = eventList.stream()
                 .filter(eventResponse -> eventResponse.getIdTeam().equals(awayId))
@@ -47,9 +46,7 @@ public class EventService {
         awayTeamEvents.sort(Comparator.comparing(EventResponse::getElapsed));
 
 
-
-
-        return new FixtureEvents(homeTeamEvents,awayTeamEvents);
+        return new FixtureEvents(homeTeamEvents, awayTeamEvents);
 
     }
 

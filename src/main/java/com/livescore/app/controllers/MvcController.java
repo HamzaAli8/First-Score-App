@@ -3,6 +3,7 @@ package com.livescore.app.controllers;
 
 import com.livescore.app.elenamodel.*;
 import com.livescore.app.elenamodel.mymodels.FixtureEvents;
+import com.livescore.app.elenamodel.mymodels.FixtureLineup;
 import com.livescore.app.elenamodel.mymodels.FixtureStats;
 import com.livescore.app.newsmodel.NewsResponses;
 import com.livescore.app.service.*;
@@ -13,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class MvcController {
@@ -43,6 +46,9 @@ public class MvcController {
 
     @Autowired
     NewsService newsService;
+
+    @Autowired
+    LineUpService lineUpService;
 
 
     @GetMapping("/")
@@ -105,12 +111,16 @@ public class MvcController {
 
         FixtureEvents events = eventService.getStats(id, home.getIdHome(), away.getIdAway());
 
+        FixtureLineup lineups = lineUpService.getLineUps(id, home.getIdHome(), away.getIdAway());
+
 
 
         Integer seasonId = away.getIdSeason();
         StageResponse stage = stageService.getStageBySeasonId(seasonId);
         Integer standingId = stage.getId();
         StandingData standings = standingService.getStandingByStageId(standingId);
+
+
 
 
 
@@ -122,6 +132,7 @@ public class MvcController {
         model.addAttribute("teams",standings);
         model.addAttribute("prevFixtures", prevFixtures);
         model.addAttribute("events", events);
+        model.addAttribute("lineups", lineups);
 
 
 
