@@ -11,9 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ApiService {
 
@@ -43,12 +41,6 @@ public class ApiService {
 
     @Value("${news_api_key}")
     private String newsApiKey;
-
-
-
-
-
-
 
 
     @Autowired
@@ -192,29 +184,34 @@ public class ApiService {
 //    }
 
 
-    public LineUpData getLineUpByFixtureId(Integer id) {
+    public List<LineUpResponse> getLineUpByFixtureId(Integer id) {
 
         int page = 1;
 
-        String url = fixtureUrl + id + "/lineups?page=" + page;
+        boolean hasNextPage = false;
+
+        List<LineUpResponse> lineUps = new ArrayList<>();
 
 
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        do {
 
+            String url = fixtureUrl + id + "/lineups?page=" + page;
 
-        ResponseEntity<LineUpData> response = restTemplate.exchange(url, HttpMethod.GET, request, LineUpData.class);
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<String> request = new HttpEntity<>(headers);
+            headers.setBearerAuth(token);
 
-        while (response.getBody().getPagination().getHasNextPage()){
-
+            ResponseEntity<LineUpData> response = restTemplate.exchange(url, HttpMethod.GET, request, LineUpData.class);
+            if(response.getBody() != null){
+                lineUps.addAll(response.getBody().getData());
+                hasNextPage = response.getBody().getPagination().getHasNextPage();
+            }
             page = page + 1;
-        }
 
-        return response.getBody();
-
+        } while (hasNextPage);
 
 
+        return lineUps;
 
     }
 
@@ -264,8 +261,6 @@ public class ApiService {
         return response.getBody();
 
     }
-
-
 
 
     public VenueData getVenueById(Integer id, String expand) {
@@ -351,7 +346,7 @@ public class ApiService {
 
     public FixtureData getFixtureHomeTeamById(Integer id) {
 
-        String url = fixtureUrl + id +  "?expand=home_team";
+        String url = fixtureUrl + id + "?expand=home_team";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -367,7 +362,7 @@ public class ApiService {
 
     public FixtureData getFixtureAwayTeamById(Integer id) {
 
-        String url = fixtureUrl + id +  "?expand=away_team";
+        String url = fixtureUrl + id + "?expand=away_team";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -384,7 +379,7 @@ public class ApiService {
 
     public FixtureData getFixtureLeagueById(Integer id) {
 
-        String url = fixtureUrl + id +  "?expand=league.country";
+        String url = fixtureUrl + id + "?expand=league.country";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -398,10 +393,10 @@ public class ApiService {
     }
 
 
-    public StatData getStatsByFixtureId(Integer id){
+    public StatData getStatsByFixtureId(Integer id) {
 
 
-        String url = fixtureUrl + id  + "/stats";
+        String url = fixtureUrl + id + "/stats";
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
@@ -417,7 +412,7 @@ public class ApiService {
 
     public FixtureData getFixtureHeadToHead(Integer id) {
 
-        String url = fixtureUrl + id +  "?expand=h2h";
+        String url = fixtureUrl + id + "?expand=h2h";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -430,7 +425,7 @@ public class ApiService {
         return response.getBody();
     }
 
-    public CountryData getCountries (){
+    public CountryData getCountries() {
 
         String url = countryUrl;
 
@@ -446,30 +441,10 @@ public class ApiService {
 
     }
 
-    public LeagueData getNextFixturesByLeagueId(Integer id){
+    public LeagueData getNextFixturesByLeagueId(Integer id) {
 
 
-        String url = leagueUrl + id +  "?expand=seasons.next_fixtures";
-
-
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
-
-
-        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
-
-        return response.getBody();
-
-
-
-    }
-
-
-    public LeagueData getHomeNextFixturesByLeagueId(Integer id){
-
-
-        String url = leagueUrl + id +  "?expand=seasons.next_fixtures.home_team";
+        String url = leagueUrl + id + "?expand=seasons.next_fixtures";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -481,13 +456,14 @@ public class ApiService {
 
         return response.getBody();
 
+
     }
 
 
-    public LeagueData getAwayNextFixturesByLeagueId(Integer id){
+    public LeagueData getHomeNextFixturesByLeagueId(Integer id) {
 
 
-        String url = leagueUrl + id +  "?expand=seasons.next_fixtures.away_team";
+        String url = leagueUrl + id + "?expand=seasons.next_fixtures.home_team";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -501,7 +477,25 @@ public class ApiService {
 
     }
 
-    public NewsResponses getNewsArticles(){
+
+    public LeagueData getAwayNextFixturesByLeagueId(Integer id) {
+
+
+        String url = leagueUrl + id + "?expand=seasons.next_fixtures.away_team";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        headers.setBearerAuth(token);
+
+
+        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+
+        return response.getBody();
+
+    }
+
+    public NewsResponses getNewsArticles() {
 
 
         Date date1 = new Date();
@@ -513,12 +507,9 @@ public class ApiService {
         String url = "https://api.newscatcherapi.com/v2/search?q=premierleague&lang=en&countries=US,GB&topic=sport";
 
 
-
-
         HttpHeaders headers = new HttpHeaders();
         headers.add("x_api_key", newsApiKey);
         HttpEntity<String> request = new HttpEntity<>(headers);
-
 
 
         ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);

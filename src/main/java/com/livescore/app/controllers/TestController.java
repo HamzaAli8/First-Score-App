@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 
 @RestController
@@ -124,7 +125,7 @@ public class TestController {
 
 
     @GetMapping(value = "/lineup/{id}")
-    public LineUpData getLineups(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public List<LineUpResponse> getLineups(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
