@@ -54,6 +54,10 @@ public class LineUpService {
                 .filter(lineUpResponse -> !lineUpResponse.isStartingXI())
                 .collect(Collectors.toList());
 
+        List<LineUpResponse> homeStartingLineUp2 = awayStartingLineUp.stream().distinct().collect(Collectors.toList());
+
+
+
 
         return new FixtureLineup(homeStartingLineUp,awayStartingLineUp,homeSubs,awaySubs);
 
