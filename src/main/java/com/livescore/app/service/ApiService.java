@@ -504,7 +504,7 @@ public class ApiService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dateNow = sdf.format(date1);
 
-        String url = "https://api.newscatcherapi.com/v2/search?q=premierleague&lang=en&countries=US,GB&topic=sport";
+        String url = "https://api.newscatcherapi.com/v2/search?q='premierleague'&lang=en&countries=GB&topic=sport";
 
 
         HttpHeaders headers = new HttpHeaders();

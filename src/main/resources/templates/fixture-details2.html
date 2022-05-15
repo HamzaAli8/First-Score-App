@@ -422,6 +422,7 @@
                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                                     </span>
                                                     <span th:if="${event.type == 'own_goal'}">
+                                                       <b>(O.G)</b>
                                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                                     </span>
                                                     <span th:if="${event.type == 'pen_scored'}">
@@ -461,24 +462,24 @@
                                             <div class="row">
 
                                                 <div class="col-6 text-center">
-                                                    <H4>SEVILLA</H4>
+                                                    <H4 th:text="${home.expand.homeTeam[0].name}">SEVILLA</H4>
                                                 </div>
 
                                                 <div class="col-6 text-center">
-                                                    <H4>MAN UTD</H4>
+                                                    <H4 th:text="${away.expand.awayTeam[0].name}">MAN UTD</H4>
                                                 </div>
                                             </div>
                                         </li>
 
                                         <li class="list-group-item">
                                             <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <b>11</b>
-                                                    <abbr>Duscan Tadic</abbr>
+                                                <div class="col-12 text-left" th:each= "home: ${lineups.startingHomeLineUp}">
+                                                    <b th:text="${home.shirtNumber}">11</b>
+                                                    <abbr th:text="${home.playerName}">Duscan Tadic</abbr>
                                                 </div>
-                                                <div class="col-6 text-center">
-                                                    <b>3</b>
-                                                    <abbr>Bailly</abbr>
+                                                <div class="col-12 text-right" th:each= "away: ${lineups.startingAwayLineUp}">
+                                                    <b th:text="${away.shirtNumber}">3</b>
+                                                    <abbr th:text="${away.playerName}">Bailly</abbr>
                                                 </div>
                                             </div>
                                         </li>
@@ -488,63 +489,17 @@
                                 <h4 class="info pt-4 pb-2 pt-2">SUBSTITUTE PLAYERS</h4>
                                 <div class="card w-100 mt-1">
                                     <ul class="list-group list-group-flush list5">
-
                                         <li class="list-group-item">
                                             <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Víctor Chust</span>
+                                                <div class="col-12 text-left float-start" th:each= "home: ${lineups.homeSubs}">
+                                                    <b th:text="${home.shirtNumber}">11</b>
+                                                    <abbr th:text="${home.playerName}">Duscan Tadic</abbr>
                                                 </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Juan Cala</span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Juan Cala</span>
+                                                <div class="col-12 text-right float-end"  th:each= "away: ${lineups.awaySubs}">
+                                                    <b th:text="${away.shirtNumber}">3</b>
+                                                    <abbr th:text="${away.playerName}">Bailly</abbr>
                                                 </div>
 
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Javier Diaz</span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Juan Cala</span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6 text-center">
-                                                    <span class="f600"> Marko Dmitrovic</span>
-                                                </div>
-                                                <div class="col-6 text-center">
-                                                    <span class="f600">Juan Cala</span>
-                                                </div>
                                             </div>
                                         </li>
                                     </ul>
