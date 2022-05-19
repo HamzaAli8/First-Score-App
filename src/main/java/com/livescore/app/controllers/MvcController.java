@@ -71,6 +71,25 @@ public class MvcController {
         return "index";
     }
 
+    @GetMapping("/team")
+    public String team(Model model){
+
+        LeagueResponse Eng = leagueService.getNextFixturesByLeagueId(234);
+        LeagueResponse Ita = leagueService.getNextFixturesByLeagueId(318);
+        LeagueResponse Spa = leagueService.getNextFixturesByLeagueId(466);
+
+        NewsResponses news = newsService.getNewsArticles();
+
+
+
+        model.addAttribute("Eng", Eng);
+        model.addAttribute("Ita", Ita);
+        model.addAttribute("Spa", Spa);
+        model.addAttribute("news", news);
+
+        return "team";
+    }
+
     @GetMapping("/standings/{id}")
     public String standings(Model model,@PathVariable(name = "id"
     ) Integer id){
@@ -149,7 +168,7 @@ public class MvcController {
         TeamResponse teams = teamService.getTeamBySeasonId(id);
         model.addAttribute("teams",teams);
 
-        return "teams";
+        return "team";
     }
 
 
