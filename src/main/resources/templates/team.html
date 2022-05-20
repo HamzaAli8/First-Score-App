@@ -221,7 +221,7 @@
                     </ul>
                     <div class="tab-content" id="pills-tabContent-2">
                         <div class="tab-pane fade show active" id="pills-01" role="tabpanel" aria-labelledby="pills-01-tab">
-                            <div class="d-flex w-100 box1 mb-2">
+                            <div class="d-flex w-100 box1 mb-2" th:each="fixture:${fixtures}">
                                 <a href="" class="w-100 d-block d-flex">
                                     <div class="col-md-2 col-2">
                                         <span class="time">16:30</span>
@@ -229,7 +229,7 @@
                                     <div class="col-md-8 col-8">
                                         <p class="mb-1">
                                             <img src="assets/images/k5.png" alt="img" width="24" />
-                                            <span class="ml-2">Norvich City</span>
+                                            <span class="ml-2" th:text="${fixture.homeName}">Norvich City</span>
                                         </p>
                                         <p class="mb-0">
                                             <img src="assets/images/k2.png" alt="img" width="24" />
@@ -875,21 +875,21 @@
         </div>
 
 
-        <div class="col-md-3 div3 mt-md-0 mt-4">
+<!--        <div class="col-md-3 div3 mt-md-0 mt-4">-->
 
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0">Featured News</h5>
-                </div>
-                <div class="card-body p-3" th:each="article,p: ${news.articles}" th:unless="${p.index > 6}">
-                    <a th:href="@{${article.link}}" class="bg-link mb-2">
-                        <div class="bg" th:style="'background-image:url(' + ${article.media}+ ')'" >
-                            <h4 class="text-white pt-4" th:text="${article.title}">Lamps hoping to give old club the Blues</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <h5 class="mb-0">Featured News</h5>-->
+<!--                </div>-->
+<!--                <div class="card-body p-3" th:each="article,p: ${news.articles}" th:unless="${p.index > 6}">-->
+<!--                    <a th:href="@{${article.link}}" class="bg-link mb-2">-->
+<!--                        <div class="bg" th:style="'background-image:url(' + ${article.media}+ ')'" >-->
+<!--                            <h4 class="text-white pt-4" th:text="${article.title}">Lamps hoping to give old club the Blues</h4>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 

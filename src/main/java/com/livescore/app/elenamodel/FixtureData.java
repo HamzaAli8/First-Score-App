@@ -12,4 +12,5 @@ import java.util.List;
 public class FixtureData {
 
     List<FixturesResponse> data;
+    Pagination pagination;
 }

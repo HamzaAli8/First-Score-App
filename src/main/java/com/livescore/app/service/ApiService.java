@@ -30,6 +30,9 @@ public class ApiService {
     @Value("${fixtures_url}")
     private String fixtureUrl;
 
+    @Value("${BaseFixtureUrl}")
+    private String BaseFixtureUrl;
+
     @Value("${venue_url}")
     private String venueUrl;
 
@@ -495,6 +498,8 @@ public class ApiService {
 
     }
 
+
+
     public NewsResponses getNewsArticles() {
 
 
@@ -516,6 +521,44 @@ public class ApiService {
 
         return response.getBody();
 
+    }
+
+    public List<FixturesResponse> getFixturesByTeamId(Integer id) {
+
+        int page = 1;
+
+        boolean hasNextPage = false;
+
+        List<FixturesResponse> fixtures = new ArrayList<>();
+
+
+        Date date1 = new Date();
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(date1);
+
+
+        do {
+
+            String url = BaseFixtureUrl + "?from=2021-08-20"+"&idTeam1="+ id + "&to=" + date + "&page="+page;
+
+
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<String> request = new HttpEntity<>(headers);
+            headers.setBearerAuth(token);
+
+            ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+            if(response.getBody() != null){
+                fixtures.addAll(response.getBody().getData());
+                hasNextPage = response.getBody().getPagination().getHasNextPage();
+            }
+            page = page + 1;
+
+        } while (hasNextPage);
+
+
+        return fixtures;
 
     }
 

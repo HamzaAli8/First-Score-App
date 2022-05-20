@@ -166,8 +166,9 @@ public class MvcController {
     ) Integer id){
 
         TeamResponse teams = teamService.getTeamBySeasonId(id);
+        List<FixturesResponse> fixtures = fixtureService.getFixturesByTeamId(teams.getId());
         model.addAttribute("teams",teams);
-
+        model.addAttribute("fixtures",fixtures);
         return "team";
     }
 
