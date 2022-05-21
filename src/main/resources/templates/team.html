@@ -210,10 +210,10 @@
 
                     <ul class="nav nav-pills mb-3 tab2 mt-4" id="pills-tab-2" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="pills-01-tab" data-toggle="pill" href="#pills-01" role="tab" aria-controls="pills-01" aria-selected="true">Fixtures</a>
+                            <a class="nav-link active" id="pills-01-tab" data-toggle="pill" href="#pills-01" role="tab" aria-controls="pills-01" aria-selected="true">Results</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-02-tab" data-toggle="pill" href="#pills-02" role="tab" aria-controls="pills-02" aria-selected="false">Results</a>
+                            <a class="nav-link" id="pills-02-tab" data-toggle="pill" href="#pills-02" role="tab" aria-controls="pills-02" aria-selected="false">Fixtures</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-03-tab" data-toggle="pill" href="#pills-03" role="tab" aria-controls="pills-03" aria-selected="false">Stats</a>
@@ -221,28 +221,45 @@
                     </ul>
                     <div class="tab-content" id="pills-tabContent-2">
                         <div class="tab-pane fade show active" id="pills-01" role="tabpanel" aria-labelledby="pills-01-tab">
-                            <div class="d-flex w-100 box1 mb-2" th:each="fixture:${fixtures}">
-                                <a href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-2">
-                                        <span class="time">16:30</span>
-                                    </div>
-                                    <div class="col-md-8 col-8">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k5.png" alt="img" width="24" />
-                                            <span class="ml-2" th:text="${fixture.homeName}">Norvich City</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24" />
-                                            <span class="ml-2">Chelsea</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 col-2 text-right">
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
+                            <div class="match-div">
+                                <a href="">
+                                    <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"
+                                         alt="img">
+                                    <span class="sp1" th:text="${league.data[0].expand.league[0].name}">Premier League</span>
+                                    <span class="text-secondary sp2"
+                                          th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
                                 </a>
                             </div>
 
+                            <div class="d-flex w-100 box1 mt-3 box1-dark"
+                                 th:each="fixture,p: ${fixtures}" >
+                                <div href="" class="w-100 d-block d-flex">
+                                    <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
+                                    <div class="col-md-2 col-3 text-center">
+                                        <p class="mb-0">
+                                                <span class="fw500" style="font-size:12px"
+                                                      th:text="${#strings.substring(fixture.date,0,10)}">3 JAN</span>
+                                            <span class="pt-1 fw500 d-block">FT</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-10 col-9">
+                                        <p class="mb-1">
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}" alt="img" width="24">
+                                            <span class="ml-2" th:text="${fixture.homeName}">Norvich City </span>
+                                            <span><em th:text="${fixture.homeTeamGoals}"><b>3</b></em> </span>
+                                        </p>
+                                        <p class="mb-0">
+                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"alt="img" width="24"/>
+                                            <span class="ml-2"
+                                                  th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
+                                            <span><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
+                                        </p>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="tab-pane fade" id="pills-02" role="tabpanel" aria-labelledby="pills-02-tab">
                             <h4 class="info pt-3 pb-1">Match Summary</h4>
 

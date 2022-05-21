@@ -14,6 +14,7 @@ import java.time.format.FormatStyle;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,15 +57,25 @@ public class FixtureService {
 
     public FixturesResponse getHeadToHeadByFixtureId(Integer id) {
 
-        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("EEE, d MMM yyyy HH:mm:ss");
-        DateTimeFormatter Old_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("EEE, d MMM yyyy HH:mm:ss");
+//        DateTimeFormatter Old_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 
         FixturesResponse fixture = apiService.getFixtureHeadToHead(id).getData().get(0);
 
-        String oldString = fixture.getDate();
-        LocalDateTime date = LocalDateTime.parse(oldString, Old_FORMATTER);
-        fixture.setDate(date.format(newFormatter));
+        Set<String> dateset = fixture.getExpand().getHead2head().stream()
+                .map(FixturesResponse::getDate)
+                .map(e -> {
+
+                    DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("EEEE, d MMM yyyy HH:mm:ss");
+                    DateTimeFormatter Old_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+
+                    String date = newFormatter.format(Old_FORMATTER.parse(e));
+                    return date;
+
+                }).collect(Collectors.toSet());
+
+
 
         return fixture;
 
