@@ -196,12 +196,12 @@ public class TestController {
 
     }
 
-    @GetMapping(value="/news")
-    public NewsResponses getNewsArticles(){
-
-
-        return apiService.getNewsArticles();
-    }
+//    @GetMapping(value="/news")
+//    public NewsResponses getNewsArticles(){
+//
+//
+//        return apiService.getNewsArticles();
+//    }
 
 }
 

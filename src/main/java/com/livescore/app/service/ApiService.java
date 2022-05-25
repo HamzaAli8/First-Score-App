@@ -540,6 +540,23 @@ public class ApiService {
 
     }
 
+    public NewsResponses getLatestArticles() {
+
+
+        String url = "https://api.newscatcherapi.com/v2/latest_headlines?countries=GB&topic=sport&page_size=100";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("x_api_key", newsApiKey);
+        HttpEntity<String> request = new HttpEntity<>(headers);
+
+
+        ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
+
+        return response.getBody();
+
+    }
+
     public List<FixturesResponse> getResultsByTeamId(Integer id) {
 
         int page = 1;

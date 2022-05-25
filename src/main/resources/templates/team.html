@@ -13,63 +13,17 @@
           href="../static/css/style.css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<div class="container mt-md-5 mt-4 pt-md-5">
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                    <img th:src="@{/images/LiveScore.png}" alt="img" width="30"/>
-                    LiveScore
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto top-navbar">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <i class="fa fa-home"></i>
-                                Score
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-newspaper-o"></i>
-                                News
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-star-o"></i>
-                                Favourites
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-download"></i>
-                                Get the app
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+<header th:replace="header :: myHeader"></header>
 <hr/>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-<!--            <ul class="nav nav-pills mb-3 tab1" id="pills-tab" role="tablist">-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab"-->
-<!--                       aria-controls="pills-1" aria-selected="true">Football</a>-->
-<!--                </li>-->
-<!--            </ul>-->
+            <!--            <ul class="nav nav-pills mb-3 tab1" id="pills-tab" role="tablist">-->
+            <!--                <li class="nav-item">-->
+            <!--                    <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab"-->
+            <!--                       aria-controls="pills-1" aria-selected="true">Football</a>-->
+            <!--                </li>-->
+            <!--            </ul>-->
         </div>
     </div>
 </div>
@@ -152,13 +106,13 @@
                         </li>
                         <li>
                             <a href="">
-                                <img th:src="@{/images/UEFA_ChampionsLeague.png}" alt="img" width="40" />
+                                <img th:src="@{/images/UEFA_ChampionsLeague.png}" alt="img" width="40"/>
                                 UEFA Champions League
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img th:src="@{/images/UEFA_EuropaLeague_logo.png}" alt="img" width="40" />
+                                <img th:src="@{/images/UEFA_EuropaLeague_logo.png}" alt="img" width="40"/>
                                 UEFA Europa League
                             </a>
                         </li>
@@ -177,8 +131,8 @@
                             <div class="match-div">
                                 <a href="">
                                     <img th:src="@{${teams.badgeUrl}}" alt="img">
-                                    <span th:text="${teams.fullName}"class="sp1">Premier League</span>
-                                    <span th:text="${teams.country}"class="text-secondary sp2">Holland</span>
+                                    <span th:text="${teams.fullName}" class="sp1">Premier League</span>
+                                    <span th:text="${teams.country}" class="text-secondary sp2">Holland</span>
                                 </a>
                             </div>
                         </div>
@@ -189,72 +143,79 @@
                         </div>
                     </div>
 
-<!--                    <div class="d-flex w-100 box3 mb-2 text-center mt-3">-->
-<!--                        <div class="w-100 d-block d-flex text-center">-->
-<!--                            <div class="col-md-4">-->
-<!--                                <img src="assets/images/k8.png" alt="img" width="40" height="40">-->
-<!--                                <p class="mb-0 pt-1 text2">Newcastle United</p>-->
-<!--                            </div>-->
+                    <!--                    <div class="d-flex w-100 box3 mb-2 text-center mt-3">-->
+                    <!--                        <div class="w-100 d-block d-flex text-center">-->
+                    <!--                            <div class="col-md-4">-->
+                    <!--                                <img src="assets/images/k8.png" alt="img" width="40" height="40">-->
+                    <!--                                <p class="mb-0 pt-1 text2">Newcastle United</p>-->
+                    <!--                            </div>-->
 
-<!--                            <div class="col-md-4">-->
-<!--                                <h4 class="pt-2">16:30</h4>-->
-<!--                                <p class="text-secondary mb-0">Next Match</p>-->
-<!--                            </div>-->
+                    <!--                            <div class="col-md-4">-->
+                    <!--                                <h4 class="pt-2">16:30</h4>-->
+                    <!--                                <p class="text-secondary mb-0">Next Match</p>-->
+                    <!--                            </div>-->
 
-<!--                            <div class="col-md-4">-->
-<!--                                <img src="assets/images/k9.png" alt="img" width="40" height="40">-->
-<!--                                <p class="mb-0 pt-1 text2">Liverpool</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                            <div class="col-md-4">-->
+                    <!--                                <img src="assets/images/k9.png" alt="img" width="40" height="40">-->
+                    <!--                                <p class="mb-0 pt-1 text2">Liverpool</p>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
                     <ul class="nav nav-pills  my-3 tab2 mt-4" id="pills-tab-2" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="pills-01-tab" data-toggle="pill" href="#pills-01" role="tab" aria-controls="pills-01" aria-selected="true">Results</a>
+                            <a class="nav-link active" id="pills-01-tab" data-toggle="pill" href="#pills-01" role="tab"
+                               aria-controls="pills-01" aria-selected="true">Results</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-02-tab" data-toggle="pill" href="#pills-02" role="tab" aria-controls="pills-02" aria-selected="false">Fixtures</a>
+                            <a class="nav-link" id="pills-02-tab" data-toggle="pill" href="#pills-02" role="tab"
+                               aria-controls="pills-02" aria-selected="false">Fixtures</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-03-tab" data-toggle="pill" href="#pills-03" role="tab" aria-controls="pills-03" aria-selected="false">Info</a>
+                            <a class="nav-link" id="pills-03-tab" data-toggle="pill" href="#pills-03" role="tab"
+                               aria-controls="pills-03" aria-selected="false">Info</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent-2">
-                        <div class="tab-pane fade show active" id="pills-01" role="tabpanel" aria-labelledby="pills-01-tab">
+                        <div class="tab-pane fade show active" id="pills-01" role="tabpanel"
+                             aria-labelledby="pills-01-tab">
                             <div class="match-div">
                                 <a href="">
                                     <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"
                                          alt="img">
-                                    <span class="sp1" th:text="${league.data[0].expand.league[0].name}">Premier League</span>
+                                    <span class="sp1"
+                                          th:text="${league.data[0].expand.league[0].name}">Premier League</span>
                                     <span class="text-secondary sp2"
                                           th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
                                 </a>
                             </div>
 
                             <div class="d-flex w-100 box1 mt-3 box1-dark"
-                                 th:each="fixture,p: ${results}" >
+                                 th:each="fixture,p: ${results}">
                                 <div href="" class="w-100 d-block d-flex">
                                     <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-3 text-center">
-                                        <p class="mb-0">
+                                        <div class="col-md-2 col-3 text-center">
+                                            <p class="mb-0">
                                                 <span class="fw500" style="font-size:12px"
                                                       th:text="${#strings.substring(fixture.date,0,10)}">3 JAN</span>
-                                            <span class="pt-1 fw500 d-block">FT</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-10 col-9">
-                                        <p class="mb-1">
-                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}" alt="img" width="24">
-                                            <span class="ml-2" th:text="${fixture.homeName}">Norvich City </span>
-                                            <span><em th:text="${fixture.homeTeamGoals}"><b>3</b></em> </span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"alt="img" width="24"/>
-                                            <span class="ml-2"
-                                                  th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
-                                            <span><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
-                                        </p>
-                                    </div>
+                                                <span class="pt-1 fw500 d-block">FT</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-10 col-9">
+                                            <p class="mb-1">
+                                                <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}"
+                                                     alt="img" width="24">
+                                                <span class="ml-2" th:text="${fixture.homeName}">Norvich City </span>
+                                                <span><em th:text="${fixture.homeTeamGoals}"><b>3</b></em> </span>
+                                            </p>
+                                            <p class="mb-0">
+                                                <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"
+                                                     alt="img" width="24"/>
+                                                <span class="ml-2"
+                                                      th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
+                                                <span><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
+                                            </p>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
@@ -264,19 +225,21 @@
                             <div class="row mt-3">
                                 <div class="col-md-12">
                                     <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${fixtures}"
-                                         th:unless="${p.index > 3}" >
+                                         th:unless="${p.index > 3}">
                                         <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                             <div class="col-md-2 col-2">
                                                 <span class="time" th:text="${#strings.substring(fixture.date,11,16)}">16:30</span>
                                             </div>
                                             <div class="col-md-8 col-8">
                                                 <p class="mb-1">
-                                                    <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}" alt="img" width="24">
-                                                    <span th:text="${fixture.homeName}"class="ml-2">Norwich</span>
+                                                    <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idHome}}"
+                                                         alt="img" width="24">
+                                                    <span th:text="${fixture.homeName}" class="ml-2">Norwich</span>
                                                 </p>
                                                 <p class="mb-0">
-                                                    <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"alt="img" width="24"/>
-                                                    <span  th:text="${fixture.awayName}"class="ml-2">Chelsea</span>
+                                                    <img th:src="@{'https://cdn.elenasport.io/badges/150x150/'+ ${fixture.idAway}}"
+                                                         alt="img" width="24"/>
+                                                    <span th:text="${fixture.awayName}" class="ml-2">Chelsea</span>
                                                 </p>
                                             </div>
                                             <div class="col-md-2 col-2 text-right">
@@ -287,7 +250,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="tab-pane fade" id="pills-03" role="tabpanel" aria-labelledby="pills-03-tab">
                             <h4 class="info pt-3 pb-1">Info</h4>
 
@@ -318,7 +281,7 @@
                                     <li class="list-group-item">
                                         <div class="match-div">
                                             <i class="fa fa-globe icons" aria-hidden="true"></i>
-                                            <span class="sp1"th:text="${teams.country}">England</span>
+                                            <span class="sp1" th:text="${teams.country}">England</span>
                                             <span class="text-secondary sp2">Country</span>
                                         </div>
                                     </li>
@@ -326,7 +289,7 @@
                                         <div class="match-div">
                                             <i class="fa fa-info icons" aria-hidden="true"></i>
                                             <a th:href="${teams.officialPage}">
-                                                <span class="sp1"  th:text="${teams.officialPage}"></span>
+                                                <span class="sp1" th:text="${teams.officialPage}"></span>
                                             </a>
                                             <span class="text-secondary sp2">Official Homepage</span>
                                         </div>
@@ -334,7 +297,7 @@
                                     <li class="list-group-item">
                                         <div class="match-div">
                                             <i class="fa fa-home icons"></i>
-                                            <span class="sp1"th:text="${venue.name}">St James' Park</span>
+                                            <span class="sp1" th:text="${venue.name}">St James' Park</span>
                                             <span class="text-secondary sp2">Venue</span>
                                         </div>
                                     </li>
@@ -342,477 +305,28 @@
                                     <li class="list-group-item">
                                         <div class="match-div">
                                             <i class="fa fa-user-o icons"></i>
-                                            <span class="sp1"th:text="${venue.capacity}">45,000</span>
+                                            <span class="sp1" th:text="${venue.capacity}">45,000</span>
                                             <span class="text-secondary sp2">Capacity</span>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="tab-pane fade" id="pills-04" role="tabpanel" aria-labelledby="pills-04-tab">
-
-                            <img src="assets/images/pitch.png" class="img-fluid" alt="img" />
-
-                            <h4 class="info pt-4 pb-2">SUBSTITUTIONS</h4>
-                            <div class="card w-100 mt-1">
-                                <ul class="list-group list-group-flush list5">
-
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-xl-6">
-                                                <div class="row">
-                                                    <div class="col-2 p-0 text-center pt-2">
-                                                        <small style="font-size:14px"><b>36'</b></small>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <p class="mb-0">
-                                                                <span>
-                                                                    <i class="fa fa-arrow-circle-down color1 pr-1"></i> Ivan Rakitic
-                                                                </span>
-                                                        </p>
-                                                        <p class="mb-0">
-                                                                <span class="f700">
-                                                                    <i class="fa fa-arrow-circle-up color2 pr-1"></i> Thomas Delaney
-                                                                </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="row">
-                                                    <div class="col-2 p-0 text-center pt-2">
-                                                        <small style="font-size:14px"><b>89'</b></small>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <p class="mb-0">
-                                                                <span>
-                                                                    <i class="fa fa-arrow-circle-down color1 pr-1"></i> Jose Mari
-                                                                </span>
-                                                        </p>
-                                                        <p class="mb-0">
-                                                                <span class="f700">
-                                                                    <i class="fa fa-arrow-circle-up color2 pr-1"></i> San Emeterio
-                                                                </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-xl-6">
-                                                <div class="row">
-                                                    <div class="col-2 p-0 text-center pt-2">
-                                                        <small style="font-size:14px"><b>36'</b></small>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <p class="mb-0">
-                                                                <span>
-                                                                    <i class="fa fa-arrow-circle-down color1 pr-1"></i> Ivan Rakitic
-                                                                </span>
-                                                        </p>
-                                                        <p class="mb-0">
-                                                                <span class="f700">
-                                                                    <i class="fa fa-arrow-circle-up color2 pr-1"></i> Thomas Delaney
-                                                                </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="row">
-                                                    <div class="col-2 p-0 text-center pt-2">
-                                                        <small style="font-size:14px"><b>89'</b></small>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <p class="mb-0">
-                                                                <span>
-                                                                    <i class="fa fa-arrow-circle-down color1 pr-1"></i> Jose Mari
-                                                                </span>
-                                                        </p>
-                                                        <p class="mb-0">
-                                                                <span class="f700">
-                                                                    <i class="fa fa-arrow-circle-up color2 pr-1"></i> San Emeterio
-                                                                </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-xl-6">
-                                                <div class="row">
-                                                    <div class="col-2 p-0 text-center pt-2">
-                                                        <small style="font-size:14px"><b>36'</b></small>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <p class="mb-0">
-                                                                <span>
-                                                                    <i class="fa fa-arrow-circle-down color1 pr-1"></i> Ivan Rakitic
-                                                                </span>
-                                                        </p>
-                                                        <p class="mb-0">
-                                                                <span class="f700">
-                                                                    <i class="fa fa-arrow-circle-up color2 pr-1"></i> Thomas Delaney
-                                                                </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="row">
-                                                    <div class="col-2 p-0 text-center pt-2">
-                                                        <small style="font-size:14px"><b>89'</b></small>
-                                                    </div>
-                                                    <div class="col-10">
-                                                        <p class="mb-0">
-                                                                <span>
-                                                                    <i class="fa fa-arrow-circle-down color1 pr-1"></i> Jose Mari
-                                                                </span>
-                                                        </p>
-                                                        <p class="mb-0">
-                                                                <span class="f700">
-                                                                    <i class="fa fa-arrow-circle-up color2 pr-1"></i> San Emeterio
-                                                                </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <h4 class="info pt-4 pb-2 pt-2">SUBSTITUE PLAYERS</h4>
-                            <div class="card w-100 mt-1">
-                                <ul class="list-group list-group-flush list5">
-
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-6 text-center">
-                                                <span class="f600"> Víctor Chust</span>
-                                            </div>
-                                            <div class="col-6 text-center">
-                                                <span class="f600">Juan Cala</span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-6 text-center">
-                                                <span class="f600"> Marko Dmitrovic</span>
-                                            </div>
-                                            <div class="col-6 text-center">
-                                                <span class="f600">Juan Cala</span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-6 text-center">
-                                                <span class="f600"> Marko Dmitrovic</span>
-                                            </div>
-                                            <div class="col-6 text-center">
-                                                <span class="f600">Javier Diaz</span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-6 text-center">
-                                                <span class="f600"> Marko Dmitrovic</span>
-                                            </div>
-                                            <div class="col-6 text-center">
-                                                <span class="f600">Juan Cala</span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-6 text-center">
-                                                <span class="f600"> Marko Dmitrovic</span>
-                                            </div>
-                                            <div class="col-6 text-center">
-                                                <span class="f600">Juan Cala</span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-
-
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-05" role="tabpanel" aria-labelledby="pills-05-tab">
-                            <div class=" table-responsive">
-                                <table class="table table1">
-                                    <thead>
-                                    <tr>
-                                        <th class="kd">#</th>
-                                        <th class="jd">Team</th>
-                                        <th>
-                                                    <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Played">
-                                                        P
-                                                    </span>
-                                        </th>
-                                        <th>
-                                                    <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Goals Difference">
-                                                        GD
-                                                    </span>
-                                        </th>
-                                        <th>
-                                                    <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Points">
-                                                        Pts
-                                                    </span>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td class="image-td">
-                                            <a href="">
-                                                <img src="assets/images/k1.png" alt="img" width="30">
-                                                Title
-                                            </a>
-                                        </td>
-                                        <td class="hd">33</td>
-                                        <td class="hd"> 29</td>
-                                        <td class="hd">40</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td class="image-td">
-                                            <a href="">
-                                                <img src="assets/images/k3.png" alt="img" width="30">
-                                                Manchester
-                                            </a>
-                                        </td>
-                                        <td class="hd">33</td>
-                                        <td class="hd"> 59</td>
-                                        <td class="hd">80</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td class="image-td">
-                                            <a href="">
-                                                <img src="assets/images/k2.png" alt="img" width="28">
-                                                Heading
-                                            </a>
-                                        </td>
-                                        <td class="hd">23</td>
-                                        <td class="hd"> 99</td>
-                                        <td class="hd">10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            4
-                                        </td>
-                                        <td class="image-td">
-                                            <a href="">
-                                                <img src="assets/images/k5.png" alt="img" width="28">
-                                                Heading
-                                            </a>
-                                        </td>
-                                        <td class="hd">33</td>
-                                        <td class="hd"> 59</td>
-                                        <td class="hd">80</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            5
-                                        </td>
-                                        <td class="image-td">
-                                            <a href="">
-                                                <img src="assets/images/k4.png" alt="img" width="28">
-                                                Manchester
-                                            </a>
-                                        </td>
-                                        <td class="hd">33</td>
-                                        <td class="hd"> 59</td>
-                                        <td class="hd">80</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-
-                        <div class="tab-pane fade" id="pills-06" role="tabpanel" aria-labelledby="pills-06-tab">
-                            <div class="match-div">
-                                <a href="">
-                                    <img src="assets/images/holland.jpg" alt="img">
-                                    <span class="sp1">Premier League</span>
-                                    <span class="text-secondary sp2">Holland</span>
-                                </a>
-                            </div>
-                            <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                <div href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-3 text-center">
-                                        <p class="mb-0">
-                                            <span class="fw500" style="font-size:12px">3 JAN</span>
-                                            <span class="pt-1 fw500 d-block">FT</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-10 col-9">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k5.png" alt="img" width="24">
-                                            <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24">
-                                            <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <div class="match-div mt-4">
-                                <a href="">
-                                    <img src="assets/images/germany.jpg" alt="img">
-                                    <span class="sp1">Copa del Rey</span>
-                                    <span class="text-secondary sp2">Germany</span>
-                                </a>
-                            </div>
-                            <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                <div href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-3 text-center">
-                                        <p class="mb-0">
-                                            <span class="fw500" style="font-size:12px">2022</span>
-                                            <span class="pt-1 fw500 d-block">FT</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-10 col-9">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k3.png" alt="img" width="24">
-                                            <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24">
-                                            <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                <div href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-3 text-center">
-                                        <p class="mb-0">
-                                            <span class="fw500" style="font-size:12px">3 JAN</span>
-                                            <span class="pt-1 fw500 d-block">FT</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-10 col-9">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24">
-                                            <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k3.png" alt="img" width="24">
-                                            <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="match-div mt-4">
-                                <a href="">
-                                    <img src="assets/images/england.jpg" alt="img">
-                                    <span class="sp1">Primera Division</span>
-                                    <span class="text-secondary sp2">England</span>
-                                </a>
-                            </div>
-                            <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                <div href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-3 text-center">
-                                        <p class="mb-0">
-                                            <span class="fw500" style="font-size:12px">2022</span>
-                                            <span class="pt-1 fw500 d-block">FT</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-10 col-9">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k3.png" alt="img" width="24">
-                                            <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k2.png" alt="img" width="24">
-                                            <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="d-flex w-100 box1 mt-3 box1-dark">
-                                <div href="" class="w-100 d-block d-flex">
-                                    <div class="col-md-2 col-3 text-center">
-                                        <p class="mb-0">
-                                            <span class="fw500" style="font-size:12px">3 JAN</span>
-                                            <span class="pt-1 fw500 d-block">FT</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-10 col-9">
-                                        <p class="mb-1">
-                                            <img src="assets/images/k1.png" alt="img" width="24">
-                                            <span class="ml-2">Norvich City <em><b>3</b></em> </span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <img src="assets/images/k3.png" alt="img" width="24">
-                                            <span class="ml-2">Chelsea <em><b>1</b></em> </span>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
-
-
-
                 </div>
-
             </div>
         </div>
 
-
         <div class="col-md-3 div3 mt-md-0 mt-4">
-
             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">Featured News</h5>
                 </div>
                 <div class="card-body p-3" th:each="article,p: ${news.articles}" th:unless="${p.index > 6}">
                     <a th:href="@{${article.link}}" class="bg-link mb-2">
-                        <div class="bg" th:style="'background-image:url(' + ${article.media}+ ')'" >
-                            <h4 class="text-white pt-4" th:text="${article.title}">Lamps hoping to give old club the Blues</h4>
+                        <div class="bg" th:style="'background-image:url(' + ${article.media}+ ')'">
+                            <h4 class="text-white pt-4" th:text="${article.title}">Lamps hoping to give old club the
+                                Blues</h4>
                         </div>
                     </a>
                 </div>
@@ -835,7 +349,7 @@
             $('[data-toggle="tooltip"]').tooltip()
         })
 
-</script>
 
+</script>
 </body>
 </html>

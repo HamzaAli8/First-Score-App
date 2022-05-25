@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Web</title>
+    <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -13,67 +13,20 @@
           href="../static/css/style.css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<div class="container mt-md-5 mt-4 pt-md-5">
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                    <img th:src="@{/images/LiveScore.png}" alt="img" width="30"/>
-                    LiveScore
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto top-navbar">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <i class="fa fa-home"></i>
-                                Score
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-newspaper-o"></i>
-                                News
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-star-o"></i>
-                                Favourites
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-download"></i>
-                                Get the app
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+<header th:replace="header :: myHeader"></header>
 <hr/>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <ul class="nav nav-pills mb-3 tab1" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab"
-                       aria-controls="pills-1" aria-selected="true">Football</a>
-                </li>
-            </ul>
+<!--            <ul class="nav nav-pills mb-3 tab1" id="pills-tab" role="tablist">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab"-->
+<!--                       aria-controls="pills-1" aria-selected="true">Football</a>-->
+<!--                </li>-->
+<!--            </ul>-->
         </div>
     </div>
 </div>
-
 <div class="container mb-5">
     <div class="row">
         <div class="col-md-3 div1">

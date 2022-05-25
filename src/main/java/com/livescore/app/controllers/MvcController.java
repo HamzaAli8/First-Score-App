@@ -74,24 +74,24 @@ public class MvcController {
         return "index";
     }
 
-    @GetMapping("/team")
-    public String team(Model model){
-
-        LeagueResponse Eng = leagueService.getNextFixturesByLeagueId(234);
-        LeagueResponse Ita = leagueService.getNextFixturesByLeagueId(318);
-        LeagueResponse Spa = leagueService.getNextFixturesByLeagueId(466);
-
-        NewsResponses news = newsService.getNewsArticles();
-
-
-
-        model.addAttribute("Eng", Eng);
-        model.addAttribute("Ita", Ita);
-        model.addAttribute("Spa", Spa);
-        model.addAttribute("news", news);
-
-        return "team";
-    }
+//    @GetMapping("/team")
+//    public String team(Model model){
+//
+//        LeagueResponse Eng = leagueService.getNextFixturesByLeagueId(234);
+//        LeagueResponse Ita = leagueService.getNextFixturesByLeagueId(318);
+//        LeagueResponse Spa = leagueService.getNextFixturesByLeagueId(466);
+//
+//        NewsResponses news = newsService.getNewsArticles();
+//
+//
+//
+//        model.addAttribute("Eng", Eng);
+//        model.addAttribute("Ita", Ita);
+//        model.addAttribute("Spa", Spa);
+//        model.addAttribute("news", news);
+//
+//        return "team";
+//    }
 
     @GetMapping("/standings/{id}")
     public String standings(Model model,@PathVariable(name = "id"
@@ -157,7 +157,7 @@ public class MvcController {
         model.addAttribute("lineups", lineups);
 
 
-        return "fixture-details2";
+        return "fixture-details";
     }
 
 
@@ -203,7 +203,24 @@ public class MvcController {
         return "team";
     }
 
+    @GetMapping("/app")
+    public String appPage(){
 
+
+
+        return "app";
+    }
+
+    @GetMapping("/news")
+    public String newsPage(Model model){
+
+
+        NewsResponses news = newsService.getLatestArticles();
+
+        model.addAttribute("news", news);
+
+        return "news";
+    }
 
 
 

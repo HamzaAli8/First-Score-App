@@ -24,4 +24,9 @@ public class NewsService {
 
     }
 
+    public NewsResponses getLatestArticles(){
+
+        return apiService.getLatestArticles();
+    }
+
 }

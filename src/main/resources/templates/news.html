@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>News</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../static/css/index.css" th:href="@{/css/index.css}"/>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../static/css/news.css" th:href="@{/css/news.css}"/>
+</head>
+<body>
+<hr/>
+
+<div class="grid-container">
+
+  <header>
+    Latest Football News
+  </header>
+
+  <nav class="sidebar-left">
+  </nav>
+
+  <main class="article-container">
+    <article>
+      <h3>Some random article</h3>
+      <img src="https://picsum.photos/960/540/">
+      <div data-dummytext='p-x1-w50-s10-v10'></div>
+      <a class="button button--ghost" href="#">
+        <span class="button__text">read more</span>
+      </a>
+    </article>
+    <article>
+      <h3>Another article</h3>
+      <img src="https://picsum.photos/960/540">
+      <div data-dummytext='p-x1-w50-s10-v10'></div>
+      <a class="button button--ghost" href="#">
+        <span class="button__text">read more</span>
+      </a>
+    </article>
+    <article>
+      <h3>Yet another article</h3>
+      <img src="https://picsum.photos/960/540//">
+      <div data-dummytext='p-x1-w50-s10-v10'></div>
+      <a class="button button--ghost" href="#">
+        <span class="button__text">read more</span>
+      </a>
+    </article>
+    <article>
+      <h3>Really the last article</h3>
+      <img src="https://picsum.photos/960/540///">
+      <div data-dummytext='p-x1-w50-s10-v10'></div>
+      <a class="button button--ghost" href="#">
+        <span class="button__text">read more</span>
+      </a>
+    </article>
+    <article>
+      <h3>Really the last article</h3>
+      <img src="https://picsum.photos/960/540///">
+      <div data-dummytext='p-x1-w50-s10-v10'></div>
+      <a class="button button--ghost" href="#">
+        <span class="button__text">read more</span>
+      </a>
+    </article>
+    <article>
+    <h3>Really the last article</h3>
+    <img src="https://picsum.photos/960/540///">
+    <div data-dummytext='p-x1-w50-s10-v10'></div>
+    <a class="button button--ghost" href="#">
+      <span class="button__text">read more</span>
+    </a>
+  </article>
+    <article>
+    <h3>Really the last article</h3>
+    <img src="https://picsum.photos/960/540///">
+    <div data-dummytext='p-x1-w50-s10-v10'></div>
+    <a class="button button--ghost" href="#">
+      <span class="button__text">read more</span>
+    </a>
+  </article>
+  </main>
+
+  <aside class="sidebar-right">
+
+  </aside>
+
+  <footer>
+  </footer>
+</div>
+
+<script src="http://dummytext.com/dt-1.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../static/js/standings.js" th:src="@{/js/standings.js}"></script>
+</body>
+</html>
+
+
+<!--<main class="article-container" th:each="article,p: ${news.articles}"-->
+<!--      th:unless="${p.index > 9}">-->
+<!--  <article>-->
+<!--    <h3 th:text="${article.title}">Some random article</h3>-->
+<!--    <img th:src="@{${article.media}}">-->
+<!--    <div th:text="${article.summary}"></div>-->
+<!--    <a class="button button&#45;&#45;ghost" th:href="${article.link}">-->
+<!--      <span class="button__text">read more</span>-->
+<!--    </a>-->
+<!--  </article>-->
+<!--</main>-->
