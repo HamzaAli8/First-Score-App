@@ -57,25 +57,9 @@ public class FixtureService {
 
     public FixturesResponse getHeadToHeadByFixtureId(Integer id) {
 
-//        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("EEE, d MMM yyyy HH:mm:ss");
-//        DateTimeFormatter Old_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-
         FixturesResponse fixture = apiService.getFixtureHeadToHead(id).getData().get(0);
 
-        Set<String> dateset = fixture.getExpand().getHead2head().stream()
-                .map(FixturesResponse::getDate)
-                .map(e -> {
-
-                    DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("EEEE, d MMM yyyy HH:mm:ss");
-                    DateTimeFormatter Old_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-
-                    String date = newFormatter.format(Old_FORMATTER.parse(e));
-                    return date;
-
-                }).collect(Collectors.toSet());
-
-
+        fixture = fixFixtureDates(fixture);
 
         return fixture;
 
@@ -92,6 +76,13 @@ public class FixtureService {
                 .filter(fixturesResponse -> fixturesResponse.getStatus().equals("finished"))
                 .collect(Collectors.toList());
 
+
+        for (FixturesResponse f : fixtures) {
+
+            fixFixtureDates(f);
+        }
+
+
         Collections.reverse(fixtureSorted);
 
         return fixtureSorted;
@@ -101,11 +92,33 @@ public class FixtureService {
 
         List<FixturesResponse> fixtures = apiService.getFixturesByTeamId(id);
 
-        HashSet<Object> seen = new HashSet<>();
+        for (FixturesResponse f : fixtures) {
+
+            fixFixtureDates(f);
+        }
 
         return fixtures.stream()
                 .filter(fixturesResponse -> fixturesResponse.getStatus().equals("not started"))
                 .collect(Collectors.toList());
+    }
+
+    public FixturesResponse fixFixtureDates(FixturesResponse fixtures) {
+        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("EEEE, d MMM yyyy HH:mm:ss");
+        DateTimeFormatter Old_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        DateTimeFormatter Old_FORMATTER2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        if (fixtures.getExpand() != null) {
+
+            fixtures.getExpand().getHead2head()
+                    .forEach(f -> {
+                        String date = newFormatter.format(Old_FORMATTER.parse(f.getDate()));
+                        f.setDate(date);
+                    });
+        } else {
+            String date = newFormatter.format(Old_FORMATTER2.parse(fixtures.getDate()));
+            fixtures.setDate(date);
+        }
+        return fixtures;
     }
 
 }
