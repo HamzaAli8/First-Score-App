@@ -133,11 +133,11 @@ public class TestController {
     }
 
     @GetMapping(value = "/venue/{id}")
-    public VenueData getVenue(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public VenueResponse getVenue(@RequestParam(value = "expand", required = false) @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return venueService.getVenueById(id, expand);
+        return venueService.getVenueById(id);
     }
 
     @GetMapping(value = "/season/fixture/{id}")

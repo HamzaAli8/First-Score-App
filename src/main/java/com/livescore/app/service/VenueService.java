@@ -1,6 +1,7 @@
 package com.livescore.app.service;
 
 import com.livescore.app.elenamodel.VenueData;
+import com.livescore.app.elenamodel.VenueResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +12,10 @@ public class VenueService {
     ApiService apiService;
 
 
-    public VenueData getVenueById(Integer id, String expand){
+    public VenueResponse getVenueById(Integer id){
 
 
-        return apiService.getVenueById(id, expand);
-
+        return apiService.getVenueById(id).getData().get(0);
     }
 
 

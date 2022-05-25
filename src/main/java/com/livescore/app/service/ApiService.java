@@ -266,7 +266,7 @@ public class ApiService {
     }
 
 
-    public VenueData getVenueById(Integer id, String expand) {
+    public VenueData getVenueById(Integer id) {
 
         String url = venueUrl + id;
 
@@ -509,7 +509,7 @@ public class ApiService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dateNow = sdf.format(date1);
 
-        String url = "https://api.newscatcherapi.com/v2/search?q='premierleague'&lang=en&countries=GB&topic=sport";
+        String url = "https://api.newscatcherapi.com/v2/search?q=European football&lang=en&countries=GB&topic=sport";
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -523,7 +523,24 @@ public class ApiService {
 
     }
 
-    public List<FixturesResponse> getFixturesByTeamId(Integer id) {
+    public NewsResponses getTeamNewsArticles(String team) {
+
+
+        String url = "https://api.newscatcherapi.com/v2/search?q=" + team + "&topic=sport";
+
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("x_api_key", newsApiKey);
+        HttpEntity<String> request = new HttpEntity<>(headers);
+
+
+        ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
+
+        return response.getBody();
+
+    }
+
+    public List<FixturesResponse> getResultsByTeamId(Integer id) {
 
         int page = 1;
 
@@ -541,7 +558,44 @@ public class ApiService {
 
         do {
 
-            String url = BaseFixtureUrl + "?from=2021-08-20"+"&idTeam1="+ id + "&to=" + date + "&page="+page;
+            String url = BaseFixtureUrl + "?from=2021-08-01"+"&idTeam1="+ id + "&to=" + date + "&page="+page;
+
+
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<String> request = new HttpEntity<>(headers);
+            headers.setBearerAuth(token);
+
+            ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+            if(response.getBody() != null){
+                fixtures.addAll(response.getBody().getData());
+                hasNextPage = response.getBody().getPagination().getHasNextPage();
+            }
+            page = page + 1;
+
+        } while (hasNextPage);
+
+
+        return fixtures;
+
+    }
+
+    public List<FixturesResponse> getFixturesByTeamId(Integer id) {
+
+        int page = 1;
+
+        boolean hasNextPage = false;
+
+        List<FixturesResponse> fixtures = new ArrayList<>();
+
+
+        Date date1 = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(date1);
+
+
+        do {
+
+            String url = BaseFixtureUrl + "?from=" + date +"&idTeam1="+ id +"&page="+page;
 
 
             HttpHeaders headers = new HttpHeaders();

@@ -11,8 +11,10 @@ public class TeamService {
     ApiService apiService;
 
 
-    public TeamResponse getTeamBySeasonId(Integer id){
+    public TeamResponse getTeamById(Integer id){
 
         return apiService.getTeamById(id).getData().get(0);
     }
+
 }
+

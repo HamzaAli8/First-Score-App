@@ -18,4 +18,10 @@ public class NewsService {
         return apiService.getNewsArticles();
     }
 
+    public NewsResponses getTeamNewsArticles(String team){
+
+        return apiService.getTeamNewsArticles(team);
+
+    }
+
 }

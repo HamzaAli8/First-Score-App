@@ -81,9 +81,9 @@ public class FixtureService {
 
     }
 
-    public List<FixturesResponse> getFixturesByTeamId(Integer id) {
+    public List<FixturesResponse> getResultsByTeamId(Integer id) {
 
-        List<FixturesResponse> fixtures = apiService.getFixturesByTeamId(id);
+        List<FixturesResponse> fixtures = apiService.getResultsByTeamId(id);
 
         HashSet<Object> seen = new HashSet<>();
 
@@ -96,4 +96,16 @@ public class FixtureService {
 
         return fixtureSorted;
     }
+
+    public List<FixturesResponse> getFixturesByTeamId(Integer id) {
+
+        List<FixturesResponse> fixtures = apiService.getFixturesByTeamId(id);
+
+        HashSet<Object> seen = new HashSet<>();
+
+        return fixtures.stream()
+                .filter(fixturesResponse -> fixturesResponse.getStatus().equals("not started"))
+                .collect(Collectors.toList());
+    }
+
 }

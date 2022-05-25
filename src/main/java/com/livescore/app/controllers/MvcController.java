@@ -50,6 +50,9 @@ public class MvcController {
     @Autowired
     LineUpService lineUpService;
 
+    @Autowired
+    VenueService venueService;
+
 
     @GetMapping("/")
     public String home(Model model){
@@ -154,9 +157,6 @@ public class MvcController {
         model.addAttribute("lineups", lineups);
 
 
-
-
-
         return "fixture-details2";
     }
 
@@ -165,12 +165,40 @@ public class MvcController {
     public String getTeamById(Model model, @PathVariable(name = "id"
     ) Integer id){
 
-        TeamResponse teams = teamService.getTeamBySeasonId(id);
-        List<FixturesResponse> fixtures = fixtureService.getFixturesByTeamId(teams.getId());
-        FixtureData league = fixtureService.getFixtureLeagueById(fixtures.get(0).getId());
+        TeamResponse teams = teamService.getTeamById(id);
+        List<FixturesResponse> results = fixtureService.getResultsByTeamId(teams.getId());
+        FixtureData league = fixtureService.getFixtureLeagueById(results.get(0).getId());
+        NewsResponses news = newsService.getTeamNewsArticles(teams.getName());
+        List<FixturesResponse> fixtures = fixtureService.getFixturesByTeamId(id);
+
+
+        for(FixturesResponse f : results){
+
+            if(f.getHomeName().equals(teams.getName())){
+
+                VenueResponse venue;
+                if(f.getIdVenue() != null){
+
+                    venue = venueService.getVenueById(f.getIdVenue());
+
+                }else{
+
+                    venue = venueService.getVenueById(566);
+                }
+                model.addAttribute("venue", venue);
+
+                break;
+            }
+
+        }
+
         model.addAttribute("teams",teams);
-        model.addAttribute("fixtures",fixtures);
+        model.addAttribute("results",results);
         model.addAttribute("league", league);
+        model.addAttribute("news", news);
+        model.addAttribute("fixtures", fixtures);
+
+
 
         return "team";
     }
