@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -57,12 +59,15 @@ public class MvcController {
     @GetMapping("/")
     public String home(Model model){
 
-
         LeagueResponse Eng = leagueService.getNextFixturesByLeagueId(234);
         LeagueResponse Ita = leagueService.getNextFixturesByLeagueId(318);
         LeagueResponse Spa = leagueService.getNextFixturesByLeagueId(466);
 
         NewsResponses news = newsService.getNewsArticles();
+
+        Date date1 = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy");
+        String date = sdf.format(date1);
 
 
 
@@ -70,6 +75,8 @@ public class MvcController {
         model.addAttribute("Ita", Ita);
         model.addAttribute("Spa", Spa);
         model.addAttribute("news", news);
+        model.addAttribute("date1",date);
+
 
         return "index";
     }
@@ -124,15 +131,17 @@ public class MvcController {
     ) Integer id){
 
         FixtureData fixture = fixtureService.getFixtureById(id);
+        List<FixturesResponse> prevFixtures = fixtureService.getHeadToHeadByFixtureId(id);
+
+
         FixturesResponse home = fixtureService.getFixtureHomeTeamById(id);
         FixturesResponse away = fixtureService.getFixtureAwayTeamById(id);
         FixtureData league = fixtureService.getFixtureLeagueById(id);
-        FixturesResponse prevFixtures = fixtureService.getHeadToHeadByFixtureId(id);
+
+
 
         FixtureStats stats = statService.getStats(id, home.getIdHome(),away.getIdAway());
-
         FixtureEvents events = eventService.getStats(id, home.getIdHome(), away.getIdAway());
-
         FixtureLineup lineups = lineUpService.getLineUps(id, home.getIdHome(), away.getIdAway());
 
 
@@ -221,7 +230,4 @@ public class MvcController {
 
         return "news";
     }
-
-
-
 }

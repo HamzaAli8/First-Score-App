@@ -567,8 +567,6 @@ public class ApiService {
 
 
         Date date1 = new Date();
-
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(date1);
 

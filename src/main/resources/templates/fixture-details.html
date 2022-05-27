@@ -517,13 +517,15 @@
                                               th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
                                     </a>
                                 </div>
+
                                 <div class="d-flex w-100 box1 mt-3 box1-dark"
-                                     th:each="fixture,p: ${prevFixtures.expand.head2head}"  th:unless="${p.index > 3}" >
-                                    <div href="" class="w-100 d-block d-flex">
+                                     th:each="fixture,p: ${prevFixtures}"  th:unless="${p.index > 5}" >
+                                    <div class="w-100 d-block d-flex" >
+                                        <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                         <div class="col-md-2 col-3 text-center">
                                             <p class="mb-0">
                                                 <span class="fw500" style="font-size:12px"
-                                                      th:text="${#strings.substring(fixture.date,0,10)}">3 JAN</span>
+                                                      th:text="${#strings.substring(fixture.date,10,15)}">3 JAN</span>
                                                 <span class="pt-1 fw500 d-block">FT</span>
                                             </p>
                                         </div>
@@ -539,11 +541,13 @@
                                                       th:text="${fixture.awayName}">Chelsea <em><b>1</b></em> </span>
                                                 <span><em th:text="${fixture.awayTeamGoals}"><b>3</b></em></span>
                                             </p>
-                                        </div>
 
+                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 

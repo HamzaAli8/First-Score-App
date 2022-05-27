@@ -169,14 +169,14 @@ public class TestController {
         return apiService.getStatsByFixtureId(id);
     }
 
-    @GetMapping(value = "/head/{id}")
-    public FixturesResponse getHeadById(@PathVariable(name = "id"
-    ) Integer id) {
-
-        return fixtureService.getHeadToHeadByFixtureId(id);
-
-
-    }
+//    @GetMapping(value = "/head/{id}")
+//    public FixturesResponse getHeadById(@PathVariable(name = "id"
+//    ) Integer id) {
+//
+//        return fixtureService.getHeadToHeadByFixtureId(id);
+//
+//
+//    }
 
     @GetMapping(value = "/league/{id}")
     public LeagueResponse getLeagueById(@PathVariable(name = "id"
