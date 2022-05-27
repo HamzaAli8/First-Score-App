@@ -14,8 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.util.DateUtils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -66,8 +70,18 @@ public class MvcController {
         NewsResponses news = newsService.getNewsArticles();
 
         Date date1 = new Date();
+
+
+
+        LocalDate localDate = LocalDate.now().plusDays(1);
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        Date date2 = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
         SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy");
-        String date = sdf.format(date1);
+        String date = sdf.format(date2);
+
+
+
+
 
 
 
