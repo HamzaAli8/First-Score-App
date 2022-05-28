@@ -133,26 +133,26 @@
                         </li>
                         <li>
                             <a href="">
-                                <span class="sp1">THU</span>
-                                <span class="sp2">28 Apr</span>
+                                <span class="sp1" th:text="${#strings.substring(today,0,3)}">THU</span>
+                                <span class="sp2" th:text="${#strings.substring(today,4,10)}">28 Apr</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <span class="sp1">FRI</span>
-                                <span class="sp2">29 Apr</span>
+                                <span class="sp1" th:text="${#strings.substring(tomorrow,0,3)}">FRI</span>
+                                <span class="sp2" th:text="${#strings.substring(tomorrow,4,10)}">29 Apr</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <span class="sp1">Sat</span>
-                                <span class="sp2">30 Apr</span>
+                                <span class="sp1" th:text="${#strings.substring(dayAfter,0,3)}">Sat</span>
+                                <span class="sp2" th:text="${#strings.substring(dayAfter,4,10)}">30 Apr</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <span class="sp1">Sun</span>
-                                <span class="sp2">01 May</span>
+                                <span class="sp1" th:text="${#strings.substring(last,0,3)}">Sun</span>
+                                <span class="sp2" th:text="${#strings.substring(last,4,10)}">01 May</span>
                             </a>
                         </li>
                     </ul>

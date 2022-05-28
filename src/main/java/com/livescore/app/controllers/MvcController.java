@@ -69,18 +69,28 @@ public class MvcController {
 
         NewsResponses news = newsService.getNewsArticles();
 
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy");
+
         Date date1 = new Date();
 
 
 
         LocalDate localDate = LocalDate.now().plusDays(1);
-        ZoneId defaultZoneId = ZoneId.systemDefault();
         Date date2 = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy");
-        String date = sdf.format(date2);
+
+        LocalDate localDate2 = LocalDate.now().plusDays(2);
+        Date date3 = Date.from(localDate2.atStartOfDay(defaultZoneId).toInstant());
+
+        LocalDate localDate3 = LocalDate.now().plusDays(3);
+        Date date4 = Date.from(localDate3.atStartOfDay(defaultZoneId).toInstant());
 
 
 
+        String today = sdf.format(date1);
+        String tomorrow = sdf.format(date2);
+        String dayAfter = sdf.format(date3);
+        String last = sdf.format(date4);
 
 
 
@@ -89,7 +99,11 @@ public class MvcController {
         model.addAttribute("Ita", Ita);
         model.addAttribute("Spa", Spa);
         model.addAttribute("news", news);
-        model.addAttribute("date1",date);
+        model.addAttribute("today",today);
+        model.addAttribute("tomorrow",tomorrow);
+        model.addAttribute("dayAfter",dayAfter);
+        model.addAttribute("last",last);
+
 
 
         return "index";
