@@ -47,13 +47,13 @@
                     <!--  </article>-->
                     <!--</main>-->
                     <div class="col" th:each="article,p: ${news.articles}"
-                         th:unless="${p.index > 6}">
+                         th:unless="${p.index > 8}">
                         <div class="card shadow-sm h-100">
                             <div class="card-image">
                                 <div class="hover-text">
                                     <img th:src="@{${article.media}}" class="card-img-top"
                                          alt="...">
-                                    <div class="bottom-right-tag text-uppercase"><a th:href="${article.link}">#lorem</a></div>
+                                    <div class="bottom-right-tag text-uppercase"><a th:href="${article.link}"></a></div>
                                 </div>
                                 <div class="image-overlay"></div>
                             </div>
@@ -62,8 +62,7 @@
                                 <h3 class="card-title" th:text="${article.title}">Lorem ipsum, dolor sit amet consectetur adipisicing elit</h3>
                                 <div class="text-left my-2">
                                     <div class="sub-cat text-truncate"><span
-                                            class="badge rounded-pill bg-category text-uppercase">topic</span> <a
-                                            href="#">Lorem ipsum dolor sit amet</a></div>
+                                            class="badge rounded-pill bg-category text-uppercase">topic</span> <a th:text="${article.title}" th:href="${article.link}">Lorem ipsum dolor sit amet</a></div>
                                 </div>
                                 <p class="card-text" th:text="${article.summary}">This is a longer card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit longer. This is a longer card
@@ -71,9 +70,10 @@
                             </div>
                             <div class="card-footer py-3">
                                 <div class="card-footer__info">
-                                    <span><i class="far fa-calendar-alt"></i> 01/04/2021</span>
+                                    <span><i class="far fa-calendar-alt"></i></span>
+                                    <span th:text="${#strings.substring(article.publishedDate,0,10)}"> 01/04/2021</span>
                                     <span class="read-more">
-                                    <a class="text-uppercase read-more-1" href="#">Read more </a>
+                                    <a class="text-uppercase read-more-1" th:href="${article.link}">Read more </a>
                                 </span>
                                 </div>
                             </div>
@@ -81,8 +81,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="small text-muted py-4">Images by <a target="_blank" href="https://source.unsplash.com/">https://source.unsplash.com/</a>
             </div>
         </div>
     </section>
