@@ -12,9 +12,7 @@ public class SeasonService {
     @Autowired
     ApiService apiService;
 
-
     public SeasonData getSeasonByLeagueId(Integer id, String expand){
-
 
         return apiService.getSeasonByLeagueId(id,expand);
     }

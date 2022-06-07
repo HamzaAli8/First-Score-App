@@ -5,7 +5,7 @@ import com.livescore.app.elenamodel.*;
 import com.livescore.app.elenamodel.mymodels.FixtureEvents;
 import com.livescore.app.elenamodel.mymodels.FixtureLineup;
 import com.livescore.app.elenamodel.mymodels.FixtureStats;
-import com.livescore.app.newsmodel.NewsResponses;
+import com.livescore.app.newsmodel.Articles;
 import com.livescore.app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,12 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.thymeleaf.util.DateUtils;
+
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -42,9 +41,6 @@ public class MvcController {
     StageService stageService;
 
     @Autowired
-    CountryService countryService;
-
-    @Autowired
     LeagueService leagueService;
 
     @Autowired
@@ -63,11 +59,11 @@ public class MvcController {
     @GetMapping("/")
     public String home(Model model){
 
-        LeagueResponse Eng = leagueService.getNextFixturesByLeagueId(234);
-        LeagueResponse Ita = leagueService.getNextFixturesByLeagueId(318);
-        LeagueResponse Spa = leagueService.getNextFixturesByLeagueId(466);
+        List<FixturesResponse> Eng = leagueService.getNextFixturesByLeagueId(234);
+        List<FixturesResponse> Ita = leagueService.getNextFixturesByLeagueId(318);
+        List<FixturesResponse> Spa = leagueService.getNextFixturesByLeagueId(466);
 
-        NewsResponses news = newsService.getNewsArticles();
+        List<Articles>  news = newsService.getNewsArticles();
 
         ZoneId defaultZoneId = ZoneId.systemDefault();
         SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy");
@@ -133,7 +129,7 @@ public class MvcController {
     ) Integer id){
 
         StandingData standings = standingService.getStandingByStageId(id);
-        StandingResponse stand = standingService.getLeagueStandingByStageId(id);
+        LeagueResponse stand = standingService.getLeagueStandingByStageId(id);
         model.addAttribute("teams",standings);
         model.addAttribute("stand", stand);
 
@@ -164,7 +160,7 @@ public class MvcController {
 
         FixturesResponse home = fixtureService.getFixtureHomeTeamById(id);
         FixturesResponse away = fixtureService.getFixtureAwayTeamById(id);
-        FixtureData league = fixtureService.getFixtureLeagueById(id);
+        LeagueResponse league = fixtureService.getFixtureLeagueById(id);
 
 
 
@@ -204,8 +200,8 @@ public class MvcController {
 
         TeamResponse teams = teamService.getTeamById(id);
         List<FixturesResponse> results = fixtureService.getResultsByTeamId(teams.getId());
-        FixtureData league = fixtureService.getFixtureLeagueById(results.get(0).getId());
-        NewsResponses news = newsService.getTeamNewsArticles(teams.getName());
+        LeagueResponse league = fixtureService.getFixtureLeagueById(results.get(0).getId());
+        List<Articles>  news = newsService.getTeamNewsArticles(teams.getName());
         List<FixturesResponse> fixtures = fixtureService.getFixturesByTeamId(id);
 
 
@@ -252,7 +248,7 @@ public class MvcController {
     public String newsPage(Model model){
 
 
-        NewsResponses news = newsService.getLatestArticles();
+        List<Articles> news = newsService.getLatestArticles();
 
         model.addAttribute("news", news);
 

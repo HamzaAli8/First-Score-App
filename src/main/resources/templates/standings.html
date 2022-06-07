@@ -20,8 +20,8 @@
 <hr/>
 <div class="container">
     <div class="comp-select"></div>
-   <div class="comp-title"><img class="comp-flag" th:src="@{'https://cdn.elenasport.io/flags/svg/'+ ${stand.expand.stage[0].expand.season[0].expand.league[0].idCountry}}">
-       <h1 class="comp-name" th:text="${stand.expand.stage[0].expand.season[0].expand.league[0].name}"> Premier League </h1></div>
+   <div class="comp-title"><img class="comp-flag" th:src="@{'https://cdn.elenasport.io/flags/svg/'+ ${stand.idCountry}}">
+       <h1 class="comp-name" th:text="${stand.name}"> Premier League </h1></div>
     <div class="comp-table-container">
         <table class="comp-table">
             <thead>

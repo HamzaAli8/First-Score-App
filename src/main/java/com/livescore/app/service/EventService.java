@@ -20,7 +20,6 @@ public class EventService {
         return apiService.getEventByFixtureId(id);
     }
 
-
     public FixtureEvents getStats(Integer id, Integer homeId, Integer awayId) {
 
         EventData eventData = apiService.getEventByFixtureId(id);

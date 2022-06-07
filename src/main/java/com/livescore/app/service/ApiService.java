@@ -58,9 +58,7 @@ public class ApiService {
     public LeagueData getLeagueById(Integer id, String expand) {
 
         String url = leagueUrl + id;
-
         String url2 = leagueUrl + id + "?expand={expand}";
-
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
@@ -85,7 +83,6 @@ public class ApiService {
 
         String url = seasonUrl + id + "/seasons" + "?expand={expand}";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
@@ -103,11 +100,9 @@ public class ApiService {
 
         String url = seasonUrl + id + "/stages";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET, request, StageData.class);
 
@@ -121,11 +116,9 @@ public class ApiService {
 
         String url = playerUrl + id + "/topscorers";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<TopScorerData> response = restTemplate.exchange(url, HttpMethod.GET, request, TopScorerData.class);
 
@@ -140,11 +133,9 @@ public class ApiService {
 
         String url = playerUrl + id + "/topappearances";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<PlayerData> response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerData.class);
 
@@ -157,34 +148,15 @@ public class ApiService {
 
         String url = fixtureUrl + id + "/events";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<EventData> response = restTemplate.exchange(url, HttpMethod.GET, request, EventData.class);
 
         return response.getBody();
 
     }
-
-//
-//    public StatData getStatByFixtureId(Integer id, String expand) {
-//
-//        String url = fixtureUrl + id + "/stats";
-//
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        HttpEntity<String> request = new HttpEntity<>(headers);
-//        headers.setBearerAuth(token);
-//
-//
-//        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
-//
-//        return response.getBody();
-//
-//    }
 
 
     public List<LineUpResponse> getLineUpByFixtureId(Integer id) {
@@ -223,11 +195,9 @@ public class ApiService {
 
         String url = seasonUrl + id + "/players";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<PlayerDetailData> response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerDetailData.class);
 
@@ -237,9 +207,7 @@ public class ApiService {
 
     public StandingData getStandingByStageId(Integer id) {
 
-
         String url2 = stageUrl + id + "/standing" + "?expand=team";
-
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
@@ -252,9 +220,7 @@ public class ApiService {
 
     public StandingData getLeagueAndStandingByStageId(Integer id) {
 
-
         String url2 = stageUrl + id + "/standing" + "?expand=stage.season.league";
-
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
@@ -270,11 +236,9 @@ public class ApiService {
 
         String url = venueUrl + id;
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<VenueData> response = restTemplate.exchange(url, HttpMethod.GET, request, VenueData.class);
 
@@ -306,24 +270,14 @@ public class ApiService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dateNow = sdf.format(date1);
 
-
-//        String url = seasonUrl + id + "/fixtures";
         String url2 = seasonUrl + id + "/fixtures" + "?from=" + dateNow;
-
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
 
-//        Map<String, String> uriParams = new HashMap<>();
-//        uriParams.put("date", date);
-
         ResponseEntity<FixtureData> response;
-//        if(date == null){
-//
-//            response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
-//        }else {
 
         response = restTemplate.exchange(url2, HttpMethod.GET, request, FixtureData.class);
         return response.getBody();
@@ -340,7 +294,6 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-
         ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
 
         return response.getBody();
@@ -356,7 +309,6 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-
         ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
 
         return response.getBody();
@@ -367,11 +319,9 @@ public class ApiService {
 
         String url = fixtureUrl + id + "?expand=away_team";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
 
@@ -384,11 +334,9 @@ public class ApiService {
 
         String url = fixtureUrl + id + "?expand=league.country";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
 
@@ -405,7 +353,6 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-
         ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
 
         return response.getBody();
@@ -417,11 +364,9 @@ public class ApiService {
 
         String url = fixtureUrl + id + "?expand=h2h";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
 
@@ -432,11 +377,9 @@ public class ApiService {
 
         String url = countryUrl;
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<CountryData> response = restTemplate.exchange(url, HttpMethod.GET, request, CountryData.class);
 
@@ -449,48 +392,37 @@ public class ApiService {
 
         String url = leagueUrl + id + "?expand=seasons.next_fixtures";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-
         ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
 
         return response.getBody();
-
-
     }
-
 
     public LeagueData getHomeNextFixturesByLeagueId(Integer id) {
 
-
         String url = leagueUrl + id + "?expand=seasons.next_fixtures.home_team";
-
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
 
         return response.getBody();
 
     }
-
 
     public LeagueData getAwayNextFixturesByLeagueId(Integer id) {
 
 
         String url = leagueUrl + id + "?expand=seasons.next_fixtures.away_team";
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
 
         ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
 
@@ -502,9 +434,7 @@ public class ApiService {
 
     public NewsResponses getNewsArticles() {
 
-
         Date date1 = new Date();
-
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dateNow = sdf.format(date1);
@@ -515,7 +445,6 @@ public class ApiService {
         HttpHeaders headers = new HttpHeaders();
         headers.add("x_api_key", newsApiKey);
         HttpEntity<String> request = new HttpEntity<>(headers);
-
 
         ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
 
@@ -528,11 +457,9 @@ public class ApiService {
 
         String url = "https://api.newscatcherapi.com/v2/search?q=" + team + "&topic=sport";
 
-
         HttpHeaders headers = new HttpHeaders();
         headers.add("x_api_key", newsApiKey);
         HttpEntity<String> request = new HttpEntity<>(headers);
-
 
         ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
 
@@ -545,11 +472,9 @@ public class ApiService {
 
         String url = "https://api.newscatcherapi.com/v2/latest_headlines?countries=GB&topic=sport&page_size=100";
 
-
         HttpHeaders headers = new HttpHeaders();
         headers.add("x_api_key", newsApiKey);
         HttpEntity<String> request = new HttpEntity<>(headers);
-
 
         ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
 
@@ -565,7 +490,6 @@ public class ApiService {
 
         List<FixturesResponse> fixtures = new ArrayList<>();
 
-
         Date date1 = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(date1);
@@ -574,7 +498,6 @@ public class ApiService {
         do {
 
             String url = BaseFixtureUrl + "?from=2021-08-01"+"&idTeam1="+ id + "&to=" + date + "&page="+page;
-
 
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> request = new HttpEntity<>(headers);
@@ -602,7 +525,6 @@ public class ApiService {
 
         List<FixturesResponse> fixtures = new ArrayList<>();
 
-
         Date date1 = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(date1);
@@ -626,11 +548,8 @@ public class ApiService {
 
         } while (hasNextPage);
 
-
         return fixtures;
 
     }
-
-
 }
 

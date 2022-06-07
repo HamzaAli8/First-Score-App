@@ -24,7 +24,6 @@ public class Articles {
     private String topic;
     private String country;
     private String language;
-    private List<String> authors;
     private String media;
 
 

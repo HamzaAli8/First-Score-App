@@ -168,7 +168,7 @@
 
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Eng.expand.seasons[0].expand.nextFixtures}"
+                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Eng}"
                                  th:unless="${p.index > 3}" >
                                 <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                     <div class="col-md-2 col-2">
@@ -201,7 +201,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Ita.expand.seasons[0].expand.nextFixtures}"
+                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Ita}"
                                  th:unless="${p.index > 3}" >
                                 <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                     <div class="col-md-2 col-2">
@@ -235,7 +235,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Spa.expand.seasons[0].expand.nextFixtures}"
+                            <div class="d-flex w-100 box1 mb-2 box1-dark" th:each="fixture,p: ${Spa}"
                                  th:unless="${p.index > 3}" >
                                 <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                     <div class="col-md-2 col-2">
@@ -268,7 +268,7 @@
                 <div class="card-header">
                     <h5 class="mb-0">Featured News</h5>
                 </div>
-                <div class="card-body p-3" th:each="article,p: ${news.articles}" th:unless="${p.index > 6}">
+                <div class="card-body p-3" th:each="article,p: ${news}" th:unless="${p.index > 6}">
                     <a th:href="@{${article.link}}" class="bg-link mb-2">
                         <div class="bg" th:style="'background-image:url(' + ${article.media}+ ')'" >
                             <h4 class="text-white pt-4" th:text="${article.title}">Lamps hoping to give old club the Blues</h4>

@@ -2,19 +2,14 @@ package com.livescore.app.service;
 
 import com.livescore.app.elenamodel.FixtureData;
 import com.livescore.app.elenamodel.FixturesResponse;
-import com.livescore.app.elenamodel.LineUpResponse;
+import com.livescore.app.elenamodel.LeagueResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,7 +29,11 @@ public class FixtureService {
         return apiService.getFixtureById(id);
     }
 
-
+    /**
+     *
+     * @param id
+     * @return
+     */
     public FixturesResponse getFixtureHomeTeamById(Integer id) {
 
         return apiService.getFixtureHomeTeamById(id).getData().get(0);
@@ -49,10 +48,10 @@ public class FixtureService {
 
     }
 
-    public FixtureData getFixtureLeagueById(Integer id) {
+    public LeagueResponse getFixtureLeagueById(Integer id) {
 
 
-        return apiService.getFixtureLeagueById(id);
+        return apiService.getFixtureLeagueById(id).getData().get(0).getExpand().getLeague().get(0);
     }
 
     public List<FixturesResponse> getHeadToHeadByFixtureId(Integer id) {

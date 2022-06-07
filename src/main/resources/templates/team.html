@@ -181,12 +181,12 @@
                              aria-labelledby="pills-01-tab">
                             <div class="match-div">
                                 <a href="">
-                                    <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"
+                                    <img th:src="@{${league.expand.country[0].flag}}"
                                          alt="img">
                                     <span class="sp1"
-                                          th:text="${league.data[0].expand.league[0].name}">Premier League</span>
+                                          th:text="${league.name}">Premier League</span>
                                     <span class="text-secondary sp2"
-                                          th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
+                                          th:text="${league.countryName}">Holland</span>
                                 </a>
                             </div>
 
@@ -322,7 +322,7 @@
                 <div class="card-header">
                     <h5 class="mb-0">Featured News</h5>
                 </div>
-                <div class="card-body p-3" th:each="article,p: ${news.articles}" th:unless="${p.index > 6}">
+                <div class="card-body p-3" th:each="article,p: ${news}" th:unless="${p.index > 6}">
                     <a th:href="@{${article.link}}" class="bg-link mb-2">
                         <div class="bg" th:style="'background-image:url(' + ${article.media}+ ')'">
                             <h4 class="text-white pt-4" th:text="${article.title}">Lamps hoping to give old club the

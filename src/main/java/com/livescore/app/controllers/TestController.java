@@ -178,23 +178,23 @@ public class TestController {
 //
 //    }
 
-    @GetMapping(value = "/league/{id}")
-    public LeagueResponse getLeagueById(@PathVariable(name = "id"
-    ) Integer id) {
+//    @GetMapping(value = "/league/{id}")
+//    public LeagueResponse getLeagueById(@PathVariable(name = "id"
+//    ) Integer id) {
+//
+//        return leagueService.getNextFixturesByLeagueId(id);
+//
+//
+//    }
 
-        return leagueService.getNextFixturesByLeagueId(id);
-
-
-    }
-
-    @GetMapping(value = "/leagueStandings/{id}")
-    public StandingResponse getStandingsById(@PathVariable(name = "id"
-    ) Integer id) {
-
-        return standingService.getLeagueStandingByStageId(id);
-
-
-    }
+//    @GetMapping(value = "/leagueStandings/{id}")
+//    public StandingResponse getStandingsById(@PathVariable(name = "id"
+//    ) Integer id) {
+//
+//        return standingService.getLeagueStandingByStageId(id);
+//
+//
+//    }
 
 //    @GetMapping(value="/news")
 //    public NewsResponses getNewsArticles(){

@@ -29,10 +29,10 @@
                             <div class="col-9">
                                 <div class="match-div">
                                     <a href="">
-                                        <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"
+                                        <img th:src="@{${league.expand.country[0].flag}}"
                                              alt="img"/> >
-                                        <span th:text="${league.data[0].expand.league[0].name}" class="sp1">Premier League</span>
-                                        <span th:text="${league.data[0].expand.league[0].countryName}"
+                                        <span th:text="${league.name}" class="sp1">Premier League</span>
+                                        <span th:text="${league.countryName}"
                                               class="text-secondary sp2">Holland</span>
                                     </a>
                                 </div>
@@ -510,11 +510,11 @@
                             <div class="tab-pane fade" id="pills-06" role="tabpanel" aria-labelledby="pills-06-tab">
                                 <div class="match-div">
                                     <a href="">
-                                        <img th:src="@{${league.data[0].expand.league[0].expand.country[0].flag}}"
+                                        <img th:src="@{${league.expand.country[0].flag}}"
                                              alt="img">
-                                        <span class="sp1" th:text="${league.data[0].expand.league[0].name}">Premier League</span>
+                                        <span class="sp1" th:text="${league.name}">Premier League</span>
                                         <span class="text-secondary sp2"
-                                              th:text="${league.data[0].expand.league[0].countryName}">Holland</span>
+                                              th:text="${league.countryName}">Holland</span>
                                     </a>
                                 </div>
 

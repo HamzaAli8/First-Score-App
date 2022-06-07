@@ -14,7 +14,6 @@ public class VenueService {
 
     public VenueResponse getVenueById(Integer id){
 
-
         return apiService.getVenueById(id).getData().get(0);
     }
 

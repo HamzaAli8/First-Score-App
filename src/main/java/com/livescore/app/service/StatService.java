@@ -34,11 +34,9 @@ public class StatService {
                 .filter(statResponse -> statResponse.getIdTeam().equals(homeId))
                 .collect(Collectors.toMap(StatResponse ::getLabel, StatResponse :: getValue));
 
-
         Map<String, Integer> away = statList.stream()
                 .filter(statResponse -> statResponse.getIdTeam().equals(awayId))
                 .collect(Collectors.toMap(StatResponse ::getLabel, StatResponse :: getValue));
-
 
         return new FixtureStats(home, away);
 

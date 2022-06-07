@@ -16,17 +16,17 @@
           href="../static/css/news.css" th:href="@{/css/news.css}"/>
 </head>
 <body>
+<header class="w-100" th:replace="header :: myHeader"></header>
 <hr/>
-<header th:replace="header :: myHeader"></header>
 <div>
     <section class="button">
-        <div class="container-lg py-2">
+        <div class="container-md py-2">
         </div>
     </section>
 
 
     <section id="focus" class="focus-section">
-        <div class="container-lg py-5">
+        <div class="container-md py-5">
             <div class="container px-0">
                 <div class="row">
                     <div class="col">
@@ -35,18 +35,8 @@
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
 
-                    <!--<main class="article-container" th:each="article,p: ${news.articles}"
-                     th:unless="${p.index > 9}">-->
-                    <!--  <article>-->
-                    <!--    <h3 th:text="${article.title}">Some random article</h3>-->
-                    <!--    <img th:src="@{${article.media}}">-->
-                    <!--    <div data-dummytext="p-x1-w50-s10-v10" th:text="${article.summary}"></div>-->
-                    <!--    <a class="button button&#45;&#45;ghost" th:href="${article.link}">-->
-                    <!--      <span class="button__text">read more</span>-->
-                    <!--    </a>-->
-                    <!--  </article>-->
-                    <!--</main>-->
-                    <div class="col" th:each="article,p: ${news.articles}"
+
+                    <div class="col" th:each="article,p: ${news}"
                          th:unless="${p.index > 8}">
                         <div class="card shadow-sm h-100">
                             <div class="card-image">
@@ -82,7 +72,6 @@
                 </div>
             </div>
             </div>
-        </div>
     </section>
 </div>
 

@@ -2,10 +2,13 @@ package com.livescore.app.service;
 
 
 
+import com.livescore.app.elenamodel.FixturesResponse;
 import com.livescore.app.elenamodel.LeagueData;
 import com.livescore.app.elenamodel.LeagueResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class LeagueService {
@@ -19,9 +22,10 @@ public class LeagueService {
 
     }
 
-    public LeagueResponse getNextFixturesByLeagueId(Integer id){
+    public List<FixturesResponse> getNextFixturesByLeagueId(Integer id){
 
-       LeagueResponse league =  apiService.getNextFixturesByLeagueId(id).getData().get(0);
+       List<FixturesResponse> league =  apiService.getNextFixturesByLeagueId(id).getData().get(0).getExpand()
+               .getSeasons().get(0).getExpand().getNextFixtures();
 
        return league;
     }
