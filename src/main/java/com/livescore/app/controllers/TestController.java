@@ -92,7 +92,7 @@ public class TestController {
     ) Integer id) {
 
 
-        return seasonService.getSeasonByLeagueId(id, expand);
+        return seasonService.getSeasonByLeagueId(id);
     }
 
 

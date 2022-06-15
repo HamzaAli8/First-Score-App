@@ -79,7 +79,7 @@ public class ApiService {
 
     }
 
-    public SeasonData getSeasonByLeagueId(Integer id, String expand) {
+    public SeasonData getSeasonByLeagueId(Integer id) {
 
         String url = seasonUrl + id + "/seasons" + "?expand={expand}";
 
@@ -87,10 +87,10 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        Map<String, String> uriParams = new HashMap<>();
-        uriParams.put("expand", expand);
+//        Map<String, String> uriParams = new HashMap<>();
+//        uriParams.put("expand",);
 
-        ResponseEntity<SeasonData> response = restTemplate.exchange(url, HttpMethod.GET, request, SeasonData.class, uriParams);
+        ResponseEntity<SeasonData> response = restTemplate.exchange(url, HttpMethod.GET, request, SeasonData.class);
 
         return response.getBody();
     }
