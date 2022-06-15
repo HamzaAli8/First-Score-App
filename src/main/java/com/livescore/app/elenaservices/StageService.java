@@ -14,6 +14,11 @@ public class StageService {
     @Autowired
     ApiService apiService;
 
+    /**
+     * This method returns the StageResponse of a particular season by calling the api
+     * @param id unique id of the season
+     * @return StageResponse
+     */
     public StageResponse getStageBySeasonId(Integer id){
 
 

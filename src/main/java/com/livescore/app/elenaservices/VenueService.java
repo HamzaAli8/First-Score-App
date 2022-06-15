@@ -10,7 +10,11 @@ public class VenueService {
     @Autowired
     ApiService apiService;
 
-
+    /**
+     *
+     * @param id
+     * @return
+     */
     public VenueResponse getVenueById(Integer id){
 
         return apiService.getVenueById(id).getData().get(0);
