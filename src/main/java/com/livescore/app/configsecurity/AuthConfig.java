@@ -1,8 +1,8 @@
 package com.livescore.app.configsecurity;
 
 import com.livescore.app.elenamodel.Token;
-import com.livescore.app.service.ApiService;
-import com.livescore.app.service.AuthService;
+import com.livescore.app.elenaservices.ApiService;
+import com.livescore.app.elenaservices.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

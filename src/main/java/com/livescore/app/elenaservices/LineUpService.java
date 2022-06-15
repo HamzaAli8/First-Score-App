@@ -1,10 +1,6 @@
-package com.livescore.app.service;
+package com.livescore.app.elenaservices;
 
-import com.livescore.app.elenamodel.EventData;
-import com.livescore.app.elenamodel.EventResponse;
-import com.livescore.app.elenamodel.LineUpData;
 import com.livescore.app.elenamodel.LineUpResponse;
-import com.livescore.app.elenamodel.mymodels.FixtureEvents;
 import com.livescore.app.elenamodel.mymodels.FixtureLineup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

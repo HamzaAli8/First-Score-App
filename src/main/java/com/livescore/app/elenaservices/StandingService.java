@@ -1,13 +1,10 @@
-package com.livescore.app.service;
+package com.livescore.app.elenaservices;
 
 
 import com.livescore.app.elenamodel.LeagueResponse;
 import com.livescore.app.elenamodel.StandingData;
-import com.livescore.app.elenamodel.StandingResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class StandingService {

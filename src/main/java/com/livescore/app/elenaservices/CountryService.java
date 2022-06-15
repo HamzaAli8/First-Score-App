@@ -1,4 +1,4 @@
-package com.livescore.app.service;
+package com.livescore.app.elenaservices;
 
 import com.livescore.app.elenamodel.CountryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,10 @@ public class CountryService {
     @Autowired
     ApiService apiService;
 
-
+    /**
+     * This service calls on the api and generates a list of countries
+     * @return list of countryResponses
+     */
     public List<CountryResponse> getCountries(){
 
         List<CountryResponse> countryList = apiService.getCountries().getData();

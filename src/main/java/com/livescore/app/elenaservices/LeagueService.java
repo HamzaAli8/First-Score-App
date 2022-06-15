@@ -1,10 +1,8 @@
-package com.livescore.app.service;
+package com.livescore.app.elenaservices;
 
 
 
 import com.livescore.app.elenamodel.FixturesResponse;
-import com.livescore.app.elenamodel.LeagueData;
-import com.livescore.app.elenamodel.LeagueResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +14,11 @@ public class LeagueService {
     @Autowired
     ApiService apiService;
 
-    public LeagueData getLeague(Integer id, String expand){
-
-        return apiService.getLeagueById(id,expand);
-
-    }
-
+    /**
+     * Returns a the fixtures that are to be played in a particular league
+     * @param id the league id
+     * @return a list of FixtureResponses to be played in league
+     */
     public List<FixturesResponse> getNextFixturesByLeagueId(Integer id){
 
        List<FixturesResponse> league =  apiService.getNextFixturesByLeagueId(id).getData().get(0).getExpand()

@@ -2,8 +2,7 @@ package com.livescore.app.controllers;
 
 
 import com.livescore.app.elenamodel.*;
-import com.livescore.app.newsmodel.NewsResponses;
-import com.livescore.app.service.*;
+import com.livescore.app.elenaservices.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -98,20 +97,20 @@ public class TestController {
 
 
     @GetMapping(value = "/topscorer/{id}")
-    public TopScorerData getTopScorer(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public List<TopScorerResponse> getTopScorer(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return playerService.getTopScorer(id, expand);
+        return playerService.getTopScorer(id);
     }
 
 
     @GetMapping(value = "/appearances/{id}")
-    public PlayerData getTopApps(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
+    public List<PlayerResponse> getTopApps(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
     ) Integer id) {
 
 
-        return playerService.getTopApps(id, expand);
+        return playerService.getTopApps(id);
     }
 
 

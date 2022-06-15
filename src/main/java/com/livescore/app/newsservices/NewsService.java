@@ -1,7 +1,7 @@
-package com.livescore.app.service;
+package com.livescore.app.newsservices;
 
 import com.livescore.app.newsmodel.Articles;
-import com.livescore.app.newsmodel.NewsResponses;
+import com.livescore.app.elenaservices.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +14,7 @@ public class NewsService {
 
     @Autowired
     ApiService apiService;
+
 
     public List<Articles> getNewsArticles(){
 

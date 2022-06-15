@@ -1,4 +1,4 @@
-package com.livescore.app.service;
+package com.livescore.app.elenaservices;
 
 import com.livescore.app.elenamodel.*;
 import com.livescore.app.newsmodel.NewsResponses;
@@ -111,7 +111,7 @@ public class ApiService {
 
     }
 
-    public TopScorerData getTopScorerBySeasonId(Integer id, String expand) {
+    public TopScorerData getTopScorerBySeasonId(Integer id) {
 
 
         String url = playerUrl + id + "/topscorers";
@@ -128,7 +128,7 @@ public class ApiService {
     }
 
 
-    public PlayerData getTopAppearancesBySeasonId(Integer id, String expand) {
+    public PlayerData getTopAppearancesBySeasonId(Integer id) {
 
 
         String url = playerUrl + id + "/topappearances";

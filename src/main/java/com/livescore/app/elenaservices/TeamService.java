@@ -1,4 +1,4 @@
-package com.livescore.app.service;
+package com.livescore.app.elenaservices;
 
 import com.livescore.app.elenamodel.TeamResponse;
 import org.springframework.beans.factory.annotation.Autowired;
