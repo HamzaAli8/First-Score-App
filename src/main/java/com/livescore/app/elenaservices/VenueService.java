@@ -11,9 +11,9 @@ public class VenueService {
     ApiService apiService;
 
     /**
-     *
-     * @param id
-     * @return
+     *This method returns the venue in which the fixture is being played
+     * @param id unique id of venue
+     * @return VenueResponse
      */
     public VenueResponse getVenueById(Integer id){
 

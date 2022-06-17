@@ -16,7 +16,15 @@ public class LineUpService {
     @Autowired
     ApiService apiService;
 
-
+    /**
+     * This method returns a FixtureLineup entity, the method calls the external API and filters using the stream API on
+     * one main property StartingXI. The stream filters the LineUpResponses for both the home and away teams and puts them
+     * into two lists each for the home and away teams.
+     * @param id unique fixture id
+     * @param homeId unique homeTeam id
+     * @param awayId unique awayTeam id
+     * @return FixtureLineup
+     */
     public FixtureLineup getLineUps(Integer id, Integer homeId, Integer awayId) {
 
         List<LineUpResponse> lineUpResponseList = apiService.getLineUpByFixtureId(id);
@@ -80,8 +88,4 @@ public class LineUpService {
 
     }
 
-    public List<LineUpResponse> getLineUpByFixtureId(Integer id) {
-
-        return apiService.getLineUpByFixtureId(id);
-    }
 }

@@ -123,14 +123,6 @@ public class TestController {
     }
 
 
-    @GetMapping(value = "/lineup/{id}")
-    public List<LineUpResponse> getLineups(@RequestParam(value = "expand", required = false) String expand, @PathVariable(name = "id"
-    ) Integer id) {
-
-
-        return lineUpService.getLineUpByFixtureId(id);
-    }
-
     @GetMapping(value = "/venue/{id}")
     public VenueResponse getVenue(@RequestParam(value = "expand", required = false) @PathVariable(name = "id"
     ) Integer id) {
