@@ -21,8 +21,9 @@ public class AuthService {
     RestTemplate restTemplate;
 
     /**
-     * nm
-     * @return
+     * This method returns a token and using a post method on the api a token is generated using the unique apiKey
+     * given by the server.
+     * @return Token
      */
     public Token refreshToken() {
 
