@@ -20,7 +20,7 @@ public class FixtureService {
 
 
     /**
-     *  This method returns all the fixtures that have been played in a season (e.g. 20/21, 21/22)
+     * This method returns all the fixtures that have been played in a season (e.g. 20/21, 21/22)
      * @param id this the id of the season which is unique to the season being queried
      * @param date this the from date which to return the fixtures, this is immutable to match requirements
      * @return FixtureData which contains within it a list of FixtureResponses
@@ -76,7 +76,7 @@ public class FixtureService {
     /**
      * This method returns a list of fixtures played head to head by the teams based on the fixture id. The method parses
      * all the fixtures using the stream API and filters for the fixtures that have the status finished and reverses them
-     * into a chronological orders them based on the most recently played
+     * into a chronological order them based on the most recently played
      * @param id fixture id of the original fixture between the teams
      * @return a list of FixtureResponses
      */
