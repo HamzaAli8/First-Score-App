@@ -34,7 +34,7 @@ You can access the data of fixtures from each of these leagues and the individua
 
 ## Features
 
-A few of the things you can do with GitPoint:
+A few of the things you can do with First Score:
 
 * View live scores
 * Access historical match data
