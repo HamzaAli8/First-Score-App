@@ -1,4 +1,4 @@
-<h1 align="center"> FirstScore </h1> <br>
+<h1 align="center"> First Score </h1> <br>
 <p align="center">
   <a href="http://firstscoreapp.co.uk">
     <img alt="FirstScore" title="FirstScore" src="https://imgur.com/vYoS1de.png" width="450">
@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  Football scores in your pocket. Built with Java Spring.
+  Football scores in your pocket. Built with Java and Spring.
 </p>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -23,16 +23,10 @@
 
 ## Introduction
 
-[![Build Status](https://img.shields.io/travis/gitpoint/git-point.svg?style=flat-square)](https://travis-ci.org/gitpoint/git-point)
-[![Coveralls](https://img.shields.io/coveralls/github/gitpoint/git-point.svg?style=flat-square)](https://coveralls.io/github/gitpoint/git-point)
-[![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](./CONTRIBUTORS.md)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
-[![Gitter chat](https://img.shields.io/badge/chat-on_gitter-008080.svg?style=flat-square)](https://gitter.im/git-point)
 
-View repository and user information, control your notifications and even manage your issues and pull requests. Built with React Native, GitPoint is one of the most feature-rich unofficial GitHub clients that is 100% free.
+First Score is a web application that provides the current football scores of live matches. Data is pooled from the top 5 European leagues. 
+You can access the data of fixtures from each of these leagues and the individual teams from these leagues. We have historical details of results dating back 10 seasons. 
 
-**Available for both iOS and Android.**
 
 <p align="center">
   <img src = "http://i.imgur.com/HowF6aM.png" width=350>
