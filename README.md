@@ -29,7 +29,7 @@ You can access the data of fixtures from each of these leagues and the individua
 
 
 <p align="center">
-  <img src = "http://i.imgur.com/HowF6aM.png" width=350>
+  <img src = "https://imgur.com/A3DlvT6.png" width=750>
 </p>
 
 ## Features
@@ -43,19 +43,28 @@ A few of the things you can do with GitPoint:
 * Easily search scores from the featured leagues
 
 <p align="center">
-  <img src = "http://i.imgur.com/IkSnFRL.png" width=700>
+  <img src = "https://imgur.com/VKdXe1c.png" width=700>
 </p>
 
 <p align="center">
-  <img src = "http://i.imgur.com/0iorG20.png" width=700>
+  <img src = "https://imgur.com/muifZyt.png" width=700>
 </p>
 
 ## Feedback
 
-Feel free to send us feedback 
+Feel free to send us feedback. 
 
 ## Build Process
 
-## Acknowledgement [![Sponsors on Open Collective](https://opencollective.com/git-point/sponsors/badge.svg)](#sponsors)
+// To be completed
+
+## RESTFUL API 
+
+<img width="1440" alt="Screen Shot 2021-06-30 at 23 25 39" src="https://user-images.githubusercontent.com/38518048/124027990-27580d00-d9fc-11eb-99c4-f9cb6a787b55.png">
+
+
+This app uses API-FOOTBALL to fetch its data. <br/><br/>
+<a target="_blank" href="https://www.api-football.com/">API-FOOTBALL:</a> is a RESTFUL API for all sports data ( FOOTBALL | BASKETBALL | BASEBALL | FORMULA-1 | HOCKEY | RUGBY )
+
 
 
