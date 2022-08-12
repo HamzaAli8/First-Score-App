@@ -197,7 +197,7 @@
                                         <div class="col-md-2 col-3 text-center">
                                             <p class="mb-0">
                                                 <span class="fw500" style="font-size:12px"
-                                                      th:text="${#strings.substring(fixture.date,4,10)}">3 JAN</span>
+                                                      th:text="${#strings.substring(fixture.date,4,11)}">3 JAN</span>
                                                 <span class="pt-1 fw500 d-block">FT</span>
                                             </p>
                                         </div>
@@ -228,7 +228,7 @@
                                          th:unless="${p.index > 3}">
                                         <a th:href="@{'/fixtures/'+${fixture.id}}" class="w-100 d-block d-flex">
                                             <div class="col-md-2 col-2">
-                                                <span class="time" th:text="${#strings.substring(fixture.date,11,16)}">16:30</span>
+                                                <span class="time" th:text="${#strings.substring(fixture.date,10,15)}">16:30</span>
                                             </div>
                                             <div class="col-md-8 col-8">
                                                 <p class="mb-1">

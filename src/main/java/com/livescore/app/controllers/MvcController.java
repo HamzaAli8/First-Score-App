@@ -131,10 +131,10 @@ public class MvcController {
 
         StandingData standings = standingService.getStandingByStageId(id);
         LeagueResponse stand = standingService.getLeagueStandingByStageId(id);
+
+
         model.addAttribute("teams",standings);
         model.addAttribute("stand", stand);
-
-
 
 
         return "standings";

@@ -16,6 +16,7 @@ public class AuthConfig {
     @Bean
     public ApiService apiService(){
         Token token = authService.refreshToken();
+        System.out.println(token);
         return new ApiService(token.getAccessToken());
     }
 }

@@ -4,10 +4,7 @@ import com.livescore.app.elenamodel.*;
 import com.livescore.app.newsmodel.NewsResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
@@ -55,26 +52,18 @@ public class ApiService {
         this.token = token;
     }
 
-    public LeagueData getLeagueById(Integer id, String expand) {
+    public LeagueData getLeagueById(Integer id) {
 
         String url = leagueUrl + id;
-        String url2 = leagueUrl + id + "?expand={expand}";
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
-        Map<String, String> uriParams = new HashMap<>();
-        uriParams.put("expand", expand);
-
         ResponseEntity<LeagueData> response;
-        if (expand == null) {
 
+        do{
             response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
-        } else {
-
-            response = restTemplate.exchange(url2, HttpMethod.GET, request, LeagueData.class, uriParams);
-        }
+        }while (response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -86,12 +75,11 @@ public class ApiService {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
+        ResponseEntity<SeasonData> response;
 
-//        Map<String, String> uriParams = new HashMap<>();
-//        uriParams.put("expand",);
-
-        ResponseEntity<SeasonData> response = restTemplate.exchange(url, HttpMethod.GET, request, SeasonData.class);
-
+        do{
+         response = restTemplate.exchange(url, HttpMethod.GET, request, SeasonData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
     }
 
@@ -104,11 +92,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<StageData> response = restTemplate.exchange(url, HttpMethod.GET, request, StageData.class);
-
+        ResponseEntity<StageData> response;
+        do{
+          response = restTemplate.exchange(url, HttpMethod.GET, request, StageData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
-
-
     }
 
     public TopScorerData getTopScorerBySeasonId(Integer id) {
@@ -120,11 +108,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<TopScorerData> response = restTemplate.exchange(url, HttpMethod.GET, request, TopScorerData.class);
-
+        ResponseEntity<TopScorerData> response;
+        do{
+          response = restTemplate.exchange(url, HttpMethod.GET, request, TopScorerData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
-
-
     }
 
 
@@ -137,8 +125,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<PlayerData> response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerData.class);
+        ResponseEntity<PlayerData> response;
 
+        do{
+         response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
 
@@ -152,10 +143,12 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<EventData> response = restTemplate.exchange(url, HttpMethod.GET, request, EventData.class);
+        ResponseEntity<EventData> response;
 
+        do{
+        response = restTemplate.exchange(url, HttpMethod.GET, request, EventData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
-
     }
 
 
@@ -191,7 +184,7 @@ public class ApiService {
     }
 
 
-    public PlayerDetailData getPlayerDetailBySeasonId(Integer id, String expand) {
+    public PlayerDetailData getPlayerDetailBySeasonId(Integer id) {
 
         String url = seasonUrl + id + "/players";
 
@@ -199,8 +192,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<PlayerDetailData> response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerDetailData.class);
+        ResponseEntity<PlayerDetailData> response;
 
+        do{
+          response = restTemplate.exchange(url, HttpMethod.GET, request, PlayerDetailData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
     }
 
@@ -212,21 +208,25 @@ public class ApiService {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
-        ResponseEntity<StandingData> response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class);
+        ResponseEntity<StandingData> response;
+        do{
+             response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class);
+        } while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
 
     public StandingData getLeagueAndStandingByStageId(Integer id) {
 
-        String url2 = stageUrl + id + "/standing" + "?expand=stage.season.league";
+        String url = stageUrl + id + "/standing" + "?expand=stage.season.league";
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
-        ResponseEntity<StandingData> response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class);
+        ResponseEntity<StandingData> response;
+        do{
+         response = restTemplate.exchange(url, HttpMethod.GET, request, StandingData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -239,9 +239,10 @@ public class ApiService {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
-
-        ResponseEntity<VenueData> response = restTemplate.exchange(url, HttpMethod.GET, request, VenueData.class);
-
+        ResponseEntity<VenueData> response;
+        do{
+         response = restTemplate.exchange(url, HttpMethod.GET, request, VenueData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
     }
 
@@ -254,9 +255,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
+        ResponseEntity<TeamData> response;
 
-        ResponseEntity<TeamData> response = restTemplate.exchange(url, HttpMethod.GET, request, TeamData.class);
-
+        do{
+          response = restTemplate.exchange(url, HttpMethod.GET, request, TeamData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
     }
 
@@ -270,16 +273,17 @@ public class ApiService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dateNow = sdf.format(date1);
 
-        String url2 = seasonUrl + id + "/fixtures" + "?from=" + dateNow;
+        String url = seasonUrl + id + "/fixtures" + "?from=" + dateNow;
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-
         ResponseEntity<FixtureData> response;
 
-        response = restTemplate.exchange(url2, HttpMethod.GET, request, FixtureData.class);
+        do{
+            response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -289,15 +293,16 @@ public class ApiService {
 
         String url = fixtureUrl + id;
 
-
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        ResponseEntity<FixtureData> response;
 
+        do{
+         response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
-
     }
 
     public FixtureData getFixtureHomeTeamById(Integer id) {
@@ -309,8 +314,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        ResponseEntity<FixtureData> response;
 
+        do{
+         response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -323,8 +331,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        ResponseEntity<FixtureData> response;
 
+        do{
+        response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -338,8 +349,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        ResponseEntity<FixtureData> response;
 
+        do{
+        response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
     }
 
@@ -353,8 +367,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<StatData> response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
+        ResponseEntity<StatData> response;
 
+        do{
+        response = restTemplate.exchange(url, HttpMethod.GET, request, StatData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
 
@@ -368,8 +385,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        ResponseEntity<FixtureData> response;
 
+        do{
+            response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
     }
 
@@ -381,8 +401,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<CountryData> response = restTemplate.exchange(url, HttpMethod.GET, request, CountryData.class);
+        ResponseEntity<CountryData> response;
 
+        do{
+        response = restTemplate.exchange(url, HttpMethod.GET, request, CountryData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -396,8 +419,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+        ResponseEntity<LeagueData> response;
 
+        do{
+          response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
     }
 
@@ -409,10 +435,12 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+        ResponseEntity<LeagueData> response;
 
+        do{
+          response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
-
     }
 
     public LeagueData getAwayNextFixturesByLeagueId(Integer id) {
@@ -424,8 +452,11 @@ public class ApiService {
         HttpEntity<String> request = new HttpEntity<>(headers);
         headers.setBearerAuth(token);
 
-        ResponseEntity<LeagueData> response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+        ResponseEntity<LeagueData> response;
 
+        do{
+            response = restTemplate.exchange(url, HttpMethod.GET, request, LeagueData.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -446,8 +477,11 @@ public class ApiService {
         headers.add("x_api_key", newsApiKey);
         HttpEntity<String> request = new HttpEntity<>(headers);
 
-        ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
+        ResponseEntity<NewsResponses> response;
 
+        do{
+            response= restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -461,8 +495,11 @@ public class ApiService {
         headers.add("x_api_key", newsApiKey);
         HttpEntity<String> request = new HttpEntity<>(headers);
 
-        ResponseEntity<NewsResponses> response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
+        ResponseEntity<NewsResponses> response;
 
+        do{
+            response = restTemplate.exchange(url, HttpMethod.GET, request, NewsResponses.class);
+        }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
         return response.getBody();
 
     }
@@ -496,23 +533,22 @@ public class ApiService {
 
 
         do {
-
             String url = BaseFixtureUrl + "?from=2021-08-01"+"&idTeam1="+ id + "&to=" + date + "&page="+page;
 
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> request = new HttpEntity<>(headers);
             headers.setBearerAuth(token);
 
-            ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+            ResponseEntity<FixtureData> response;
+            do{
+                response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+            }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
             if(response.getBody() != null){
                 fixtures.addAll(response.getBody().getData());
                 hasNextPage = response.getBody().getPagination().getHasNextPage();
             }
             page = page + 1;
-
         } while (hasNextPage);
-
-
         return fixtures;
 
     }
@@ -533,19 +569,21 @@ public class ApiService {
         do {
 
             String url = BaseFixtureUrl + "?from=" + date +"&idTeam1="+ id +"&page="+page;
-
-
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> request = new HttpEntity<>(headers);
             headers.setBearerAuth(token);
 
-            ResponseEntity<FixtureData> response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+            ResponseEntity<FixtureData> response;
+
+            do{
+                response = restTemplate.exchange(url, HttpMethod.GET, request, FixtureData.class);
+            }while(response.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS);
+
             if(response.getBody() != null){
                 fixtures.addAll(response.getBody().getData());
                 hasNextPage = response.getBody().getPagination().getHasNextPage();
             }
             page = page + 1;
-
         } while (hasNextPage);
 
         return fixtures;
