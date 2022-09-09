@@ -42,15 +42,27 @@ public class ApiService {
     @Value("${news_api_key}")
     private String newsApiKey;
 
+    @Autowired
+    AuthService authService;
 
     @Autowired
     RestTemplate restTemplate;
 
-    final private String token;
+    private Token token;
 
-    public ApiService(String token) {
+    public ApiService(Token token) {
         this.token = token;
     }
+
+    public String getToken(){
+
+        if(token.isExpired()){
+            token = authService.refreshToken();
+        }
+            return token.getAccessToken();
+    }
+
+
 
     public LeagueData getLeagueById(Integer id) {
 
@@ -58,7 +70,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
         ResponseEntity<LeagueData> response;
 
         do{
@@ -74,7 +86,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
         ResponseEntity<SeasonData> response;
 
         do{
@@ -90,7 +102,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<StageData> response;
         do{
@@ -106,7 +118,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<TopScorerData> response;
         do{
@@ -123,7 +135,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<PlayerData> response;
 
@@ -141,7 +153,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<EventData> response;
 
@@ -167,7 +179,7 @@ public class ApiService {
 
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> request = new HttpEntity<>(headers);
-            headers.setBearerAuth(token);
+            headers.setBearerAuth(getToken());
 
             ResponseEntity<LineUpData> response = restTemplate.exchange(url, HttpMethod.GET, request, LineUpData.class);
             if(response.getBody() != null){
@@ -190,7 +202,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<PlayerDetailData> response;
 
@@ -207,7 +219,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
         ResponseEntity<StandingData> response;
         do{
              response = restTemplate.exchange(url2, HttpMethod.GET, request, StandingData.class);
@@ -222,7 +234,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
         ResponseEntity<StandingData> response;
         do{
          response = restTemplate.exchange(url, HttpMethod.GET, request, StandingData.class);
@@ -238,7 +250,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
         ResponseEntity<VenueData> response;
         do{
          response = restTemplate.exchange(url, HttpMethod.GET, request, VenueData.class);
@@ -253,7 +265,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<TeamData> response;
 
@@ -277,7 +289,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<FixtureData> response;
 
@@ -295,7 +307,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<FixtureData> response;
 
@@ -312,7 +324,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<FixtureData> response;
 
@@ -329,7 +341,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<FixtureData> response;
 
@@ -347,7 +359,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<FixtureData> response;
 
@@ -365,7 +377,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<StatData> response;
 
@@ -383,7 +395,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<FixtureData> response;
 
@@ -399,7 +411,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<CountryData> response;
 
@@ -417,7 +429,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<LeagueData> response;
 
@@ -433,7 +445,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<LeagueData> response;
 
@@ -450,7 +462,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> request = new HttpEntity<>(headers);
-        headers.setBearerAuth(token);
+        headers.setBearerAuth(getToken());
 
         ResponseEntity<LeagueData> response;
 
@@ -537,7 +549,7 @@ public class ApiService {
 
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> request = new HttpEntity<>(headers);
-            headers.setBearerAuth(token);
+            headers.setBearerAuth(getToken());
 
             ResponseEntity<FixtureData> response;
             do{
@@ -571,7 +583,7 @@ public class ApiService {
             String url = BaseFixtureUrl + "?from=" + date +"&idTeam1="+ id +"&page="+page;
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> request = new HttpEntity<>(headers);
-            headers.setBearerAuth(token);
+            headers.setBearerAuth(getToken());
 
             ResponseEntity<FixtureData> response;
 

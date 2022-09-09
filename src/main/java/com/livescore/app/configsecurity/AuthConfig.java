@@ -16,24 +16,11 @@ public class AuthConfig {
     @Autowired
     AuthService authService;
 
-
-
     @Bean
     public ApiService apiService(){
         Token token = authService.refreshToken();
         System.out.println(token);
-        return new ApiService(token.getAccessToken());
+        return new ApiService(token);
     }
-
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-
-            apiService();
-            Timer timer = new Timer();
-            timer.schedule(task, 0L, 1000*60*45);
-        }
-    };
-
 
 }
